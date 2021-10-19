@@ -3,7 +3,7 @@ import clsx from 'clsx'
 
 import styles from './styles.module.scss'
 
-const Search = () => {
+const Search = ({ signInPath, signUpPath }) => {
   return (
     <div className={styles.flexContainer}>
       <div className={styles.header}>
@@ -14,10 +14,12 @@ const Search = () => {
           </div>
         </div>
         <div className={styles.headerItem}>
-          <button className={styles.button}>Sign in</button>
-          <button className={clsx(styles.button, styles.red)} style={{ marginLeft: '27px' }}>
-            Sign up
-          </button>
+          <a href={signInPath} className={styles.button}>
+            <span>Sign in</span>
+          </a>
+          <a href={signUpPath} className={clsx(styles.button, styles.red)} style={{ marginLeft: '27px' }}>
+            <span>Sign up</span>
+          </a>
         </div>
       </div>
       <div className={styles.navbar}>

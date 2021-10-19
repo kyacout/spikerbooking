@@ -2,5 +2,5 @@
   <div class="bgLogoContainer">
     <%= image_tag("logo_white.png") %>
   </div>
-  <%= react_component("Search/index") %>
+  <%= react_component("Search/index", { signInPath: new_user_session_path, signUpPath: new_user_registration_path }) %>
 </div>

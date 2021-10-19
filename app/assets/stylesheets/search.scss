@@ -3,9 +3,10 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .background {
+  position: absolute;
   display: flex;
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   background:
     image-set(
       image-url('homepage_bg.jpg') 1x,
@@ -18,8 +19,12 @@
 
 .bgLogoContainer {
   position: absolute;
-  bottom: -100px;
-  left: -50px;
-  width: 755px;
-  margin: 0 32px -100px -50px;
+  width: 750px;
+  height: 750px;
+  bottom: -200px;
+  left: -100px;
+
+  img {
+    object-fit: cover;
+  }
 }
