@@ -1,3 +1,24 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.background {
+  display: flex;
+  min-width: 100vw;
+  min-height: 100vh;
+  background:
+    image-set(
+      url('homepage_bg.jpg') 1x,
+      url('homepage_bg@2x.jpg') 2x,
+      url('homepage_bg@3x.jpg') 3x
+    ) no-repeat fixed center center;
+  background-size: cover;
+}
+
+.bgLogoContainer {
+  position: absolute;
+  bottom: -100px;
+  left: -50px;
+  width: 755px;
+  margin: 0 32px -100px -50px;
+}
