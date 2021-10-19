@@ -2,11 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.background {
-  position: absolute;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+.search-bg {
   background:
     image-set(
       image-url('homepage_bg.jpg') 1x,
