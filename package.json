@@ -16,7 +16,14 @@
     "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
+  "engines": {
+    "node": "^14.8"
+  },
   "devDependencies": {
+    "eslint": "^8.0.1",
+    "prettier": "^2.4.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
     "webpack-dev-server": "^3"
   }
 }
