@@ -1,0 +1,114 @@
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+  margin-top: 85px;
+  height: min-content;
+}
+
+.headerItem {
+  display: flex;
+  flex: 1 1 33%;
+  margin: auto;
+  justify-content: center;
+}
+
+.logoContainer {
+  width: 346px;
+  margin: auto;
+}
+
+.button {
+  width: 180px;
+  height: 60px;
+  padding: 18px 0;
+  background-color: #000;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.44;
+  text-align: center;
+  color: #fff;
+
+  &.red {
+    background-color: #d32531;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto 0 auto;
+
+  a {
+    font-size: 25px;
+    line-height: 1.6;
+    color: #fff;
+    margin-left: 30px;
+    text-decoration: none;
+
+    &.first {
+      margin-left: 0;
+    }
+  }
+}
+
+.banner {
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 30px;
+  font-style: normal;
+
+  .h1 {
+    display: block;
+    font-size: 62px;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .h2 {
+    display: block;
+    font-size: 35px;
+    margin: 0;
+  }
+}
+
+.searchContainer {
+  display: flex;
+  width: 55%;
+  position: relative;
+  margin: auto;
+}
+
+.searchBar {
+  width: 100%;
+  height: 30px;
+  margin: auto;
+  padding: 20px 79px;
+  border-radius: 42px;
+  background-color: #fff;
+  font-size: 25px;
+  line-height: 2.2;
+  color: #000;
+}
+
+.magnifierContainer {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 20px;
+  left: 30px;
+}
