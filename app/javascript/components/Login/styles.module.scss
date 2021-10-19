@@ -1,0 +1,171 @@
+.pageContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 58px auto auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.logoContainer {
+  width: 255px;
+  margin: auto;
+}
+
+.signupFormContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 37px 0 0;
+  box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #616161;
+  background-color: #fff;
+  margin-top: 33px;
+  width: 706px;
+
+  span {
+    font-size: 27px;
+    line-height: 1.74;
+    letter-spacing: 0.27px;
+    color: #000;
+    margin: 0 auto;
+    font-weight: bold;
+
+    &.red {
+      color: #d32531;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .textfield {
+    margin: 33px 60px 0 60px;
+    padding: 5px 32px 5px 32px;
+    opacity: 0.48;
+    box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #e4e4e4;
+    background-color: #fff;
+    font-size: 18px;
+    line-height: 2.83;
+    letter-spacing: 0.18px;
+    color: #000;
+  }
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+  margin-top: 85px;
+  height: min-content;
+}
+
+.headerItem {
+  display: flex;
+  flex: 1 1 33%;
+  margin: auto;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  width: 160px;
+  height: 50px;
+  background-color: #000;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.44;
+  color: #fff;
+  text-decoration: none;
+
+  &.red {
+    background-color: #d32531;
+  }
+
+  span {
+    margin: auto;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto 0 auto;
+
+  a {
+    font-size: 25px;
+    line-height: 1.6;
+    color: #fff;
+    margin-left: 30px;
+    text-decoration: none;
+
+    &.first {
+      margin-left: 0;
+    }
+  }
+}
+
+.banner {
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 30px;
+  font-style: normal;
+
+  .h1 {
+    display: block;
+    font-size: 62px;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .h2 {
+    display: block;
+    font-size: 35px;
+    margin: 0;
+  }
+}
+
+.searchContainer {
+  display: flex;
+  width: 55%;
+  position: relative;
+  margin: auto;
+}
+
+.searchBar {
+  width: 100%;
+  height: 30px;
+  margin: auto;
+  padding: 20px 79px;
+  border-radius: 42px;
+  background-color: #fff;
+  font-size: 25px;
+  line-height: 2.2;
+  color: #000;
+}
+
+.magnifierContainer {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 20px;
+  left: 30px;
+}
