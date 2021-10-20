@@ -30,4 +30,18 @@ img {
   display: flex;
   width: 100vw;
   height: 100vh;
+  background-color: #730e15;
+  background-size: cover;
+}
+
+.bgLogoContainer {
+  position: absolute;
+  width: 750px;
+  height: 750px;
+  bottom: -200px;
+  left: -100px;
+}
+
+.bgLogoContainer img {
+  object-fit: cover;
 }

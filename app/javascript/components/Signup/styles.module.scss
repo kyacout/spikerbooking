@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   margin: 58px 114px auto auto;
+  max-height: 100vh;
 }
 
 .row {
@@ -30,8 +31,10 @@
   background-color: #fff;
   margin-top: 33px;
   width: 706px;
+  max-height: 65vh;
+  overflow: scroll;
 
-  span {
+  .formHeading {
     display: block;
     font-size: 27px;
     line-height: 1.74;
@@ -45,24 +48,38 @@
       color: #d32531;
     }
   }
+}
 
-  .form {
-    display: flex;
-    flex-direction: column;
-  }
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
 
-  .textfield {
-    margin: 33px 60px 0 60px;
-    padding: 5px 32px 5px 32px;
-    opacity: 0.48;
-    box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.16);
-    border: solid 1px #e4e4e4;
-    background-color: #fff;
-    font-size: 18px;
-    line-height: 2.83;
-    letter-spacing: 0.18px;
-    color: #000;
-  }
+.formElement {
+  margin: 25px 60px 0 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 18px;
+  line-height: 2;
+  letter-spacing: 0.18px;
+  color: #000;
+  font-weight: lighter;
+}
+
+.textfield {
+  padding: 5px 32px 5px 32px;
+  opacity: 0.48;
+  box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #e4e4e4;
+  background-color: #fff;
+  font-size: 18px;
+  line-height: 2.3;
+  letter-spacing: 0.18px;
+  color: #000;
 }
 
 .header {

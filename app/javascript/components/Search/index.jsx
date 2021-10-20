@@ -31,7 +31,7 @@ const Search = ({ signInPath, signUpPath }) => {
         <a href="/">Terms and conditions</a>
       </div>
       <div className={styles.banner}>
-        <span className={styles.h1}>Painless Booking</span>
+        <span className={styles.h1}>Easy Booking</span>
         <span className={styles.h2}>for hard-hitting talent</span>
       </div>
       <div className={styles.searchContainer}>

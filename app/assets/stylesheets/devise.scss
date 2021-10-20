@@ -1,21 +1,11 @@
 .signup-bg {
-  background:
-    image-set(
-      image-url('signup_bg.jpg') 1x,
-      image-url('signup_bg@2x.jpg') 2x,
-      image-url('signup_bg@3x.jpg') 3x
-    ) no-repeat fixed center center;
+  background: image-url('signup_bg@3x.jpg') no-repeat fixed center center;
   background-color: #730e15;
   background-size: cover;
 }
 
 .login-bg {
-  background:
-    image-set(
-      image-url('login_bg.jpg') 1x,
-      image-url('login_bg@2x.jpg') 2x,
-      image-url('login_bg@3x.jpg') 3x
-    ) no-repeat fixed center center;
+  background: image-url('login_bg@3x.jpg') no-repeat fixed center center;
   background-color: #730e15;
   background-size: cover;
 }

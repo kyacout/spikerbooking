@@ -8,9 +8,9 @@ const Login = ({ token }) => {
     <div className={styles.pageContainer}>
       <div className={styles.column}>
         <div className={styles.row}>
-          <div className={styles.logoContainer}>
+          <a href="/" className={styles.logoContainer}>
             <img src="https://res.cloudinary.com/spikerbooking-dev/image/upload/v1634564817/logo3x_ugoahs.png" alt="" />
-          </div>
+          </a>
         </div>
         <div className={styles.row}>
           <div className={styles.signupFormContainer}>

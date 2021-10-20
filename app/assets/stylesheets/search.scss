@@ -3,24 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .search-bg {
-  background:
-    image-set(
-      image-url('homepage_bg.jpg') 1x,
-      image-url('homepage_bg@2x.jpg') 2x,
-      image-url('homepage_bg@3x.jpg') 3x
-    ) no-repeat fixed center center;
+  background: image-url('homepage_bg@3x.jpg') no-repeat fixed center center;
   background-color: #730e15;
   background-size: cover;
-}
-
-.bgLogoContainer {
-  position: absolute;
-  width: 750px;
-  height: 750px;
-  bottom: -200px;
-  left: -100px;
-
-  img {
-    object-fit: cover;
-  }
 }
