@@ -1,9 +1,12 @@
 import React from 'react'
-import clsx from 'clsx'
 
 import { FixedBackground } from '../../layout/FixedBackground'
 import { imageURL } from '../../helpers/cloudinary'
 import styles from './styles.module.scss'
+import Button from '@mui/material/Button'
+import SearchIcon from '@mui/icons-material/Search'
+import OutlinedInput from '@mui/material/OutlinedInput'
+import InputAdornment from '@mui/material/InputAdornment'
 
 const Search = ({ signInPath, signUpPath }) => {
   return (
@@ -17,12 +20,18 @@ const Search = ({ signInPath, signUpPath }) => {
             </div>
           </div>
           <div className={styles.headerItem}>
-            <a href={signInPath} className={styles.button}>
-              <span>Sign in</span>
-            </a>
-            <a href={signUpPath} className={clsx(styles.button, styles.red)} style={{ marginLeft: '27px' }}>
-              <span>Sign up</span>
-            </a>
+            <Button color="secondary" variant="contained" size="large" onClick={() => (window.location = signInPath)}>
+              <span>Login</span>
+            </Button>
+            <Button
+              sx={{ ml: '25px' }}
+              color="primary"
+              variant="contained"
+              size="large"
+              onClick={() => (window.location = signUpPath)}
+            >
+              <span>Create Account</span>
+            </Button>
           </div>
         </div>
         <div className={styles.navbar}>
@@ -38,13 +47,18 @@ const Search = ({ signInPath, signUpPath }) => {
           <span className={styles.h2}>for hard-hitting talent</span>
         </div>
         <div className={styles.searchContainer}>
-          <div className={styles.magnifierContainer}>
-            <img
-              src="https://res.cloudinary.com/spikerbooking-dev/image/upload/v1634573580/500px-Search_Icon.svg3x_djoo78.png"
-              alt=""
-            />
-          </div>
-          <input type="text" name="name" placeholder="Search for an Artist / Band" className={styles.searchBar} />
+          <OutlinedInput
+            sx={{ bgcolor: 'white' }}
+            id="search-field"
+            startAdornment={
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            }
+            label="Password"
+            placeholder="Location"
+            fullWidth
+          />
         </div>
       </div>
     </FixedBackground>

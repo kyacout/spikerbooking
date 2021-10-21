@@ -26,28 +26,6 @@
   margin: auto;
 }
 
-.button {
-  display: flex;
-  width: 160px;
-  height: 50px;
-  background-color: #000;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1.44;
-  color: #fff;
-  text-decoration: none;
-
-  &.red {
-    background-color: #d32531;
-  }
-
-  span {
-    margin: auto;
-  }
-}
-
 .navbar {
   display: flex;
   justify-content: center;
