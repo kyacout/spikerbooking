@@ -2,19 +2,17 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 
 import { FixedBackground } from '../../layout/FixedBackground'
+import { imageURL } from '../../helpers/cloudinary'
 import styles from './styles.module.scss'
 
 const Login = ({ token }) => {
   return (
-    <FixedBackground bgImg="https://res.cloudinary.com/spikerbooking-dev/image/upload/v1634803101/bg/login.jpg">
+    <FixedBackground bgImg={imageURL('v1634803101/bg/login.jpg')}>
       <div className={styles.pageContainer}>
         <div className={styles.column}>
           <div className={styles.row}>
             <a href="/" className={styles.logoContainer}>
-              <img
-                src="https://res.cloudinary.com/spikerbooking-dev/image/upload/v1634564817/logo3x_ugoahs.png"
-                alt=""
-              />
+              <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
             </a>
           </div>
           <div className={styles.row}>

@@ -2,20 +2,18 @@ import React from 'react'
 import clsx from 'clsx'
 
 import { FixedBackground } from '../../layout/FixedBackground'
+import { imageURL } from '../../helpers/cloudinary'
 import styles from './styles.module.scss'
 
 const Search = ({ signInPath, signUpPath }) => {
   return (
-    <FixedBackground bgImg="https://res.cloudinary.com/spikerbooking-dev/image/upload/v1634803096/bg/search.jpg">
+    <FixedBackground bgImg={imageURL('v1634803096/bg/search.jpg')}>
       <div className={styles.flexContainer}>
         <div className={styles.header}>
           <div className={styles.headerItem} />
           <div className={styles.headerItem}>
             <div className={styles.logoContainer}>
-              <img
-                src="https://res.cloudinary.com/spikerbooking-dev/image/upload/v1634564817/logo3x_ugoahs.png"
-                alt=""
-              />
+              <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
             </div>
           </div>
           <div className={styles.headerItem}>
