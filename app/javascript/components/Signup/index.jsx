@@ -1,5 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
+import axios from 'axios'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import Button from '@mui/material/Button'
@@ -17,7 +18,7 @@ const validationSchema = yup.object({
     .min(8, 'Password should be of minimum 8 characters length')
     .required('Password is required'),
   confirmPassword: yup.string('Enter your password again').oneOf([yup.ref('password'), null], 'Passwords must match'),
-  userType: yup.string('Please choose your account type').required('Account type is required'),
+  currentType: yup.string('Please choose your account type').required('Account type is required'),
 })
 
 const userTypes = [
@@ -31,21 +32,14 @@ const Signup = ({ token }) => {
       email: '',
       password: '',
       confirmPassword: '',
-      userType: '',
+      currentType: '',
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      const handleLogout = async () => {
-        try {
-          await fetch('users/sign_out/', {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token },
-          })
-
-          window.location.reload()
-        } catch (e) {
-          console.log(e)
-        }
+    onSubmit: async values => {
+      try {
+        await axios.post('/users/', values, { headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token } })
+      } catch (e) {
+        console.log({ e })
       }
     },
   })
@@ -101,14 +95,14 @@ const Signup = ({ token }) => {
                 />
                 <TextField
                   fullWidth
-                  id="userType"
-                  name="userType"
+                  id="currentType"
+                  name="currentType"
                   label="Are you joining as an"
                   select
-                  value={formik.values.userType}
+                  value={formik.values.currentType}
                   onChange={formik.handleChange}
-                  error={formik.touched.userType && Boolean(formik.errors.userType)}
-                  helperText={formik.touched.userType && formik.errors.userType}
+                  error={formik.touched.currentType && Boolean(formik.errors.currentType)}
+                  helperText={formik.touched.currentType && formik.errors.currentType}
                   margin="normal"
                 >
                   {userTypes.map(option => (
