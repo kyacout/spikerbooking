@@ -1,8 +1,2 @@
 <% csrf_token = form_authenticity_token %>
-
-<div class="background login-bg">
-  <div class="bgLogoContainer">
-    <%= image_tag("logo_white.png") %>
-  </div>
-  <%= react_component("Login/index", { token: csrf_token }) %>
-</div>
+<%= react_component("Login/index", { token: csrf_token }) %>
