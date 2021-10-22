@@ -1,14 +1,40 @@
 import React from 'react'
-
-import { FixedBackground } from '../../layout/FixedBackground'
-import { imageURL } from '../../helpers/cloudinary'
-import styles from './styles.module.scss'
 import Button from '@mui/material/Button'
 import SearchIcon from '@mui/icons-material/Search'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
+import styles from './styles.module.scss'
+import { FixedBackground } from '../../layout/FixedBackground'
+import { imageURL } from '../../helpers/cloudinary'
+import { deleteReq } from '../../helpers/requests'
 
-const Search = ({ signInPath, signUpPath }) => {
+const Search = ({ currentUser, token }) => {
+  const handleLogout = () => {
+    deleteReq('users/sign_out/', token)
+      .then(() => window.location.replace('/'))
+      .catch(e => console.log(e))
+  }
+
+  const headerButtons = currentUser ? (
+    <Button color="primary" variant="contained" size="large" onClick={handleLogout}>
+      <span>Logout</span>
+    </Button>
+  ) : (
+    <>
+      <Button color="secondary" variant="contained" size="large" onClick={() => (window.location = '/users/sign_in')}>
+        <span>Login</span>
+      </Button>
+      <Button
+        sx={{ ml: '25px' }}
+        color="primary"
+        variant="contained"
+        size="large"
+        onClick={() => (window.location = '/users/sign_up')}
+      >
+        <span>Signup now It's free!</span>
+      </Button>
+    </>
+  )
   return (
     <FixedBackground bgImg={imageURL('v1634803096/bg/search.jpg')}>
       <div className={styles.flexContainer}>
@@ -19,20 +45,7 @@ const Search = ({ signInPath, signUpPath }) => {
               <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
             </div>
           </div>
-          <div className={styles.headerItem}>
-            <Button color="secondary" variant="contained" size="large" onClick={() => (window.location = signInPath)}>
-              <span>Login</span>
-            </Button>
-            <Button
-              sx={{ ml: '25px' }}
-              color="primary"
-              variant="contained"
-              size="large"
-              onClick={() => (window.location = signUpPath)}
-            >
-              <span>Create Account</span>
-            </Button>
-          </div>
+          <div className={styles.headerItem}>{headerButtons}</div>
         </div>
         <div className={styles.navbar}>
           <a href="/" className={styles.first}>

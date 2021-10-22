@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import axios from 'axios'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import Button from '@mui/material/Button'
@@ -10,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem'
 import { FixedBackground } from '../../layout/FixedBackground'
 import styles from './styles.module.scss'
 import { imageURL } from '../../helpers/cloudinary'
+import { postReq } from '../../helpers/requests'
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -17,8 +17,8 @@ const validationSchema = yup.object({
     .string('Enter your password')
     .min(8, 'Password should be of minimum 8 characters length')
     .required('Password is required'),
-  confirmPassword: yup.string('Enter your password again').oneOf([yup.ref('password'), null], 'Passwords must match'),
-  currentType: yup.string('Please choose your account type').required('Account type is required'),
+  confirm_password: yup.string('Enter your password again').oneOf([yup.ref('password'), null], 'Passwords must match'),
+  current_type: yup.string('Please choose your account type').required('Account type is required'),
 })
 
 const userTypes = [
@@ -31,16 +31,14 @@ const Signup = ({ token }) => {
     initialValues: {
       email: '',
       password: '',
-      confirmPassword: '',
-      currentType: '',
+      confirm_password: '',
+      current_type: '',
     },
     validationSchema: validationSchema,
-    onSubmit: async values => {
-      try {
-        await axios.post('/users/', values, { headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token } })
-      } catch (e) {
-        console.log({ e })
-      }
+    onSubmit: values => {
+      postReq('/users', { user: values }, token)
+        .then(() => window.location.replace('/'))
+        .catch(e => console.log(e))
     },
   })
 
@@ -83,26 +81,26 @@ const Signup = ({ token }) => {
                 />
                 <TextField
                   fullWidth
-                  id="confirmPassword"
-                  name="confirmPassword"
+                  id="confirm_password"
+                  name="confirm_password"
                   label="Confirm Password"
                   type="password"
-                  value={formik.values.confirmPassword}
+                  value={formik.values.confirm_password}
                   onChange={formik.handleChange}
-                  error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-                  helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+                  error={formik.touched.confirm_password && Boolean(formik.errors.confirm_password)}
+                  helperText={formik.touched.confirm_password && formik.errors.confirm_password}
                   margin="normal"
                 />
                 <TextField
                   fullWidth
-                  id="currentType"
-                  name="currentType"
+                  id="current_type"
+                  name="current_type"
                   label="Are you joining as an"
                   select
-                  value={formik.values.currentType}
+                  value={formik.values.current_type}
                   onChange={formik.handleChange}
-                  error={formik.touched.currentType && Boolean(formik.errors.currentType)}
-                  helperText={formik.touched.currentType && formik.errors.currentType}
+                  error={formik.touched.current_type && Boolean(formik.errors.current_type)}
+                  helperText={formik.touched.current_type && formik.errors.current_type}
                   margin="normal"
                 >
                   {userTypes.map(option => (

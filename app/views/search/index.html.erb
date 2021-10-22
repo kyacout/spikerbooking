@@ -1,1 +1,6 @@
-<%= react_component("Search/index", { signInPath: new_user_session_path, signUpPath: new_user_registration_path }) %>
+<% if user_signed_in? %>
+  <% csrf_token = form_authenticity_token %>
+  <%= react_component("Search/index", { currentUser: current_user.slice(:id, :email, :current_type), token: csrf_token }) %>
+<% else %>
+  <%= react_component("Search/index") %>
+<% end %>

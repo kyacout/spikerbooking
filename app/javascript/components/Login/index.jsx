@@ -1,12 +1,13 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-
-import { FixedBackground } from '../../layout/FixedBackground'
-import { imageURL } from '../../helpers/cloudinary'
 import styles from './styles.module.scss'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+
+import { FixedBackground } from '../../layout/FixedBackground'
+import { imageURL } from '../../helpers/cloudinary'
+import { postReq } from '../../helpers/requests'
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -21,7 +22,9 @@ const Login = ({ token }) => {
     initialValues: { email: '', password: '' },
     validationSchema: validationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2))
+      postReq('/users/sign_in', { user: values }, token)
+        .then(() => window.location.replace('/'))
+        .catch(e => console.log(e))
     },
   })
   return (
@@ -36,7 +39,7 @@ const Login = ({ token }) => {
           <div className={styles.row}>
             <div className={styles.signupFormContainer}>
               <span>
-                Sign in to <span className={styles.red}>Spikerbooking</span>
+                Sign in to <span className={styles.red}>Spiker Booking</span>
               </span>
               <form onSubmit={formik.handleSubmit} className={styles.form}>
                 <TextField
