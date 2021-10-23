@@ -30,7 +30,7 @@ const userTypes = [
 ]
 
 const Signup = ({ token }) => {
-  const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
+  const [errorAlert, setErrorAlert] = useState({ show: false, title: '', message: '' })
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -41,8 +41,15 @@ const Signup = ({ token }) => {
     validationSchema: validationSchema,
     onSubmit: values => {
       postReq('/users', { user: values }, token)
-        .then(() => window.location.replace('/'))
-        .catch(e => console.log(e))
+        .then(data => {
+          if (data.errors) {
+            const { title, detail: message } = data.errors[0]
+            setErrorAlert({ show: true, title, message })
+          } else {
+            window.location.replace('/')
+          }
+        })
+        .catch(e => console.error(e))
     },
   })
 
@@ -61,8 +68,8 @@ const Signup = ({ token }) => {
               <span className={clsx(styles.formHeading, styles.red)}>It's Free!</span>
               <form onSubmit={formik.handleSubmit} className={styles.form}>
                 <Collapse in={errorAlert.show}>
-                  <Alert severity="error" onClose={() => setErrorAlert({ show: false, message: '' })}>
-                    <AlertTitle>Signup Failed</AlertTitle>
+                  <Alert severity="error" onClose={() => setErrorAlert({ show: false, title: '', message: '' })}>
+                    <AlertTitle>{errorAlert.title}</AlertTitle>
                     {errorAlert.message}
                   </Alert>
                 </Collapse>

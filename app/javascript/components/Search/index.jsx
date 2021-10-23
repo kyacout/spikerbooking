@@ -12,7 +12,7 @@ const Search = ({ currentUser, token }) => {
   const handleLogout = () => {
     deleteReq('users/sign_out/', token)
       .then(() => window.location.replace('/'))
-      .catch(e => console.log(e))
+      .catch(e => console.error(e))
   }
 
   const headerButtons = currentUser ? (

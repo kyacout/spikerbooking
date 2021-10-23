@@ -28,8 +28,15 @@ const Login = ({ token }) => {
     validationSchema: validationSchema,
     onSubmit: values => {
       postReq('/users/sign_in', { user: values }, token)
-        .then(() => window.location.replace('/'))
-        .catch(e => console.log(e))
+        .then(data => {
+          if (data.errors) {
+            const { title, detail: message } = data.errors[0]
+            setErrorAlert({ show: true, title, message })
+          } else {
+            window.location.replace('/')
+          }
+        })
+        .catch(e => console.error(e))
     },
   })
 
