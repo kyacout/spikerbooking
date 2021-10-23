@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import clsx from 'clsx'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
+import Alert from '@mui/material/Alert'
+import AlertTitle from '@mui/material/AlertTitle'
+import Collapse from '@mui/material/Collapse'
 
 import { FixedBackground } from '../../layout/FixedBackground'
 import styles from './styles.module.scss'
@@ -27,6 +30,7 @@ const userTypes = [
 ]
 
 const Signup = ({ token }) => {
+  const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -56,6 +60,12 @@ const Signup = ({ token }) => {
               <span className={styles.formHeading}>Join Spiker Booking</span>
               <span className={clsx(styles.formHeading, styles.red)}>It's Free!</span>
               <form onSubmit={formik.handleSubmit} className={styles.form}>
+                <Collapse in={errorAlert.show}>
+                  <Alert severity="error" onClose={() => setErrorAlert({ show: false, message: '' })}>
+                    <AlertTitle>Signup Failed</AlertTitle>
+                    {errorAlert.message}
+                  </Alert>
+                </Collapse>
                 <TextField
                   fullWidth
                   id="email"

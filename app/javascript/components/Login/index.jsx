@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import styles from './styles.module.scss'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import Collapse from '@mui/material/Collapse'
+import Alert from '@mui/material/Alert'
+import AlertTitle from '@mui/material/AlertTitle'
 
 import { FixedBackground } from '../../layout/FixedBackground'
 import { imageURL } from '../../helpers/cloudinary'
@@ -18,6 +21,8 @@ const validationSchema = yup.object({
 })
 
 const Login = ({ token }) => {
+  const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
+
   const formik = useFormik({
     initialValues: { email: '', password: '' },
     validationSchema: validationSchema,
@@ -27,6 +32,7 @@ const Login = ({ token }) => {
         .catch(e => console.log(e))
     },
   })
+
   return (
     <FixedBackground bgImg={imageURL('v1634803101/bg/login.jpg')}>
       <div className={styles.pageContainer}>
@@ -42,6 +48,12 @@ const Login = ({ token }) => {
                 Sign in to <span className={styles.red}>Spiker Booking</span>
               </span>
               <form onSubmit={formik.handleSubmit} className={styles.form}>
+                <Collapse in={errorAlert.show}>
+                  <Alert severity="error" onClose={() => setErrorAlert({ show: false, message: '' })}>
+                    <AlertTitle>Signup Failed</AlertTitle>
+                    {errorAlert.message}
+                  </Alert>
+                </Collapse>
                 <TextField
                   fullWidth
                   id="email"
