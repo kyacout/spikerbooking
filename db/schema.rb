@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_21_115935) do
+ActiveRecord::Schema.define(version: 2021_10_25_134352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,4 +34,20 @@ ActiveRecord::Schema.define(version: 2021_10_21_115935) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "venue_profiles", force: :cascade do |t|
+    t.text "name"
+    t.text "location"
+    t.text "type"
+    t.text "website"
+    t.text "capacity"
+    t.text "sound_equipment"
+    t.text "host_music_frequency"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_venue_profiles_on_user_id"
+  end
+
+  add_foreign_key "venue_profiles", "users"
 end
