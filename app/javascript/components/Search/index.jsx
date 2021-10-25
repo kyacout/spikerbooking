@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import styles from './styles.module.scss'
-import { FixedBackground } from '../../layout/FixedBackground'
+import { FixedBackground } from '../../layouts/FixedBackground'
 import { imageURL } from '../../helpers/cloudinary'
 import { deleteReq } from '../../helpers/requests'
 

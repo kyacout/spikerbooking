@@ -9,7 +9,7 @@ import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import Collapse from '@mui/material/Collapse'
 
-import { FixedBackground } from '../../layout/FixedBackground'
+import { FixedBackground } from '../../layouts/FixedBackground'
 import styles from './styles.module.scss'
 import { imageURL } from '../../helpers/cloudinary'
 import { postReq } from '../../helpers/requests'
