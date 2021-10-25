@@ -8,9 +8,9 @@ import Collapse from '@mui/material/Collapse'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 
-import { FixedBackground } from '../../layouts/FixedBackground'
-import { imageURL } from '../../helpers/cloudinary'
-import { postReq } from '../../helpers/requests'
+import { FixedBackground } from '../../../layouts/FixedBackground'
+import { imageURL } from '../../../helpers/cloudinary'
+import { postReq } from '../../../helpers/requests'
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
