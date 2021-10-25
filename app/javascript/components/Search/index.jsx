@@ -1,14 +1,19 @@
 import React from 'react'
+import { useContext } from 'react'
 import Button from '@mui/material/Button'
 import SearchIcon from '@mui/icons-material/Search'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
+
 import styles from './styles.module.scss'
+import { Context } from '../App'
 import { FixedBackground } from '../../layouts/FixedBackground'
 import { imageURL } from '../../helpers/cloudinary'
 import { deleteReq } from '../../helpers/requests'
 
-const Search = ({ currentUser, token }) => {
+const Search = () => {
+  const { currentUser, token } = useContext(Context)
+
   const handleLogout = () => {
     deleteReq('users/sign_out/', token)
       .then(() => window.location.replace('/'))
