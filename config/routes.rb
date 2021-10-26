@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
   root 'app#index'
+  get '*path', to: 'app#index'
 end

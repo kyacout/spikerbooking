@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { imageURL } from '../../helpers/cloudinary'
+import { imageURL } from '../../helpers/Cloudinary'
 import styles from './styles.module.scss'
 import { BaseLayout } from '../BaseLayout'
 

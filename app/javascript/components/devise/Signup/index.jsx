@@ -11,17 +11,15 @@ import Collapse from '@mui/material/Collapse'
 
 import { FixedBackground } from '../../../layouts/FixedBackground'
 import styles from './styles.module.scss'
-import { imageURL } from '../../../helpers/cloudinary'
-import { postReq } from '../../../helpers/requests'
+import { imageURL } from '../../../helpers/Cloudinary'
+import { postReq } from '../../../helpers/HTTPRequest'
+import { postAuthentication } from '../../../helpers/Devise'
 
 const validationSchema = yup.object({
-  email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
-  password: yup
-    .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required'),
-  confirm_password: yup.string('Enter your password again').oneOf([yup.ref('password'), null], 'Passwords must match'),
-  current_type: yup.string('Please choose your account type').required('Account type is required'),
+  email: yup.string().email('Enter a valid email').required('Email is required'),
+  password: yup.string().min(8, 'Password should be of minimum 8 characters length').required('Password is required'),
+  confirm_password: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match'),
+  current_type: yup.string().required('Account type is required'),
 })
 
 const userTypes = [
@@ -46,7 +44,7 @@ const Signup = ({ token }) => {
             const { title, detail: message } = data.errors[0]
             setErrorAlert({ show: true, title, message })
           } else {
-            window.location.replace('/')
+            postAuthentication()
           }
         })
         .catch(e => console.error(e))

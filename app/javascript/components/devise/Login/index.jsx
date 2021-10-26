@@ -9,15 +9,13 @@ import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 
 import { FixedBackground } from '../../../layouts/FixedBackground'
-import { imageURL } from '../../../helpers/cloudinary'
-import { postReq } from '../../../helpers/requests'
+import { imageURL } from '../../../helpers/Cloudinary'
+import { postReq } from '../../../helpers/HTTPRequest'
+import { postAuthentication } from '../../../helpers/Devise'
 
 const validationSchema = yup.object({
-  email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
-  password: yup
-    .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required'),
+  email: yup.string().email('Enter a valid email').required('Email is required'),
+  password: yup.string().min(8, 'Password should be of minimum 8 characters length').required('Password is required'),
 })
 
 const Login = ({ token }) => {
@@ -28,12 +26,12 @@ const Login = ({ token }) => {
     validationSchema: validationSchema,
     onSubmit: values => {
       postReq('/users/sign_in', { user: values }, token)
-        .then(data => {
-          if (data.errors) {
-            const { title, detail: message } = data.errors[0]
+        .then(({ errors, data }) => {
+          if (errors) {
+            const { title, detail: message } = errors[0]
             setErrorAlert({ show: true, title, message })
           } else {
-            window.location.replace('/')
+            postAuthentication()
           }
         })
         .catch(e => console.error(e))
@@ -50,7 +48,7 @@ const Login = ({ token }) => {
             </a>
           </div>
           <div className={styles.row}>
-            <div className={styles.signupFormContainer}>
+            <div className={styles.loginFormContainer}>
               <span>
                 Sign in to <span className={styles.red}>Spiker Booking</span>
               </span>

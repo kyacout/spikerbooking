@@ -8,10 +8,10 @@ import InputAdornment from '@mui/material/InputAdornment'
 import styles from './styles.module.scss'
 import { Context } from '../App'
 import { FixedBackground } from '../../layouts/FixedBackground'
-import { imageURL } from '../../helpers/cloudinary'
-import { deleteReq } from '../../helpers/requests'
+import { imageURL } from '../../helpers/Cloudinary'
+import { deleteReq } from '../../helpers/HTTPRequest'
 
-const Search = () => {
+export const Search = () => {
   const { currentUser, token } = useContext(Context)
 
   const handleLogout = () => {
@@ -67,13 +67,11 @@ const Search = () => {
         <div className={styles.searchContainer}>
           <OutlinedInput
             sx={{ bgcolor: 'white' }}
-            id="search-field"
             startAdornment={
               <InputAdornment position="start">
                 <SearchIcon />
               </InputAdornment>
             }
-            label="Password"
             placeholder="Location"
             fullWidth
           />
@@ -82,5 +80,3 @@ const Search = () => {
     </FixedBackground>
   )
 }
-
-export default Search
