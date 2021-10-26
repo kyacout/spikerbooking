@@ -15,7 +15,7 @@ const theme = createTheme({
   },
 })
 
-export const Base = ({ children }) => {
+export const BaseLayout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
