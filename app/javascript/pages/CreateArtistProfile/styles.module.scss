@@ -1,0 +1,50 @@
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 58px auto auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 37px 0 0;
+  box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.16);
+  background-color: rgba(241, 241, 241, 0.88);
+  border: solid 1px #616161;
+  width: 706px;
+  margin-bottom: 90px;
+
+  h1 {
+    font-size: 27px;
+    line-height: 1.74;
+    letter-spacing: 0.27px;
+    color: #d32531;
+    margin: 0 auto;
+    font-weight: bold;
+  }
+
+  span {
+    font-size: 12px;
+    line-height: 1.94;
+    text-align: center;
+    color: #000;
+    margin: 0 65px;
+  }
+
+  .form {
+    padding: 0 60px 60px 60px;
+    display: flex;
+    flex-direction: column;
+  }
+}

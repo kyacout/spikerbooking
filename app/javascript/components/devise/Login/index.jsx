@@ -31,7 +31,7 @@ const Login = ({ token }) => {
             const { title, detail: message } = errors[0]
             setErrorAlert({ show: true, title, message })
           } else {
-            postAuthentication()
+            postAuthentication(data.attributes.current_type)
           }
         })
         .catch(e => console.error(e))
