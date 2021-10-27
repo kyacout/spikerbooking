@@ -11,7 +11,7 @@ export const FixedBackground = ({ bgImg, children }) => {
       <div className="bgLogoContainer">
         <img src={imageURL('v1634557521/white_logo.png')} className={styles.bgLogoContainer} alt="" />
       </div>
-      {children}
+      <div className={styles.pageContainer}>{children}</div>
     </BaseLayout>
   )
 }

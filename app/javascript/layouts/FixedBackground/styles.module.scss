@@ -37,3 +37,8 @@ img.bg {
     object-fit: cover;
   }
 }
+
+.pageContainer {
+  max-height: 100vh;
+  overflow: scroll;
+}

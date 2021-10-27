@@ -22,12 +22,12 @@ export const Search = () => {
 
   const headerButtons = currentUser ? (
     <Button color="primary" variant="contained" size="large" onClick={handleLogout}>
-      <span>Logout</span>
+      Logout
     </Button>
   ) : (
     <>
       <Button color="secondary" variant="contained" size="large" onClick={() => (window.location = '/users/sign_in')}>
-        <span>Login</span>
+        Login
       </Button>
       <Button
         sx={{ ml: '25px' }}
@@ -36,7 +36,7 @@ export const Search = () => {
         size="large"
         onClick={() => (window.location = '/users/sign_up')}
       >
-        <span>Signup now It's free!</span>
+        Signup now It's free!
       </Button>
     </>
   )
