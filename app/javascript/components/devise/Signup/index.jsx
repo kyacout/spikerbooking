@@ -44,7 +44,8 @@ const Signup = ({ token }) => {
             const { title, detail: message } = data.errors[0]
             setErrorAlert({ show: true, title, message })
           } else {
-            postAuthentication(data.attributes.current_type)
+            console.log(data)
+            postAuthentication(data.data.attributes.current_type)
           }
         })
         .catch(e => console.error(e))
