@@ -6,7 +6,7 @@ import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 
 import styles from './styles.module.scss'
-import { Context } from '../App'
+import { Context } from '../../components/App'
 import { FixedBackground } from '../../layouts/FixedBackground'
 import { imageURL } from '../../helpers/Cloudinary'
 import { deleteReq } from '../../helpers/HTTPRequest'

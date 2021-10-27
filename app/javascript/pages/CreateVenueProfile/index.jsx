@@ -72,7 +72,7 @@ export const CreateVenueProfile = ({ token }) => {
       <div className={styles.pageContainer}>
         <div className={styles.column}>
           <div className={styles.row}>
-            <a href="/" className={styles.logoContainer}>
+            <a href="/app/assets/config" className={styles.logoContainer}>
               <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
             </a>
           </div>

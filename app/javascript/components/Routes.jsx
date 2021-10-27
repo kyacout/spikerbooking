@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import { Search } from './Search'
-import { CreateVenueProfile } from './CreateVenueProfile'
+import { Search } from '../pages/Search'
+import { CreateVenueProfile } from '../pages/CreateVenueProfile'
 
 export default function Routes() {
   return (
