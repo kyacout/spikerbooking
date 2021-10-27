@@ -10,6 +10,7 @@ module Api
 
       def user_authenticated?
         return if user_signed_in?
+
         render json: { errors: [{ title: 'Unauthenticated access', detail: 'Please login first.' }],
                        status: 403 }
       end

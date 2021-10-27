@@ -7,7 +7,7 @@ import { Footer } from '../../components/Footer'
 
 export const FixedBackgroundHeaderFooter = ({ bgImg, children }) => {
   return (
-    <FixedBackground bgImg={bgImg}>
+    <FixedBackground bgImg={bgImg} bgLogo={false}>
       <Header />
       <div className={styles.mainContent}>{children}</div>
       <Footer />
