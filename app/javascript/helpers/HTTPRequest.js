@@ -10,10 +10,10 @@ export const getReq = url => {
     })
 }
 
-export const postReq = (url, body, token, content) => {
+export const postReq = (url, body, token, contentType = 'application/json') => {
   return fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token },
+    headers: { 'Content-Type': contentType, 'X-CSRF-Token': token },
     body: JSON.stringify(body),
   })
     .then(res => res.json())

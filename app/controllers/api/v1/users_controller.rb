@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class UsersController < ApplicationController
+    class UsersController < BaseApiController
       def profile?
         profile_exists =
           # if current_user.artist?

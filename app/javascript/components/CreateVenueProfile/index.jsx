@@ -14,17 +14,12 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera'
 import styles from './styles.module.scss'
 import { FixedBackground } from '../../layouts/FixedBackground'
 import { imageURL } from '../../helpers/Cloudinary'
-import { postReq, getReq } from '../../helpers/HTTPRequest'
+import { postReq } from '../../helpers/HTTPRequest'
 
 const validationSchema = yup.object({
   name: yup.string().required("The venue's name is required"),
-  location: yup.string().required('Password is required'),
-  venue_type: yup.string(),
+  location: yup.string().required('Location is required'),
   website: yup.string().url('Enter a valid URL for your website.'),
-  capacity: yup.string(),
-  sound_equipment: yup.string(),
-  music_host_frequency: yup.string(),
-  description: yup.string(),
 })
 
 const venueTypes = [
@@ -55,30 +50,17 @@ export const CreateVenueProfile = ({ token }) => {
       sound_equipment: '',
       music_host_frequency: '',
       description: '',
-      photo: '',
+      image: '',
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      postReq('/users/sign_in', { user: values }, token)
+      postReq('/api/v1/venue_profile', values, token, undefined)
         .then(({ errors, data }) => {
           if (errors) {
             const { title, detail: message } = errors[0]
             setErrorAlert({ show: true, title, message })
           } else {
-            getReq('/api/v1/user/has_profile').then(({ errors, data }) => {
-              console.log({ errors, data })
-              if (errors) {
-                const { title, detail: message } = errors[0]
-                setErrorAlert({ show: true, title, message })
-              } else {
-                const { profile_exists } = data
-                if (profile_exists) {
-                  window.location.replace('/')
-                } else {
-                  window.location.replace('create-venue-profile')
-                }
-              }
-            })
+            window.location.replace('/')
           }
         })
         .catch(e => console.error(e))
@@ -102,7 +84,7 @@ export const CreateVenueProfile = ({ token }) => {
               <form onSubmit={formik.handleSubmit} className={styles.form}>
                 <Collapse in={errorAlert.show}>
                   <Alert severity="error" onClose={() => setErrorAlert({ show: false, message: '' })}>
-                    <AlertTitle>Signup Failed</AlertTitle>
+                    <AlertTitle>{errorAlert.title}</AlertTitle>
                     {errorAlert.message}
                   </Alert>
                 </Collapse>
@@ -202,20 +184,20 @@ export const CreateVenueProfile = ({ token }) => {
                   helperText={formik.touched.description && formik.errors.description}
                   margin="normal"
                 />
-                <OutlinedInput
-                  fullWidth
-                  name="photo"
-                  accept="image/*"
-                  type="file"
-                  value={formik.values.sound_equipment}
-                  onChange={formik.handleChange}
-                  error={formik.touched.music_host_frequency && Boolean(formik.errors.music_host_frequency)}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <PhotoCamera />
-                    </InputAdornment>
-                  }
-                />
+                {/*<OutlinedInput*/}
+                {/*  fullWidth*/}
+                {/*  name="image"*/}
+                {/*  accept="image/*"*/}
+                {/*  type="file"*/}
+                {/*  value={formik.values.image}*/}
+                {/*  onChange={formik.handleChange}*/}
+                {/*  error={formik.touched.image && Boolean(formik.errors.image)}*/}
+                {/*  endAdornment={*/}
+                {/*    <InputAdornment position="end">*/}
+                {/*      <PhotoCamera />*/}
+                {/*    </InputAdornment>*/}
+                {/*  }*/}
+                {/*/>*/}
                 <div style={{ margin: '32px 0 0 auto' }}>
                   <Button color="primary" variant="contained" size="large" type="submit">
                     Finish
