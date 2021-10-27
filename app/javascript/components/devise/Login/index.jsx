@@ -40,7 +40,7 @@ const Login = ({ token }) => {
 
   return (
     <FixedBackground bgImg={imageURL('v1634803101/bg/login.jpg')}>
-      <div className={styles.pageContainer}>
+      <div className={styles.mainContent}>
         <div className={styles.column}>
           <div className={styles.row}>
             <a href="/" className={styles.logoContainer}>

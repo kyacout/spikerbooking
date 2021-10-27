@@ -12,7 +12,7 @@ import OutlinedInput from '@mui/material/OutlinedInput'
 import PhotoCamera from '@mui/icons-material/PhotoCamera'
 
 import styles from './styles.module.scss'
-import { FixedBackground } from '../../layouts/FixedBackground'
+import { FixedBackgroundHeaderFooter } from '../../layouts/FixedBackgroundHeaderFooter'
 import { imageURL } from '../../helpers/Cloudinary'
 import { postReq } from '../../helpers/HTTPRequest'
 
@@ -68,18 +68,15 @@ export const CreateVenueProfile = ({ token }) => {
   })
 
   return (
-    <FixedBackground bgImg={imageURL('v1634987955/bg/venue_profile.jpg')}>
-      <div className={styles.pageContainer}>
+    <FixedBackgroundHeaderFooter bgImg={imageURL('v1634987955/bg/venue_profile.jpg')}>
+      <div className={styles.mainContent}>
         <div className={styles.column}>
           <div className={styles.row}>
-            <a href="/app/assets/config" className={styles.logoContainer}>
-              <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
-            </a>
-          </div>
-          <div className={styles.row}>
             <div className={styles.formContainer}>
+              <h1>Welcome to Spiker Booking Family!</h1>
               <span>
-                Sign in to <span className={styles.red}>Spiker Booking</span>
+                Right On! You're now a SpikerBooking Member! The painless way to book music. Take a Few Moments to fill
+                in your venue profile. It will help artist determine if you are a good match or come back later.
               </span>
               <form onSubmit={formik.handleSubmit} className={styles.form}>
                 <Collapse in={errorAlert.show}>
@@ -208,6 +205,6 @@ export const CreateVenueProfile = ({ token }) => {
           </div>
         </div>
       </div>
-    </FixedBackground>
+    </FixedBackgroundHeaderFooter>
   )
 }
