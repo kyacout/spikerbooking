@@ -127,7 +127,25 @@ const Signup = ({ token }) => {
                 <Button color="primary" variant="contained" fullWidth size="large" type="submit" sx={{ mt: '32px' }}>
                   Join Now
                 </Button>
+                <div className={styles.termsAndConditions}>
+                  By Joining, you agree to SpikerBooking's Terms of Services as well as to receive occasional emails
+                  from us.
+                </div>
               </form>
+              <div className={styles.greyRectangle}>
+                <span className={styles.alreadyAMember}>Already a Member?</span>
+                <div style={{ width: '172px', margin: 'auto 0' }}>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    fullWidth
+                    type="button"
+                    onClick={() => (window.location = '/users/sign_in')}
+                  >
+                    Sign in
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -49,5 +49,35 @@
 }
 
 .form {
-  padding: 0 60px 60px 60px;
+  padding: 0 60px 34px 60px;
+}
+
+.termsAndConditions {
+  opacity: 0.29;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.15px;
+  text-align: left;
+  color: #000;
+  margin-top: 23px;
+}
+
+.greyRectangle {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 97px;
+  padding: 20px 65px;
+  box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #e4e4e4;
+  background-color: rgb(203, 203, 203);
+}
+
+.alreadyAMember {
+  margin: auto 0;
+  font-size: 23px;
+  font-weight: bold;
+  line-height: 2.83;
+  letter-spacing: 0.23px;
+  color: rgb(106, 106, 106);
 }
