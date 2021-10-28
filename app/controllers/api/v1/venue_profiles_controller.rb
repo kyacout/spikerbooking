@@ -12,7 +12,7 @@ module Api
           venue_profile = VenueProfile.new(venue_profile_params)
           venue_profile.user = current_user
           venue_profile.save
-          render_jsonapi_response(venue_profile)
+          render json: venue_profile
         end
       end
 

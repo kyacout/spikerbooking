@@ -5,7 +5,7 @@ export const getReq = url => {
       if (body.errors) {
         return { errors: body.errors }
       } else {
-        return { data: body.data }
+        return { data: body }
       }
     })
 }
@@ -21,7 +21,7 @@ export const postReq = (url, body, token, contentType = 'application/json') => {
       if (body.errors) {
         return { errors: body.errors }
       } else {
-        return { data: body.data }
+        return { data: body }
       }
     })
 }

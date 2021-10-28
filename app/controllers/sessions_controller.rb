@@ -7,7 +7,7 @@ class SessionsController < Devise::SessionsController
 
     if resource.present?
       sign_in(resource_name, resource)
-      render_jsonapi_response(resource)
+      render json: resource
     else
       render json: { errors: [{ title: 'Login failed', detail: 'Please check your email and password.' }], status: 401 }
     end

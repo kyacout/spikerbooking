@@ -39,13 +39,12 @@ const Signup = ({ token }) => {
     validationSchema: validationSchema,
     onSubmit: values => {
       postReq('/users', { user: values }, token)
-        .then(data => {
-          if (data.errors) {
-            const { title, detail: message } = data.errors[0]
+        .then(({ errors, data }) => {
+          if (errors) {
+            const { title, detail: message } = errors[0]
             setErrorAlert({ show: true, title, message })
           } else {
-            console.log(data)
-            postAuthentication(data.data.attributes.current_type)
+            postAuthentication(data.current_type)
           }
         })
         .catch(e => console.error(e))

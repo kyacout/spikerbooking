@@ -11,7 +11,7 @@ module Api
           #   current_user.venue_profile.present?
           # end
           current_user.venue_profile.present?
-        render json: { data: { profile_exists: profile_exists } }
+        render json: { profile_exists: profile_exists }
       end
     end
   end

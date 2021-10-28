@@ -31,7 +31,7 @@ const Login = ({ token }) => {
             const { title, detail: message } = errors[0]
             setErrorAlert({ show: true, title, message })
           } else {
-            postAuthentication(data.attributes.current_type)
+            postAuthentication(data.current_type)
           }
         })
         .catch(e => console.error(e))
@@ -55,7 +55,7 @@ const Login = ({ token }) => {
               <form onSubmit={formik.handleSubmit} className={styles.form}>
                 <Collapse in={errorAlert.show}>
                   <Alert severity="error" onClose={() => setErrorAlert({ show: false, message: '' })}>
-                    <AlertTitle>Signup Failed</AlertTitle>
+                    <AlertTitle>{errorAlert.title}</AlertTitle>
                     {errorAlert.message}
                   </Alert>
                 </Collapse>

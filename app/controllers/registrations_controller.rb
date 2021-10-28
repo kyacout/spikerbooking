@@ -13,8 +13,12 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.save
-    sign_up(resource_name, resource) if resource.persisted?
-    render_jsonapi_response(resource)
+    if resource.persisted?
+      sign_up(resource_name, resource)
+      render json: resource
+    else
+      render json: ErrorSerializer.serialize(resource.errors)
+    end
   end
 
   # GET /resource/edit
