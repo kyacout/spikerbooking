@@ -27,7 +27,7 @@ export const Search = () => {
   ) : (
     <>
       <Button color="secondary" variant="contained" size="large" onClick={() => (window.location = '/users/sign_in')}>
-        Login
+        Log in
       </Button>
       <Button
         sx={{ ml: '25px' }}
@@ -36,7 +36,7 @@ export const Search = () => {
         size="large"
         onClick={() => (window.location = '/users/sign_up')}
       >
-        Signup now It's free!
+        Sign up, It's free!
       </Button>
     </>
   )
