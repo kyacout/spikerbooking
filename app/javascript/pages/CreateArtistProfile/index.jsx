@@ -108,10 +108,10 @@ export const CreateArtistProfile = ({ token }) => {
 
   return (
     <FixedBackgroundHeaderFooter bgImg={imageURL('v1635338046/bg/artists_profile.jpg')}>
-      <div className={styles.mainContent}>
-        <div className={styles.column}>
-          <div className={styles.row}>
-            <div className={styles.formContainer}>
+      <Box display="flex" width="100vw">
+        <Box display="flex" flexDirection="column" m="58px auto auto">
+          <Box display="flex">
+            <Box display="flex" flexDirection="column" className={styles.formContainer}>
               <h1>Welcome to Spiker Booking Family!</h1>
               <span>
                 Right On! You're now a SpikerBooking Member! The painless way to book music. Take a Few Moments to fill
@@ -271,10 +271,10 @@ export const CreateArtistProfile = ({ token }) => {
                   </Button>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
     </FixedBackgroundHeaderFooter>
   )
 }
