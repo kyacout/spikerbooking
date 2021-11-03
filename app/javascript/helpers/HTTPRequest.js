@@ -50,18 +50,3 @@ export const deleteReq = (url, token) => {
     headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token },
   })
 }
-
-export const uploadPhoto = newPhoto => {
-  const formData = new FormData()
-  formData.append('file', newPhoto)
-
-  // configure your fetch url appropriately
-  fetch(`${baseURL}/photo/${this.props.profile.id}`, {
-    method: 'PATCH',
-    body: formData,
-  })
-    .then(res => res.json())
-    .then(data => {
-      // do something with the returned data
-    })
-}

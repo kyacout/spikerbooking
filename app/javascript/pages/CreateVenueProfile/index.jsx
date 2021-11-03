@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import { DirectUpload } from 'activestorage'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Collapse from '@mui/material/Collapse'
@@ -10,11 +11,12 @@ import MenuItem from '@mui/material/MenuItem'
 import Box from '@mui/material/Box'
 import Avatar from '@mui/material/Avatar'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto'
 
 import styles from './styles.module.scss'
 import { FixedBackgroundHeaderFooter } from '../../layouts/FixedBackgroundHeaderFooter'
 import { imageURL } from '../../helpers/Cloudinary'
-import { postFormData } from '../../helpers/HTTPRequest'
+import { postReq } from '../../helpers/HTTPRequest'
 
 const validationSchema = yup.object({
   name: yup.string().required("The venue's name is required"),
@@ -39,7 +41,7 @@ const capacities = ['<100', '101-250', '251-500', '501-1000', '1000+']
 
 export const CreateVenueProfile = ({ token }) => {
   const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
-  const [avatarPreview, setAvatarPreview] = useState('')
+  const [avatarPreview, setAvatarPreview] = useState()
 
   const formik = useFormik({
     initialValues: {
@@ -55,16 +57,23 @@ export const CreateVenueProfile = ({ token }) => {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      postFormData('/api/v1/venue_profile', values, token)
-        .then(({ errors, data }) => {
-          if (errors) {
-            const { title, detail: message } = errors[0]
-            setErrorAlert({ show: true, title, message })
-          } else {
-            window.location.replace('/')
-          }
-        })
-        .catch(e => console.error(e))
+      const upload = new DirectUpload(values.photo, '/rails/active_storage/direct_uploads')
+      upload.create((error, blob) => {
+        if (error) {
+          console.error(error)
+        } else {
+          postReq('/api/v1/venue_profile', { ...values, photo: blob.signed_id }, token)
+            .then(({ errors, data }) => {
+              if (errors) {
+                const { title, detail: message } = errors[0]
+                setErrorAlert({ show: true, title, message })
+              } else {
+                window.location.replace('/')
+              }
+            })
+            .catch(e => console.error(e))
+        }
+      })
     },
   })
 
@@ -182,8 +191,10 @@ export const CreateVenueProfile = ({ token }) => {
                   helperText={formik.touched.description && formik.errors.description}
                   margin="normal"
                 />
-                <Box display="flex" textAlign="center" justifyContent="space-between" mt="20px">
-                  <Avatar size="md" src={avatarPreview} sx={{ height: '50px', width: '50px' }} />
+                <Box display="flex" textAlign="center" justifyContent="space-between" mt="16px">
+                  <Avatar size="md" src={avatarPreview} sx={{ height: '50px', width: '50px' }}>
+                    <InsertPhotoIcon />
+                  </Avatar>
                   <Button
                     fullWidth
                     color="secondary"
@@ -192,7 +203,7 @@ export const CreateVenueProfile = ({ token }) => {
                     startIcon={<CloudUploadIcon />}
                     sx={{ m: 'auto 0 auto 20px' }}
                   >
-                    Venue image
+                    Choose photo for upload
                     <input
                       name="photo"
                       accept="image/*"

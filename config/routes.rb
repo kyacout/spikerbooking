@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
+  post 'rails/active_storage/direct_uploads', to: 'direct_uploads#create'
   root 'app#index'
   get '*path', to: 'app#index'
 end
