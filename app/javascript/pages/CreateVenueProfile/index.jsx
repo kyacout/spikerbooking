@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { DirectUpload } from 'activestorage'
@@ -12,8 +12,11 @@ import Box from '@mui/material/Box'
 import Avatar from '@mui/material/Avatar'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto'
+import Backdrop from '@mui/material/Backdrop'
+import CircularProgress from '@mui/material/CircularProgress'
 
 import styles from './styles.module.scss'
+import { Context } from '../../components/App'
 import { FixedBackgroundHeaderFooter } from '../../layouts/FixedBackgroundHeaderFooter'
 import { imageURL } from '../../helpers/Cloudinary'
 import { postReq } from '../../helpers/HTTPRequest'
@@ -39,9 +42,11 @@ const venueTypes = [
 
 const capacities = ['<100', '101-250', '251-500', '501-1000', '1000+']
 
-export const CreateVenueProfile = ({ token }) => {
+export const CreateVenueProfile = () => {
   const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
-  const [avatarPreview, setAvatarPreview] = useState()
+  const { token } = useContext(Context)
+  const [photoPreview, setPhotoPreview] = useState()
+  const [loading, setLoading] = useState(false)
 
   const formik = useFormik({
     initialValues: {
@@ -57,6 +62,7 @@ export const CreateVenueProfile = ({ token }) => {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
+      setLoading(true)
       const upload = new DirectUpload(values.photo, '/rails/active_storage/direct_uploads')
       upload.create((error, blob) => {
         if (error) {
@@ -64,6 +70,7 @@ export const CreateVenueProfile = ({ token }) => {
         } else {
           postReq('/api/v1/venue_profile', { ...values, photo: blob.signed_id }, token)
             .then(({ errors, data }) => {
+              setLoading(false)
               if (errors) {
                 const { title, detail: message } = errors[0]
                 setErrorAlert({ show: true, title, message })
@@ -79,6 +86,13 @@ export const CreateVenueProfile = ({ token }) => {
 
   return (
     <FixedBackgroundHeaderFooter bgImg={imageURL('v1634987955/bg/venue_profile.jpg')}>
+      <Backdrop
+        sx={{ display: 'flex', flexDirection: 'column', color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
+        open={loading}
+      >
+        <CircularProgress color="primary" />
+        Creating Profile ...
+      </Backdrop>
       <Box display="flex" width="100vw">
         <Box display="flex" flexDirection="column" m="58px auto auto">
           <Box display="flex">
@@ -89,7 +103,7 @@ export const CreateVenueProfile = ({ token }) => {
                 in your venue profile. It will help artist determine if you are a good match or come back later.
               </span>
               <form onSubmit={formik.handleSubmit} className={styles.form}>
-                <Collapse in={errorAlert.show}>
+                <Collapse in={errorAlert.show} sx={{ mt: '24px', mb: '24px' }}>
                   <Alert severity="error" onClose={() => setErrorAlert({ show: false, message: '' })}>
                     <AlertTitle>{errorAlert.title}</AlertTitle>
                     {errorAlert.message}
@@ -192,7 +206,7 @@ export const CreateVenueProfile = ({ token }) => {
                   margin="normal"
                 />
                 <Box display="flex" textAlign="center" justifyContent="space-between" mt="16px">
-                  <Avatar size="md" src={avatarPreview} sx={{ height: '50px', width: '50px' }}>
+                  <Avatar size="md" src={photoPreview} sx={{ height: '80px', width: '80px' }}>
                     <InsertPhotoIcon />
                   </Avatar>
                   <Button
@@ -202,8 +216,9 @@ export const CreateVenueProfile = ({ token }) => {
                     component="label"
                     startIcon={<CloudUploadIcon />}
                     sx={{ m: 'auto 0 auto 20px' }}
+                    size="large"
                   >
-                    Choose photo for upload
+                    Choose a picture for your venue
                     <input
                       name="photo"
                       accept="image/*"
@@ -214,7 +229,7 @@ export const CreateVenueProfile = ({ token }) => {
                         const fileReader = new FileReader()
                         fileReader.onload = () => {
                           if (fileReader.readyState === 2) {
-                            setAvatarPreview(fileReader.result)
+                            setPhotoPreview(fileReader.result)
                           }
                         }
                         fileReader.readAsDataURL(e.target.files[0])

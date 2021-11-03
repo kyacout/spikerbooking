@@ -23,6 +23,5 @@ const NonAuthenticatedRoutes = (
 
 export default function Routes() {
   const { currentUser } = useContext(Context)
-
   return currentUser ? AuthenticatedRoutes : NonAuthenticatedRoutes
 }
