@@ -7,14 +7,14 @@ import Collapse from '@mui/material/Collapse'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import MenuItem from '@mui/material/MenuItem'
-import InputAdornment from '@mui/material/InputAdornment'
-import OutlinedInput from '@mui/material/OutlinedInput'
-import PhotoCamera from '@mui/icons-material/PhotoCamera'
+import Box from '@mui/material/Box'
+import Avatar from '@mui/material/Avatar'
+import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
 import styles from './styles.module.scss'
 import { FixedBackgroundHeaderFooter } from '../../layouts/FixedBackgroundHeaderFooter'
 import { imageURL } from '../../helpers/Cloudinary'
-import { postReq } from '../../helpers/HTTPRequest'
+import { postFormData } from '../../helpers/HTTPRequest'
 
 const validationSchema = yup.object({
   name: yup.string().required("The venue's name is required"),
@@ -39,6 +39,7 @@ const capacities = ['<100', '101-250', '251-500', '501-1000', '1000+']
 
 export const CreateVenueProfile = ({ token }) => {
   const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
+  const [avatarPreview, setAvatarPreview] = useState('')
 
   const formik = useFormik({
     initialValues: {
@@ -50,11 +51,11 @@ export const CreateVenueProfile = ({ token }) => {
       sound_equipment: '',
       music_host_frequency: '',
       description: '',
-      image: '',
+      photo: '',
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      postReq('/api/v1/venue_profile', values, token, undefined)
+      postFormData('/api/v1/venue_profile', values, token)
         .then(({ errors, data }) => {
           if (errors) {
             const { title, detail: message } = errors[0]
@@ -69,10 +70,10 @@ export const CreateVenueProfile = ({ token }) => {
 
   return (
     <FixedBackgroundHeaderFooter bgImg={imageURL('v1634987955/bg/venue_profile.jpg')}>
-      <div className={styles.mainContent}>
-        <div className={styles.column}>
-          <div className={styles.row}>
-            <div className={styles.formContainer}>
+      <Box display="flex" width="100vw">
+        <Box display="flex" flexDirection="column" m="58px auto auto">
+          <Box display="flex">
+            <Box display="flex" flexDirection="column" className={styles.formContainer}>
               <h1>Welcome to Spiker Booking Family!</h1>
               <span>
                 Right On! You're now a SpikerBooking Member! The painless way to book music. Take a Few Moments to fill
@@ -181,30 +182,45 @@ export const CreateVenueProfile = ({ token }) => {
                   helperText={formik.touched.description && formik.errors.description}
                   margin="normal"
                 />
-                {/*<OutlinedInput*/}
-                {/*  fullWidth*/}
-                {/*  name="image"*/}
-                {/*  accept="image/*"*/}
-                {/*  type="file"*/}
-                {/*  value={formik.values.image}*/}
-                {/*  onChange={formik.handleChange}*/}
-                {/*  error={formik.touched.image && Boolean(formik.errors.image)}*/}
-                {/*  endAdornment={*/}
-                {/*    <InputAdornment position="end">*/}
-                {/*      <PhotoCamera />*/}
-                {/*    </InputAdornment>*/}
-                {/*  }*/}
-                {/*/>*/}
+                <Box display="flex" textAlign="center" justifyContent="space-between" mt="20px">
+                  <Avatar size="md" src={avatarPreview} sx={{ height: '50px', width: '50px' }} />
+                  <Button
+                    fullWidth
+                    color="secondary"
+                    variant="outlined"
+                    component="label"
+                    startIcon={<CloudUploadIcon />}
+                    sx={{ m: 'auto 0 auto 20px' }}
+                  >
+                    Venue image
+                    <input
+                      name="photo"
+                      accept="image/*"
+                      type="file"
+                      hidden
+                      onChange={e => {
+                        formik.setFieldValue('photo', e.target.files[0])
+                        const fileReader = new FileReader()
+                        fileReader.onload = () => {
+                          if (fileReader.readyState === 2) {
+                            setAvatarPreview(fileReader.result)
+                          }
+                        }
+                        fileReader.readAsDataURL(e.target.files[0])
+                      }}
+                    />
+                  </Button>
+                </Box>
                 <div style={{ margin: '32px 0 0 auto' }}>
                   <Button color="primary" variant="contained" size="large" type="submit">
                     Finish
                   </Button>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
     </FixedBackgroundHeaderFooter>
   )
 }

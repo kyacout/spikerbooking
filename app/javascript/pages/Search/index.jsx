@@ -4,6 +4,7 @@ import Button from '@mui/material/Button'
 import SearchIcon from '@mui/icons-material/Search'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
+import Box from '@mui/material/Box'
 
 import styles from './styles.module.scss'
 import { Context } from '../../components/App'
@@ -42,7 +43,7 @@ export const Search = () => {
   )
   return (
     <FixedBackground bgImg={imageURL('v1634803096/bg/search.jpg')}>
-      <div className={styles.flexContainer}>
+      <Box display="flex" flexDirection="column" height="100%">
         <div className={styles.header}>
           <div className={styles.headerItem} />
           <div className={styles.headerItem}>
@@ -76,7 +77,7 @@ export const Search = () => {
             fullWidth
           />
         </div>
-      </div>
+      </Box>
     </FixedBackground>
   )
 }

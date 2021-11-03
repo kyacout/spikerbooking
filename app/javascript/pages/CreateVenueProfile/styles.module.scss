@@ -1,26 +1,7 @@
-.mainContent {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  margin: 58px auto auto;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
 .formContainer {
-  display: flex;
-  flex-direction: column;
   padding: 37px 0 0;
   box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.16);
-  background-color: rgba(241, 241, 241, 0.88);
+  background-color: #fff;
   border: solid 1px #616161;
   width: 706px;
   margin-bottom: 90px;

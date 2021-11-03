@@ -20,8 +20,8 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def venue_profile_params
-        params.require(:venue_profile).permit(:name, :location, :type, :website, :capacity, :sound_equipment,
-                                              :host_music_frequency, :description)
+        params.permit(:name, :location, :type, :website, :capacity, :sound_equipment, :host_music_frequency,
+                      :description, :photo)
       end
     end
   end
