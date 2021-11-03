@@ -1,7 +1,7 @@
 import React from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
-import { createTheme } from '@mui/material/styles'
-import { ThemeProvider } from '@mui/material/styles'
+import createTheme from '@mui/material/styles/createTheme'
+import ThemeProvider from '@mui/material/styles/ThemeProvider'
 
 const theme = createTheme({
   palette: {
@@ -11,7 +11,11 @@ const theme = createTheme({
     },
     secondary: {
       main: '#000000',
+      dark: '#1e1e1e',
     },
+  },
+  typography: {
+    fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
   },
 })
 
