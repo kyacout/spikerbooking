@@ -110,7 +110,7 @@ export const FormPage3 = ({ formik }) => {
         </Button>
       </Box>
       <Box display="flex" textAlign="center" mt="16px" mb="8px">
-        <TextField value={formik.values.press_sheet} fullwidth style={{ overflow: 'hidden', width: '100%' }} disabled />
+        <TextField value={formik.values.logo} fullWidth disabled />
         <Button
           fullWidth
           color="secondary"
@@ -125,7 +125,7 @@ export const FormPage3 = ({ formik }) => {
         </Button>
       </Box>
       <Box display="flex" textAlign="center" mt="16px" mb="8px">
-        <TextField value={formik.values.press_sheet} fullwidth style={{ overflow: 'hidden', width: '100%' }} disabled />
+        <TextField value={formik.values.press_sheet} fullWidth disabled />
         <Button
           color="secondary"
           variant="outlined"

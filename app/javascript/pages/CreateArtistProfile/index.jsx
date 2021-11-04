@@ -19,7 +19,8 @@ import { FormPage2 } from './FormPage2'
 import { FormPage3 } from './FormPage3'
 
 const validationSchema = yup.object({
-  full_name: yup.string().required('Your legal name is required'),
+  first_name: yup.string().required('Your first name is required'),
+  last_name: yup.string().required('Your last name is required'),
   minimum_budget: yup.string().required('You have to enter your minimum budget'),
   artist_name: yup.string().required('Your artist / band name is required'),
   location: yup.string().required('Your Location is required'),
@@ -38,7 +39,8 @@ export const CreateArtistProfile = () => {
 
   const formik = useFormik({
     initialValues: {
-      full_name: '',
+      first_name: '',
+      last_name: '',
       phone: '',
       profile_picture: '',
       minimum_budget: '',

@@ -5,12 +5,11 @@ module Api
     class UsersController < BaseApiController
       def profile?
         profile_exists =
-          # if current_user.artist?
-          #   current_user.artist_profile.present?
-          # else
-          #   current_user.venue_profile.present?
-          # end
-          current_user.venue_profile.present?
+          if current_user.artist?
+            current_user.artist_profile.present?
+          else
+            current_user.venue_profile.present?
+          end
         render json: { profile_exists: profile_exists }
       end
     end

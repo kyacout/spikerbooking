@@ -1,10 +1,10 @@
+import React, { useState } from 'react'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import MenuItem from '@mui/material/MenuItem'
-import React, { useState } from 'react'
 import styles from './styles.module.scss'
 
 const budgetRanges = ['$100 - $199', '$200 - $299', '$300 - $499', '$500 - $999', '$1,000+']
@@ -21,17 +21,31 @@ export const FormPage1 = ({ formik, email }) => {
       <span style={{ marginTop: '20px', textAlign: 'left' }}>
         Note: This information is private. It will not be shared publicly
       </span>
-      <TextField
-        fullWidth
-        name="full_name"
-        label="Full Name*:"
-        value={formik.values.full_name}
-        onChange={formik.handleChange}
-        error={formik.touched.full_name && Boolean(formik.errors.full_name)}
-        helperText={formik.touched.full_name && formik.errors.full_name}
-        margin="normal"
-        placeholder="Ex: Jane Doe"
-      />
+      <Box display="flex">
+        <TextField
+          fullWidth
+          name="first_name"
+          label="First Name*:"
+          value={formik.values.first_name}
+          onChange={formik.handleChange}
+          error={formik.touched.first_name && Boolean(formik.errors.first_name)}
+          helperText={formik.touched.first_name && formik.errors.first_name}
+          margin="normal"
+          placeholder="Ex: Jane Doe"
+        />
+        <TextField
+          fullWidth
+          sx={{ ml: '16px' }}
+          name="last_name"
+          label="Last Name*:"
+          value={formik.values.last_name}
+          onChange={formik.handleChange}
+          error={formik.touched.last_name && Boolean(formik.errors.last_name)}
+          helperText={formik.touched.last_name && formik.errors.last_name}
+          margin="normal"
+          placeholder="Ex: Jane Doe"
+        />
+      </Box>
       <TextField
         fullWidth
         name="phone"
