@@ -103,7 +103,11 @@ export const FormPage2 = ({ formik }) => {
           name="genre"
           multiple
           value={formik.values.genre}
-          onChange={formik.handleChange}
+          onChange={e => {
+            if (e.target.value.length <= 5) {
+              formik.handleChange(e)
+            }
+          }}
           error={formik.touched.genre && Boolean(formik.errors.genre)}
           input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
           renderValue={selected => (
@@ -155,7 +159,7 @@ export const FormPage2 = ({ formik }) => {
         error={formik.touched.other_venue_plays && Boolean(formik.errors.other_venue_plays)}
         helperText={formik.touched.other_venue_plays && formik.errors.other_venue_plays}
         margin="normal"
-        placeholder="Enter up to five venues, hit enter after each entry"
+        placeholder="Enter venues separated by a comma"
       />
     </>
   )
