@@ -18,6 +18,7 @@ img.bg {
   /* background */
   z-index: -100;
   background-color: #7a071c;
+  pointer-events: none;
 
   @media screen and (max-width: 1024px) { /* Specific to this particular image */
     left: 50%;
@@ -31,7 +32,7 @@ img.bg {
   height: 750px;
   bottom: -200px;
   left: -100px;
-  z-index: 0;
+  pointer-events: none;
 
   img {
     object-fit: cover;
