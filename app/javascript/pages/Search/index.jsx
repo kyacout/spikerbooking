@@ -44,39 +44,45 @@ export const Search = () => {
   return (
     <FixedBackground bgImg={imageURL('v1634803096/bg/search.jpg')}>
       <Box display="flex" flexDirection="column" height="100%">
-        <div className={styles.header}>
-          <div className={styles.headerItem} />
-          <div className={styles.headerItem}>
-            <div className={styles.logoContainer}>
-              <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
-            </div>
-          </div>
-          <div className={styles.headerItem}>{headerButtons}</div>
-        </div>
-        <div className={styles.navbar}>
-          <a href="/" className={styles.first}>
-            About us
-          </a>
-          <a href="/">Contact us</a>
-          <a href="/">FAQs</a>
-          <a href="/">Terms and conditions</a>
-        </div>
+        <Box display="flex" alignItems="center" justifyContent="space-between" m="85px 80px 0 160px">
+          <Box width="327px">
+            <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
+          </Box>
+          <Box>
+            <a href="/" className={styles.bold}>
+              About us
+            </a>
+            <a href="/" className={styles.bold}>
+              Contact us
+            </a>
+            {headerButtons}
+          </Box>
+        </Box>
         <div className={styles.banner}>
           <span className={styles.h1}>Easy Booking</span>
           <span className={styles.h2}>for hard-hitting talent</span>
         </div>
-        <div className={styles.searchContainer}>
+        <Box display="flex" flexDirection="column" width="55%" m="80px auto auto auto">
+          <span className={styles.text}>Searching For Artist / Band</span>
           <OutlinedInput
-            sx={{ bgcolor: 'white' }}
+            sx={{ bgcolor: 'white', borderRadius: '56px', mt: '13px' }}
             startAdornment={
               <InputAdornment position="start">
                 <SearchIcon />
               </InputAdornment>
             }
-            placeholder="Location"
+            placeholder="City, State, or ZIP Code"
             fullWidth
           />
-        </div>
+        </Box>
+        <Box display="flex" m="auto auto 50px 160px">
+          <a href="/" className={styles.text}>
+            FAQs
+          </a>
+          <a href="/" className={styles.text}>
+            Terms and conditions
+          </a>
+        </Box>
       </Box>
     </FixedBackground>
   )
