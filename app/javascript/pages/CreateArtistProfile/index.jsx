@@ -67,7 +67,7 @@ export const CreateArtistProfile = () => {
     validationSchema: validationSchema,
     onSubmit: values => {
       postReq('/api/v1/artist_profile', values, token, undefined)
-        .then(({ errors, data }) => {
+        .then(({ errors, _data }) => {
           if (errors) {
             const { title, detail: message } = errors[0]
             setErrorAlert({ show: true, title, message })
