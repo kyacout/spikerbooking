@@ -1,219 +1,118 @@
 import React, { useState } from 'react'
-import TextField from '@mui/material/TextField'
-import Box from '@mui/material/Box'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import CloudUploadIcon from '@mui/icons-material/CloudUpload'
+import { TextField } from '../../components/UILibrary/TextField'
+import { UploadImage } from '../../components/UILibrary/UploadImage'
+import { UploadFile } from '../../components/UILibrary/UploadFile'
 
 import styles from './styles.module.scss'
 
-export const FormPage3 = ({ formik }) => {
+export const FormPage3 = ({ formik, visible }) => {
   const [photo1Preview, setPhoto1Preview] = useState()
   const [photo2Preview, setPhoto2Preview] = useState()
   const [photo3Preview, setPhoto3Preview] = useState()
+  const [logoPreview, setLogoPreview] = useState()
+
+  if (!visible) {
+    return null
+  }
 
   return (
     <>
       <h1>Media Info</h1>
-      <span className={styles.headerText}>
+      <span className={styles.headerText} style={{ marginBottom: '32px' }}>
         This is your chance to shine. This information will be publicly displayed on your Artist Profile Page. It can be
         edited at any time.
       </span>
-      <Box display="flex" textAlign="center" justifyContent="space-between" mt="16px" mb="8px">
-        <Avatar size="md" src={photo1Preview} sx={{ height: '80px', width: '80px' }} />
-        <Button
-          fullWidth
-          color="secondary"
-          variant="outlined"
-          component="label"
-          startIcon={<CloudUploadIcon />}
-          sx={{ m: 'auto 0 auto 20px' }}
-          size="large"
-        >
-          Photo 1
-          <input
-            name="photo1"
-            accept="image/*"
-            type="file"
-            hidden
-            onChange={e => {
-              formik.setFieldValue('photo1', e.target.files[0])
-              const fileReader = new FileReader()
-              fileReader.onload = () => {
-                if (fileReader.readyState === 2) {
-                  setPhoto1Preview(fileReader.result)
-                }
-              }
-              fileReader.readAsDataURL(e.target.files[0])
-            }}
-          />
-        </Button>
-      </Box>
-      <Box display="flex" textAlign="center" justifyContent="space-between" mt="16px" mb="8px">
-        <Avatar size="md" src={photo2Preview} sx={{ height: '80px', width: '80px' }} />
-        <Button
-          fullWidth
-          color="secondary"
-          variant="outlined"
-          component="label"
-          startIcon={<CloudUploadIcon />}
-          sx={{ m: 'auto 0 auto 20px' }}
-          size="large"
-        >
-          Photo 2
-          <input
-            name="photo2"
-            accept="image/*"
-            type="file"
-            hidden
-            onChange={e => {
-              formik.setFieldValue('photo2', e.target.files[0])
-              const fileReader = new FileReader()
-              fileReader.onload = () => {
-                if (fileReader.readyState === 2) {
-                  setPhoto2Preview(fileReader.result)
-                }
-              }
-              fileReader.readAsDataURL(e.target.files[0])
-            }}
-          />
-        </Button>
-      </Box>
-      <Box display="flex" textAlign="center" justifyContent="space-between" mt="16px" mb="8px">
-        <Avatar size="md" src={photo3Preview} sx={{ height: '80px', width: '80px' }} />
-        <Button
-          fullWidth
-          color="secondary"
-          variant="outlined"
-          component="label"
-          startIcon={<CloudUploadIcon />}
-          sx={{ m: 'auto 0 auto 20px' }}
-          size="large"
-        >
-          Photo 3
-          <input
-            name="photo3"
-            accept="image/*"
-            type="file"
-            hidden
-            onChange={e => {
-              formik.setFieldValue('photo3', e.target.files[0])
-              const fileReader = new FileReader()
-              fileReader.onload = () => {
-                if (fileReader.readyState === 2) {
-                  setPhoto3Preview(fileReader.result)
-                }
-              }
-              fileReader.readAsDataURL(e.target.files[0])
-            }}
-          />
-        </Button>
-      </Box>
-      <Box display="flex" textAlign="center" mt="16px" mb="8px">
-        <TextField value={formik.values.logo} fullWidth disabled />
-        <Button
-          fullWidth
-          color="secondary"
-          variant="outlined"
-          component="label"
-          startIcon={<CloudUploadIcon />}
-          sx={{ m: 'auto 0 auto 20px', width: '200px', minWidth: '200px' }}
-          size="large"
-        >
-          Logo
-          <input name="logo" type="file" hidden onChange={formik.handleChange} />
-        </Button>
-      </Box>
-      <Box display="flex" textAlign="center" mt="16px" mb="8px">
-        <TextField value={formik.values.press_sheet} fullWidth disabled />
-        <Button
-          color="secondary"
-          variant="outlined"
-          component="label"
-          startIcon={<CloudUploadIcon />}
-          sx={{ m: 'auto 0 auto 20px', width: '200px', minWidth: '200px' }}
-          size="large"
-        >
-          Press sheet
-          <input name="press_sheet" type="file" hidden onChange={formik.handleChange} />
-        </Button>
-      </Box>
+      <UploadImage
+        formik={formik}
+        id="edit-artist-photo1"
+        name="photo1"
+        label="Upload photos"
+        buttonLabel="Select image"
+        photoPreview={photo1Preview}
+        setPhotoPreview={setPhoto1Preview}
+      />
+      <UploadImage
+        formik={formik}
+        id="edit-artist-photo2"
+        name="photo2"
+        label=""
+        buttonLabel="Select image"
+        photoPreview={photo2Preview}
+        setPhotoPreview={setPhoto2Preview}
+      />
+      <UploadImage
+        formik={formik}
+        id="edit-artist-photo3"
+        name="photo3"
+        label=""
+        buttonLabel="Select image"
+        photoPreview={photo3Preview}
+        setPhotoPreview={setPhoto3Preview}
+      />
+      <UploadImage
+        formik={formik}
+        id="edit-artist-logo"
+        name="logo"
+        label="Upload logo"
+        buttonLabel="Select image"
+        photoPreview={logoPreview}
+        setPhotoPreview={setLogoPreview}
+      />
+      <UploadFile
+        formik={formik}
+        id="edit-artist-press_sheet"
+        name="press_sheet"
+        label="Press sheet"
+        buttonLabel="Select file"
+      />
       <TextField
-        fullWidth
+        formik={formik}
+        id="edit-artist-website_url"
         name="website_url"
-        label="Website URL:"
-        value={formik.values.website_url}
-        onChange={formik.handleChange}
-        error={formik.touched.website_url && Boolean(formik.errors.website_url)}
-        helperText={formik.touched.website_url && formik.errors.website_url}
-        margin="normal"
+        label="Website URL"
         placeholder="Enter your band's website URL"
       />
       <TextField
-        fullWidth
+        formik={formik}
+        id="edit-artist-facebook_url"
         name="facebook_url"
-        label="Facebook URL:"
-        value={formik.values.facebook_url}
-        onChange={formik.handleChange}
-        error={formik.touched.facebook_url && Boolean(formik.errors.facebook_url)}
-        helperText={formik.touched.facebook_url && formik.errors.facebook_url}
-        margin="normal"
-        placeholder="Enter your band's facebook URL"
+        label="Facebook URL"
+        placeholder="Enter your band's Facebook URL"
       />
       <TextField
-        fullWidth
+        formik={formik}
+        id="edit-artist-instagram_url"
         name="instagram_url"
-        label="Instagram URL:"
-        value={formik.values.instagram_url}
-        onChange={formik.handleChange}
-        error={formik.touched.instagram_url && Boolean(formik.errors.instagram_url)}
-        helperText={formik.touched.instagram_url && formik.errors.instagram_url}
-        margin="normal"
-        placeholder="Enter your band's instagram URL"
+        label="Instagram URL"
+        placeholder="Enter your band's Instagram URL"
       />
       <TextField
-        fullWidth
+        formik={formik}
+        id="edit-artist-spotify_url"
         name="spotify_url"
-        label="Spotify URL:"
-        value={formik.values.spotify_url}
-        onChange={formik.handleChange}
-        error={formik.touched.spotify_url && Boolean(formik.errors.spotify_url)}
-        helperText={formik.touched.spotify_url && formik.errors.spotify_url}
-        margin="normal"
-        placeholder="Enter your band's spotify URL"
+        label="Spotify URL"
+        placeholder="Enter your band's Spotify URL"
       />
       <TextField
-        fullWidth
+        formik={formik}
+        id="edit-artist-soundcloud_url"
         name="soundcloud_url"
-        label="Soundcloud URL:"
-        value={formik.values.soundcloud_url}
-        onChange={formik.handleChange}
-        error={formik.touched.soundcloud_url && Boolean(formik.errors.soundcloud_url)}
-        helperText={formik.touched.soundcloud_url && formik.errors.soundcloud_url}
-        margin="normal"
-        placeholder="Enter your band's soundcloud URL"
+        label="Soundcloud URL"
+        placeholder="Enter your band's Soundcloud URL"
       />
       <TextField
-        fullWidth
+        formik={formik}
+        id="edit-artist-tiktok_url"
         name="tiktok_url"
-        label="Tiktok URL:"
-        value={formik.values.tiktok_url}
-        onChange={formik.handleChange}
-        error={formik.touched.tiktok_url && Boolean(formik.errors.tiktok_url)}
-        helperText={formik.touched.tiktok_url && formik.errors.tiktok_url}
-        margin="normal"
-        placeholder="Enter your band's tiktok URL"
+        label="Tiktok URL"
+        placeholder="Enter your band's Tiktok URL"
       />
       <TextField
-        fullWidth
+        formik={formik}
+        id="edit-artist-youtube_url"
         name="youtube_url"
-        label="Youtube URL:"
-        value={formik.values.youtube_url}
-        onChange={formik.handleChange}
-        error={formik.touched.youtube_url && Boolean(formik.errors.youtube_url)}
-        helperText={formik.touched.youtube_url && formik.errors.youtube_url}
-        margin="normal"
-        placeholder="Enter your band's youtube URL"
+        label="Youtube URL"
+        placeholder="Enter your band's Youtube URL"
       />
     </>
   )

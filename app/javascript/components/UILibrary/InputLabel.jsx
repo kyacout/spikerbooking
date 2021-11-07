@@ -6,7 +6,6 @@ export const InputLabel = ({ htmlFor, label, mt = '10px', required }) => {
     <MUIInputLabel
       htmlFor={htmlFor}
       shrink
-      multiline
       sx={{
         display: 'inline',
         position: 'relative',
@@ -23,12 +22,16 @@ export const InputLabel = ({ htmlFor, label, mt = '10px', required }) => {
           color: '#d32531',
           width: '0',
           m: '0',
-          fontSize: '25px',
           fontWeight: '600',
+          fontSize: '25px',
         },
       }}
     >
-      {label}:{required ? <span>*</span> : null}
+      {label && (
+        <>
+          {label}:{required ? <span>*</span> : null}
+        </>
+      )}
     </MUIInputLabel>
   )
 }

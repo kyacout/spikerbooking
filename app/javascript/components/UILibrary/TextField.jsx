@@ -3,7 +3,7 @@ import MUITextField from '@mui/material/TextField'
 import { InputLabel } from './InputLabel'
 import FormControl from '@mui/material/FormControl'
 
-export const TextField = ({ id, name, formik, label, placeholder = '', required = false }) => {
+export const TextField = ({ id, name, formik, label, placeholder = '', required = false, ...props }) => {
   return (
     <FormControl sx={{ display: 'flex', flexDirection: 'row' }}>
       <InputLabel htmlFor={id} label={label} required={required} />
@@ -23,6 +23,7 @@ export const TextField = ({ id, name, formik, label, placeholder = '', required 
         }}
         placeholder={placeholder}
         required={required}
+        {...props}
       />
     </FormControl>
   )

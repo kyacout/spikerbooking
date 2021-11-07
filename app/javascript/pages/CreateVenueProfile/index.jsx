@@ -44,6 +44,7 @@ export const CreateVenueProfile = () => {
   const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
   const { token } = useContext(Context)
   const [loading, setLoading] = useState(false)
+  const [photoPreview, setPhotoPreview] = useState()
 
   const formik = useFormik({
     initialValues: {
@@ -141,6 +142,8 @@ export const CreateVenueProfile = () => {
                   name="photo"
                   label="Upload photo"
                   buttonLabel="Select image"
+                  photoPreview={photoPreview}
+                  setPhotoPreview={setPhotoPreview}
                 />
                 <TextField formik={formik} id="edit-venue-description" name="description" label="Brief description" />
                 <div style={{ margin: '32px 0 0 auto' }}>

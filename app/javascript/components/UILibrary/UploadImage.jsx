@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import Avatar from '@mui/material/Avatar'
@@ -7,9 +7,16 @@ import InsertPhotoIcon from '@mui/icons-material/InsertPhoto'
 import { InputLabel } from './InputLabel'
 import Box from '@mui/material/Box'
 
-export const UploadImage = ({ id, name, formik, label, buttonLabel, required = false }) => {
-  const [photoPreview, setPhotoPreview] = useState()
-
+export const UploadImage = ({
+  id,
+  name,
+  formik,
+  label,
+  buttonLabel,
+  required = false,
+  photoPreview,
+  setPhotoPreview,
+}) => {
   return (
     <FormControl
       sx={{ display: 'flex', flexDirection: 'row', textAlign: 'center', justifyContent: 'space-between', mb: '32px' }}

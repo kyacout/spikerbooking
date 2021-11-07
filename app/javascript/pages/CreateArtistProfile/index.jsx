@@ -80,9 +80,9 @@ export const CreateArtistProfile = () => {
   })
 
   const FormPages = [
-    <FormPage1 formik={formik} email={currentUser.email} />,
-    <FormPage2 formik={formik} />,
-    <FormPage3 formik={formik} />,
+    <FormPage1 formik={formik} key={1} email={currentUser.email} visible={curPageNum === 1} />,
+    <FormPage2 formik={formik} key={2} visible={curPageNum === 2} />,
+    <FormPage3 formik={formik} key={3} visible={curPageNum === 3} />,
   ]
 
   return (
@@ -105,7 +105,7 @@ export const CreateArtistProfile = () => {
                 </Alert>
               </Collapse>
               <form onSubmit={formik.handleSubmit} className={styles.form}>
-                {FormPages[curPageNum - 1]}
+                {FormPages}
                 <Box display="flex" justifyContent="space-between" m="32px 0 0 auto" width="100%">
                   <Button
                     color="secondary"
