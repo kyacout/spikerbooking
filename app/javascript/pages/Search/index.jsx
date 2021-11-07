@@ -22,22 +22,34 @@ export const Search = () => {
   }
 
   const headerButtons = currentUser ? (
-    <Button color="primary" variant="contained" size="large" onClick={handleLogout}>
+    <Button
+      color="primary"
+      variant="contained"
+      size="large"
+      onClick={handleLogout}
+      sx={{ borderRadius: '75px', fontSize: '25px', fontWeight: 'bold' }}
+    >
       Logout
     </Button>
   ) : (
     <>
-      <Button color="secondary" variant="contained" size="large" onClick={() => (window.location = '/users/sign_in')}>
+      <Button
+        color="secondary"
+        variant="contained"
+        size="large"
+        onClick={() => (window.location = '/users/sign_in')}
+        sx={{ borderRadius: '75px', fontSize: '25px', fontWeight: 'bold', textTransform: 'none' }}
+      >
         Log in
       </Button>
       <Button
-        sx={{ ml: '25px' }}
         color="primary"
         variant="contained"
         size="large"
         onClick={() => (window.location = '/users/sign_up')}
+        sx={{ ml: '25px', borderRadius: '75px', fontSize: '25px', fontWeight: 'bold', textTransform: 'none' }}
       >
-        Sign up, It's free!
+        Sign up, It's Free!
       </Button>
     </>
   )
@@ -63,12 +75,12 @@ export const Search = () => {
           <span className={styles.h2}>for hard-hitting talent</span>
         </div>
         <Box display="flex" flexDirection="column" width="55%" m="80px auto auto auto">
-          <span className={styles.text}>Searching For Artist / Band</span>
+          <span className={styles.text}>Search for Artist / Band</span>
           <OutlinedInput
-            sx={{ bgcolor: 'white', borderRadius: '56px', mt: '13px' }}
+            sx={{ bgcolor: 'white', borderRadius: '56px', mt: '13px', fontSize: '25px' }}
             startAdornment={
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon style={{ fill: 'black', width: '40px', height: '40px' }} />
               </InputAdornment>
             }
             placeholder="City, State, or ZIP Code"
