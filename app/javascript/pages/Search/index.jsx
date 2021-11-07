@@ -27,7 +27,7 @@ export const Search = () => {
       variant="contained"
       size="large"
       onClick={handleLogout}
-      sx={{ borderRadius: '75px', fontSize: '25px', fontWeight: 'bold' }}
+      sx={{ borderRadius: '75px', fontSize: '25px', fontWeight: 'bold', textTransform: 'none' }}
     >
       Logout
     </Button>
