@@ -89,6 +89,7 @@ export const FormPage2 = ({ formik, visible }) => {
         name="unique_statement"
         label="Unique statement"
         placeholder="Enter your selling pitch, what makes you a unique live music artist"
+        maxLength={150}
       />
       <TextField
         formik={formik}
@@ -98,6 +99,7 @@ export const FormPage2 = ({ formik, visible }) => {
         placeholder="Enter a brief Artist / Band bio"
         multiline
         rows={3}
+        maxLength={1000}
       />
       <TextField
         formik={formik}
