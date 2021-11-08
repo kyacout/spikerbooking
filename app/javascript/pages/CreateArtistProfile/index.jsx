@@ -24,7 +24,7 @@ const validationSchema = yup.object({
   minimum_budget: yup.string().required('You have to enter your minimum budget'),
   artist_name: yup.string().required('Your artist / band name is required'),
   location: yup.string().required('Your Location is required'),
-  genre: yup.array().required('Please choose at least one genre'),
+  genres: yup.array().required('Please choose at least one genre'),
   unique_statement: yup.string().required('You have to enter a unique statement'),
   website: yup.string().url('Enter a valid URL for your website.'),
 })
@@ -47,7 +47,7 @@ export const CreateArtistProfile = () => {
       artist_name: '',
       location: '',
       zip_code: '',
-      genre: [],
+      genres: [],
       unique_statement: '',
       biography: '',
       other_venue_plays: '',
