@@ -4,7 +4,7 @@ import { MultiSelectInput } from '../../components/UILibrary/MultiSelectInput'
 
 import styles from './styles.module.scss'
 
-const genres = [
+const genresList = [
   "50's",
   "60's",
   "70's",
@@ -80,7 +80,7 @@ export const FormPage2 = ({ formik, visible }) => {
         name="genres"
         label="Genres (up to 5)"
         placeholder="Enter location as City, State"
-        listItems={genres}
+        listItems={genresList}
         required
       />
       <TextField
