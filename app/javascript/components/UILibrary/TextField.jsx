@@ -29,7 +29,9 @@ export const TextField = ({
         }}
         error={formik.touched[name] && Boolean(formik.errors[name])}
         helperText={
-          formik.errors[name] || (maxLength && `${formik.values[name].length}/${maxLength} characters`) || helperText
+          (formik.touched[name] && formik.errors[name]) ||
+          (maxLength && `${formik.values[name].length}/${maxLength} characters`) ||
+          helperText
         }
         sx={{
           m: '0 0 32px 0',

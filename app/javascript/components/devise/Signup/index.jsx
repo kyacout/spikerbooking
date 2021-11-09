@@ -78,7 +78,7 @@ const Signup = ({ token }) => {
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   error={formik.touched.email && Boolean(formik.errors.email)}
-                  helperText={formik.errors.email}
+                  helperText={formik.touched.email && formik.errors.email}
                   margin="normal"
                 />
                 <TextField
@@ -89,7 +89,7 @@ const Signup = ({ token }) => {
                   value={formik.values.password}
                   onChange={formik.handleChange}
                   error={formik.touched.password && Boolean(formik.errors.password)}
-                  helperText={formik.errors.password}
+                  helperText={formik.touched.password && formik.errors.password}
                   margin="normal"
                 />
                 <TextField
@@ -100,7 +100,7 @@ const Signup = ({ token }) => {
                   value={formik.values.confirm_password}
                   onChange={formik.handleChange}
                   error={formik.touched.confirm_password && Boolean(formik.errors.confirm_password)}
-                  helperText={formik.errors.confirm_password}
+                  helperText={formik.touched.confirm_password && formik.errors.confirm_password}
                   margin="normal"
                 />
                 <TextField
@@ -111,7 +111,7 @@ const Signup = ({ token }) => {
                   value={formik.values.current_type}
                   onChange={formik.handleChange}
                   error={formik.touched.current_type && Boolean(formik.errors.current_type)}
-                  helperText={formik.errors.current_type}
+                  helperText={formik.touched.current_type && formik.errors.current_type}
                   margin="normal"
                 >
                   {userTypes.map(option => (

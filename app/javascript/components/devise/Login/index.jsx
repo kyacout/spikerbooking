@@ -66,7 +66,7 @@ const Login = ({ token }) => {
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   error={formik.touched.email && Boolean(formik.errors.email)}
-                  helperText={formik.errors.email}
+                  helperText={formik.touched.email && formik.errors.email}
                   margin="normal"
                 />
                 <TextField
@@ -77,7 +77,7 @@ const Login = ({ token }) => {
                   value={formik.values.password}
                   onChange={formik.handleChange}
                   error={formik.touched.password && Boolean(formik.errors.password)}
-                  helperText={formik.errors.password}
+                  helperText={formik.touched.password && formik.errors.password}
                   margin="normal"
                 />
                 <Button color="primary" variant="contained" fullWidth size="large" type="submit" sx={{ mt: '32px' }}>

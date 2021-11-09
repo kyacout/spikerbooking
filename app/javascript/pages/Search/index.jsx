@@ -60,7 +60,7 @@ export const Search = () => {
           <Box width="327px" mr="20px">
             <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
           </Box>
-          <Box display="flex" justifyContent="space-between" width="665px">
+          <Box display="flex" justifyContent="space-between" width={currentUser ? '415px' : '665px'}>
             <a href="/" className={styles.bold}>
               About us
             </a>
