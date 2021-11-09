@@ -34,7 +34,7 @@ const NUM_OF_PAGES = 3
 export const CreateArtistProfile = () => {
   const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
   const { currentUser, token } = useContext(Context)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState({ isLoading: false, message: '' })
   const [curPageNum, setCurPageNum] = useState(1)
 
   const formik = useFormik({
@@ -89,13 +89,13 @@ export const CreateArtistProfile = () => {
     <FixedBackgroundHeaderFooter bgImg={imageURL('v1635338046/bg/artists_profile.jpg')}>
       <Backdrop
         sx={{ display: 'flex', flexDirection: 'column', color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
-        open={loading}
+        open={loading.isLoading}
       >
         <CircularProgress color="primary" />
-        Creating Profile ...
+        {loading.message}
       </Backdrop>
-      <Box display="flex" width="100vw">
-        <Box display="flex" flexDirection="column" m="58px auto auto">
+      <Box display="flex" width="100%">
+        <Box display="flex" flexDirection="column" m="58px auto auto" width="100%">
           <Box display="flex">
             <Box display="flex" flexDirection="column" className={styles.formContainer}>
               <Collapse in={errorAlert.show}>

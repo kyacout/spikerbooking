@@ -1,18 +1,28 @@
+.header {
+  margin: 85px auto 0 auto;
+  flex-direction: column;
+
+  @media only screen and (min-width: 1200px) {
+    margin: 85px 80px 0 160px;
+    flex-direction: row;
+  }
+}
+
 .bold {
-  font-size: 25px;
   font-weight: bold;
   line-height: 1.6;
   color: #fff;
   text-decoration: none;
-  margin-right: 50px;
+  margin: auto;
+  font-size: 1.2rem;
 }
 
 .text {
-  font-size: 25px;
   line-height: 1.6;
   color: #fff;
   text-decoration: none;
   margin-right: 50px;
+  font-size: 1.2rem;
 }
 
 .banner {
@@ -21,7 +31,7 @@
   text-align: center;
   color: #fff;
   text-transform: uppercase;
-  margin-top: 30px;
+  margin-top: 80px;
 
   .h1 {
     display: block;
@@ -34,5 +44,15 @@
     display: block;
     font-size: 35px;
     margin: 0;
+  }
+}
+
+.searchBarContainer {
+  margin: auto 60px;
+  width: calc(100% - 120px);
+
+  @media only screen and (min-width: 1200px) {
+    margin: auto;
+    width: 1080px;
   }
 }

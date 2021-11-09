@@ -3,8 +3,13 @@
   box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
   border: solid 1px #616161;
-  width: 1000px;
-  margin-bottom: 90px;
+  width: calc(100% - 120px);
+  margin: auto 60px 90px 60px;
+
+  @media only screen and (min-width: 1200px) {
+    width: 1080px;
+    margin: auto auto 90px auto;
+  }
 
   h1 {
     font-size: 27px;

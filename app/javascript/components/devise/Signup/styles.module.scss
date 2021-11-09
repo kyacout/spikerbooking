@@ -7,8 +7,12 @@
 .column {
   display: flex;
   flex-direction: column;
-  margin: 58px 114px auto auto;
+  margin: auto;
   max-height: 100vh;
+
+  @media only screen and (min-width: 1200px) {
+    margin: 58px 114px auto auto;
+  }
 }
 
 .row {

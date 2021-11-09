@@ -77,7 +77,7 @@ export const FormPage2 = ({ formik, visible }) => {
       <MultiSelectInput
         formik={formik}
         id="edit-artist-genre"
-        name="genre"
+        name="genres"
         label="Genres (up to 5)"
         placeholder="Enter location as City, State"
         listItems={genres}

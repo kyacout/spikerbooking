@@ -27,7 +27,7 @@ export const Search = () => {
       variant="contained"
       size="large"
       onClick={handleLogout}
-      sx={{ borderRadius: '75px', fontSize: '25px', fontWeight: 'bold', textTransform: 'none' }}
+      sx={{ borderRadius: '75px', fontWeight: 'bold', textTransform: 'none', fontSize: '1.2rem' }}
     >
       Logout
     </Button>
@@ -38,7 +38,7 @@ export const Search = () => {
         variant="contained"
         size="large"
         onClick={() => (window.location = '/users/sign_in')}
-        sx={{ borderRadius: '75px', fontSize: '25px', fontWeight: 'bold', textTransform: 'none' }}
+        sx={{ m: 'auto', borderRadius: '75px', fontWeight: 'bold', textTransform: 'none', fontSize: '1.2rem' }}
       >
         Log in
       </Button>
@@ -47,7 +47,7 @@ export const Search = () => {
         variant="contained"
         size="large"
         onClick={() => (window.location = '/users/sign_up')}
-        sx={{ ml: '25px', borderRadius: '75px', fontSize: '25px', fontWeight: 'bold', textTransform: 'none' }}
+        sx={{ m: 'auto', borderRadius: '75px', fontWeight: 'bold', textTransform: 'none', fontSize: '1.2rem' }}
       >
         Sign up, It's Free!
       </Button>
@@ -56,11 +56,11 @@ export const Search = () => {
   return (
     <FixedBackground bgImg={imageURL('v1634803096/bg/search.jpg')}>
       <Box display="flex" flexDirection="column" height="100%">
-        <Box display="flex" alignItems="center" justifyContent="space-between" m="85px 80px 0 160px">
-          <Box width="327px">
+        <Box display="flex" alignItems="center" justifyContent="space-between" className={styles.header}>
+          <Box width="327px" mr="20px">
             <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
           </Box>
-          <Box>
+          <Box display="flex" justifyContent="space-between" width="665px">
             <a href="/" className={styles.bold}>
               About us
             </a>
@@ -74,10 +74,10 @@ export const Search = () => {
           <span className={styles.h1}>Easy Booking</span>
           <span className={styles.h2}>for hard-hitting talent</span>
         </div>
-        <Box display="flex" flexDirection="column" width="55%" m="80px auto auto auto">
+        <Box display="flex" flexDirection="column" className={styles.searchBarContainer}>
           <span className={styles.text}>Search for Artist / Band</span>
           <OutlinedInput
-            sx={{ bgcolor: 'white', borderRadius: '56px', mt: '13px', fontSize: '25px' }}
+            sx={{ bgcolor: 'white', borderRadius: '56px', mt: '13px', fontSize: '1.2rem' }}
             startAdornment={
               <InputAdornment position="start">
                 <SearchIcon style={{ fill: 'black', width: '40px', height: '40px' }} />

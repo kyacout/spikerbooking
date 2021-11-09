@@ -73,49 +73,45 @@ const Signup = ({ token }) => {
                 </Collapse>
                 <TextField
                   fullWidth
-                  id="email"
                   name="email"
                   label="Email"
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   error={formik.touched.email && Boolean(formik.errors.email)}
-                  helperText={formik.touched.email && formik.errors.email}
+                  helperText={formik.errors.email}
                   margin="normal"
                 />
                 <TextField
                   fullWidth
-                  id="password"
                   name="password"
                   label="Password"
                   type="password"
                   value={formik.values.password}
                   onChange={formik.handleChange}
                   error={formik.touched.password && Boolean(formik.errors.password)}
-                  helperText={formik.touched.password && formik.errors.password}
+                  helperText={formik.errors.password}
                   margin="normal"
                 />
                 <TextField
                   fullWidth
-                  id="confirm_password"
                   name="confirm_password"
                   label="Confirm Password"
                   type="password"
                   value={formik.values.confirm_password}
                   onChange={formik.handleChange}
                   error={formik.touched.confirm_password && Boolean(formik.errors.confirm_password)}
-                  helperText={formik.touched.confirm_password && formik.errors.confirm_password}
+                  helperText={formik.errors.confirm_password}
                   margin="normal"
                 />
                 <TextField
                   fullWidth
-                  id="current_type"
                   name="current_type"
                   label="Are you joining as an"
                   select
                   value={formik.values.current_type}
                   onChange={formik.handleChange}
                   error={formik.touched.current_type && Boolean(formik.errors.current_type)}
-                  helperText={formik.touched.current_type && formik.errors.current_type}
+                  helperText={formik.errors.current_type}
                   margin="normal"
                 >
                   {userTypes.map(option => (
