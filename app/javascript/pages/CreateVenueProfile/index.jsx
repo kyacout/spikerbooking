@@ -9,15 +9,15 @@ import AlertTitle from '@mui/material/AlertTitle'
 import Box from '@mui/material/Box'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
-import { TextField } from '../../components/UILibrary/TextField'
-import { SingleSelectInput } from '../../components/UILibrary/SingleSelectInput'
-import { UploadImage } from '../../components/UILibrary/UploadImage'
 
 import styles from './styles.module.scss'
 import { Context } from '../../components/App'
 import { FixedBackgroundHeaderFooter } from '../../layouts/FixedBackgroundHeaderFooter'
 import { imageURL } from '../../helpers/Cloudinary'
 import { postReq } from '../../helpers/HTTPRequest'
+import { TextField } from '../../components/UILibrary/TextField'
+import { SingleSelectInput } from '../../components/UILibrary/SingleSelectInput'
+import { UploadImage } from '../../components/UILibrary/UploadImage'
 
 const validationSchema = yup.object({
   name: yup.string().required("The venue's name is required"),
