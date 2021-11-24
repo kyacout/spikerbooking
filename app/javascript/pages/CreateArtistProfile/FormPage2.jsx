@@ -71,7 +71,7 @@ export const FormPage2 = ({ formik, visible }) => {
         id="edit-artist-zip_code"
         name="zip_code"
         label="Zip code"
-        placeholder="Enter location as City, State"
+        placeholder="Enter your zip code"
         required
       />
       <MultiSelectInput
@@ -105,7 +105,7 @@ export const FormPage2 = ({ formik, visible }) => {
         formik={formik}
         id="edit-artist-other_venue_plays"
         name="other_venue_plays"
-        label="Other venue plays"
+        label="Other venue played"
         placeholder="Enter venues separated by a comma"
         multiline
         rows={2}

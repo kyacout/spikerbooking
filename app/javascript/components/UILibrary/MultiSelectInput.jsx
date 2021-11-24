@@ -27,7 +27,7 @@ export const MultiSelectInput = ({ formik, name, label, id, listItems, required 
       <Select
         fullWidth
         id={id}
-        name="genre"
+        name={name}
         multiple
         value={formik.values[name]}
         onChange={e => {
