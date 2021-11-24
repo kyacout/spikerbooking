@@ -35,7 +35,7 @@ img.bg {
   pointer-events: none;
 
   img {
-    object-fit: cover;
+    object-fit: fill;
   }
 }
 
@@ -43,5 +43,4 @@ img.bg {
   height: 100vh;
   max-height: 100vh;
   overflow: auto;
-  padding: 70px 40px 30px 40px;
 }
