@@ -1,0 +1,33 @@
+.mainContainer {
+  width: 100%;
+  background-color: #f3f3f3;
+  padding: 64px;
+}
+
+.artistContainer {
+  width: 351px;
+  height: 520px;
+  margin: 31px 18px 67px 0;
+  padding: 20px 26px 25.6px 20px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #dadbe6;
+  background-color: #fff;
+}
+
+.imageContainer {
+  width: 300px;
+  height: 300px;
+}
+
+.artistName {
+  font-size: 15px;
+  font-weight: bold;
+  color: #d32531;
+}
+
+.text {
+  display: flex;
+  font-size: 12px;
+  line-height: 1.67;
+  margin-left: 5px;
+}

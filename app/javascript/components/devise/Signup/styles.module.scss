@@ -1,7 +1,11 @@
 .mainContent {
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  padding: 70px 15px 30px 15px;
+
+  @media screen and (min-width: 600px) {
+    padding: 70px 40px 30px 40px;
+  }
 }
 
 .column {
@@ -9,6 +13,7 @@
   flex-direction: column;
   margin: auto;
   max-height: 100vh;
+  max-width: 100%;
 
   @media only screen and (min-width: 1200px) {
     margin: 58px 114px auto auto;
@@ -34,7 +39,11 @@
   background-color: #fff;
   margin-top: 33px;
   margin-bottom: 90px;
-  width: 706px;
+  max-width: 100%;
+
+  @media only screen and (min-width: 768px) {
+    width: 706px;
+  }
 
   .formHeading {
     display: block;
@@ -53,7 +62,11 @@
 }
 
 .form {
-  padding: 0 60px 34px 60px;
+  padding: 0 30px 34px 30px;
+
+  @media only screen and (min-width: 768px) {
+    padding: 0 60px 34px 60px;
+  }
 }
 
 .termsAndConditions {
@@ -71,17 +84,25 @@
   justify-content: space-between;
   width: 100%;
   height: 97px;
-  padding: 20px 65px;
+  padding: 20px 15px;
   box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.16);
   border: solid 1px #e4e4e4;
   background-color: rgb(203, 203, 203);
+
+  @media only screen and (min-width: 768px) {
+    padding: 0 60px 34px 60px;
+  }
 }
 
 .alreadyAMember {
   margin: auto 0;
-  font-size: 23px;
+  font-size: 12px;
   font-weight: bold;
   line-height: 2.83;
   letter-spacing: 0.23px;
   color: rgb(106, 106, 106);
+
+  @media only screen and (min-width: 768px) {
+    padding: 0 60px 34px 60px;
+  }
 }

@@ -14,7 +14,13 @@ export const Header = () => {
         <img src={imageURL('v1635321933/logo_colored.jpg')} alt="logo" />
       </div>
       <div className={styles.buttonsContainer}>
-        <Button color="secondary" variant="contained" size="large" onClick={() => history.push('/')}>
+        <Button
+          color="secondary"
+          variant="contained"
+          size="large"
+          onClick={() => history.push('/')}
+          sx={{ borderRadius: '75px', textTransform: 'none' }}
+        >
           Home
         </Button>
       </div>

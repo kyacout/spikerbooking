@@ -13,7 +13,7 @@ import { Header } from './Header'
 export const Search = () => {
   return (
     <FixedBackground bgImg={imageURL('v1634803096/bg/search.jpg')}>
-      <Box>
+      <Box className={styles.pageContainer}>
         <Header />
         <Box className={styles.banner}>
           <span className={styles.h1}>Easy Booking</span>

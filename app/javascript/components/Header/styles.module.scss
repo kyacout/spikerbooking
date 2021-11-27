@@ -5,13 +5,14 @@
   box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.16);
   border: solid 1px #a0a0a0;
   background-color: #fff;
+  padding: 0 120px 0 60px;
 }
 
 .logo {
   height: 100px;
-  margin: auto;
+  margin: auto auto auto 0;
 }
 
 .buttonsContainer {
-  margin: auto;
+  margin: auto 0 auto auto;
 }

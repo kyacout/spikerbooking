@@ -33,7 +33,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :cloudinary
 
   # Allow generating absolute urls with routing url helpers
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'

@@ -6,17 +6,12 @@ import CloseIcon from '@mui/icons-material/Close'
 import useTheme from '@mui/material/styles/useTheme'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import IconButton from '@mui/material/IconButton'
-import styled from '@mui/material/styles/styled'
 
 import styles from './styles.module.scss'
 import { imageURL } from '../../helpers/Cloudinary'
 import { HeaderButtons } from './HeaderButtons'
 import { Context } from '../../components/App'
 import { Menu } from './Menu'
-
-const HeaderContainer = styled(Grid)`
-  margin: 0 auto 0 auto;
-`
 
 export const Header = () => {
   const { currentUser, token } = useContext(Context)
