@@ -3,12 +3,18 @@
   flex-direction: row;
   width: 100%;
   margin: 0 auto;
+  padding: 70px 15px 30px 15px;
+
+  @media screen and (min-width: 600px) {
+    padding: 70px 40px 30px 40px;
+  }
 }
 
 .column {
   display: flex;
   flex-direction: column;
   margin: 58px auto auto;
+  max-width: 100%;
 }
 
 .row {
@@ -31,7 +37,12 @@
   margin: 33px auto auto auto;
   max-width: 706px;
 
+  @media only screen and (min-width: 768px) {
+    width: 706px;
+  }
+
   span {
+    // display: block;
     font-size: 27px;
     line-height: 1.74;
     letter-spacing: 0.27px;
@@ -42,10 +53,15 @@
     &.red {
       color: #d32531;
     }
+
+    @media screen and (max-width: 600px) {
+      display: block;
+      text-align: center;
+    }
   }
 
   .form {
-    padding: 0 60px 60px 60px;
+    padding: 0 30px 34px 30px;
   }
 }
 
