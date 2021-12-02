@@ -7,9 +7,10 @@ import { FixedBackgroundHeaderFooter } from '../../layouts/FixedBackgroundHeader
 import { ArtistContainer } from './ArtistContainer'
 import { getReq } from '../../helpers/HTTPRequest'
 import styles from './styles.module.scss'
+import { Loading } from '../../components/Loading'
 
 export const ArtistsList = () => {
-  const [artistProfiles, setArtistProfiles] = useState([])
+  const [artistProfiles, setArtistProfiles] = useState()
 
   useEffect(() => {
     getReq('/api/v1/artist_profiles').then(({ errors, data }) => {
@@ -19,12 +20,17 @@ export const ArtistsList = () => {
     })
   }, [])
 
-  console.log(artistProfiles)
+  if (!artistProfiles) {
+    return <Loading loading />
+  }
+
   return (
     <FixedBackgroundHeaderFooter>
       <Box className={styles.mainContainer}>
         {`${artistProfiles.length} results`}
-        <Grid container>{map(artistProfiles, ArtistContainer)}</Grid>
+        <Grid container m="auto">
+          {map(artistProfiles, ArtistContainer)}
+        </Grid>
       </Box>
     </FixedBackgroundHeaderFooter>
   )

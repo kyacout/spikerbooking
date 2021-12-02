@@ -2,12 +2,15 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import MusicNoteRoundedIcon from '@mui/icons-material/MusicNoteRounded'
+import { useHistory } from 'react-router-dom'
 
 import styles from './styles.module.scss'
 import { imageURL } from '../../helpers/Cloudinary'
 import Button from '@mui/material/Button'
 
 export const ArtistContainer = ({ id, artist_name, location, profile_photo, zip_code }) => {
+  const history = useHistory()
+
   return (
     <Box className={styles.artistContainer} key={id}>
       <Box className={styles.imageContainer}>
@@ -33,6 +36,7 @@ export const ArtistContainer = ({ id, artist_name, location, profile_photo, zip_
           variant="contained"
           size="small"
           sx={{ borderRadius: '75px', textTransform: 'none', width: '130px', mt: '25px' }}
+          onClick={() => history.push(`artist/${id}`)}
         >
           See more
         </Button>

@@ -88,7 +88,7 @@ if ArtistProfile.where(user: user).first.blank?
     unique_statement: "Soul rocker-The fabulous one woman musical show-playing originals and covering only the good
       songs, from Johnny Cash to Bob Marley",
     biography: "The fabulous one woman musical show-playing originals and covering only the good songs, from Johnny Cash
-       to Bob Marley",
+       to Bob Marley.",
     facebook_url: 'https://www.facebook.com/WadeBOfficial',
     instagram_url: 'https://www.instagram.com/wadebmusic',
     spotify_url: 'https://open.spotify.com/artist/6SRngj3jZv4ZH2HDHWMrdQ?si=S-Dj3QeXSXuIV7RYZyw29g',

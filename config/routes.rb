@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'user/has_profile', to: 'users#profile?'
-      resources 'venue_profiles', only: [:create]
-      resources 'artist_profiles', only: [:index]
+      resources 'venue_profiles', only: %i[create index show]
+      resources 'artist_profiles', only: %i[create index show]
     end
   end
   devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }

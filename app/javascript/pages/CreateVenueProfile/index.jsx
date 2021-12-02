@@ -66,7 +66,7 @@ export const CreateVenueProfile = () => {
         if (error) {
           console.error(error)
         } else {
-          postReq('/api/v1/venue_profile', { ...values, photo: blob.signed_id }, token)
+          postReq('/api/v1/venue_profiles', { ...values, photo: blob.signed_id }, token)
             .then(({ errors, _data }) => {
               setLoading(false)
               if (errors) {

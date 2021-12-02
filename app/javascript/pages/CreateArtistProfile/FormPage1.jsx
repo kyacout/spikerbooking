@@ -49,8 +49,8 @@ export const FormPage1 = ({ formik, email, visible }) => {
       />
       <UploadImage
         formik={formik}
-        id="edit-artist-profile_picture"
-        name="profile_picture"
+        id="edit-artist-profile_photo"
+        name="profile_photo"
         label="Upload profile picture"
         buttonLabel="Select image"
         photoPreview={photoPreview}

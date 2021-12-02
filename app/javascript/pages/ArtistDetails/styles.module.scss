@@ -1,0 +1,61 @@
+.mainContainer {
+  width: 100%;
+  background-color: #f3f3f3;
+  padding: 64px;
+}
+
+.content {
+  width: 100%;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 1.33;
+  color: #de0017;
+}
+
+.profileImageBox {
+  flex: 0 1 442px;
+  display: flex;
+  flex-direction: column;
+  padding: 45px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #dadbe6;
+  background-color: #fff;
+}
+
+.biographyBox {
+  flex: 1 0 50%;
+  margin-left: 77px;
+  height: 500px;
+
+  .text {
+    height: 80%;
+    font-size: 25px;
+    line-height: 2;
+    color: #000;
+    overflow-x: scroll;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+}
+
+.infoBox {
+  flex: 0 1 442px;
+  padding: 0 32px 50px 20px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #dadbe6;
+  background-color: #fff;
+  margin-top: 40px;
+}
+
+.imagesBox {
+  flex: 1 0 50%;
+  margin-top: 40px;
+  margin-left: 77px;
+  max-height: 500px;
+  overflow-x: scroll;
+}

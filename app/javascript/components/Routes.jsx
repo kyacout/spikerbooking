@@ -7,6 +7,7 @@ import { Search } from '../pages/Search'
 import { CreateVenueProfile } from '../pages/CreateVenueProfile'
 import { CreateArtistProfile } from '../pages/CreateArtistProfile'
 import { ArtistsList } from '../pages/ArtistsList'
+import { ArtistDetails } from '../pages/ArtistDetails'
 
 const AuthenticatedRoutes = (
   <Switch>
@@ -14,6 +15,7 @@ const AuthenticatedRoutes = (
     <Route exact path="/create-venue-profile" component={CreateVenueProfile} />
     <Route exact path="/create-artist-profile" component={CreateArtistProfile} />
     <Route exact path="/artists" component={ArtistsList} />
+    <Route exact path="/artist/:id" component={ArtistDetails} />
   </Switch>
 )
 

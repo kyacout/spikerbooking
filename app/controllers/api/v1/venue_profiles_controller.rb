@@ -16,6 +16,12 @@ module Api
         end
       end
 
+      # GET /api/v1/venue_profiles or api/v1/venue_profiles.json
+      def index
+        venues = VenueProfile.all
+        render json: venues
+      end
+
       private
 
       # Only allow a list of trusted parameters through.

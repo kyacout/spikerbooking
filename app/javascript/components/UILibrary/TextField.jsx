@@ -23,9 +23,7 @@ export const TextField = ({
         name={name}
         value={formik.values[name]}
         onChange={e => {
-          if (!maxLength || formik.values[name].length < maxLength) {
-            formik.handleChange(e)
-          }
+          formik.setFieldValue(name, maxLength ? e.target.value.substring(0, maxLength) : e.target.value)
         }}
         error={formik.touched[name] && Boolean(formik.errors[name])}
         helperText={
