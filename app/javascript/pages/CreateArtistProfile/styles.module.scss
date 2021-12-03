@@ -46,7 +46,6 @@
     }
   }
 
-
   label {
     min-width: 100px;
     font-size: 18px;
@@ -57,7 +56,11 @@
     }
   }
 
-  label[for='edit-artist-profile_picture'] {
+  label[for='edit-artist-profile_picture'],
+  label[for='edit-artist-photo1'],
+  label[for='edit-artist-photo2'],
+  label[for='edit-artist-photo3'],
+  label[for='edit-artist-logo'] {
     max-width: 100px;
 
     + div {
@@ -76,7 +79,7 @@
         }
       }
 
-      div{
+      div {
         display: flex;
         align-self: center;
       }
@@ -92,10 +95,35 @@
     }
   }
 
+  label[for='edit-artist-press_sheet'] {
+    + div {
+      justify-content: end;
+
+      label {
+        margin: 0 0 20px 0;
+        max-width: 78%;
+        padding: 6px;
+        font-size: 12px;
+
+        @media only screen and (min-width: 769px) {
+          font-size: 18px;
+          padding: 10px;
+        }
+      }
+      div {
+        display: none;
+
+        @media only screen and (min-width: 769px) {
+          display: block;
+        }
+      }
+    }
+  }
+
   input {
     height: 0.5rem;
 
-    & [name='minimum_budget']{
+    & [name='minimum_budget'] {
       padding: 8px;
     }
 
