@@ -25,6 +25,9 @@ export const InputLabel = ({ htmlFor, label, mt = '10px', required }) => {
           fontWeight: '600',
           fontSize: '25px',
         },
+        fontSize: (theme) => ({
+          [theme.breakpoints.down('md')]:{fontSize: '20px'}
+        }),
       }}
     >
       {label && (

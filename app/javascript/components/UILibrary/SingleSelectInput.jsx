@@ -7,7 +7,12 @@ import { InputLabel } from './InputLabel'
 
 export const SingleSelectInput = ({ id, name, formik, label, placeholder = '', required = false, listItems }) => {
   return (
-    <FormControl sx={{ display: 'flex', flexDirection: 'row' }}>
+    <FormControl sx={{ display: 'flex', flexDirection: (theme) => ({
+            [theme.breakpoints.up('md')]: {
+              flexDirection: 'row'
+            }
+          })
+      }}>
       <InputLabel htmlFor={id} label={label} required={required} />
       <TextField
         fullWidth

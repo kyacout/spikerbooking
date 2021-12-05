@@ -4,20 +4,26 @@
   background-color: #fff;
   border: solid 1px #616161;
   width: calc(100% - 120px);
-  margin: auto 60px 90px 60px;
+  margin: 0 auto;
 
   @media only screen and (min-width: 1200px) {
+    margin: auto 60px 90px 60px;
     width: 1080px;
     margin: auto auto 90px auto;
   }
 
   h1 {
-    font-size: 27px;
-    line-height: 1.74;
-    letter-spacing: 0.27px;
+    font-size: 22px;
     color: #d32531;
     margin: 0 auto;
     font-weight: bold;
+    text-align: center;
+
+    @media only screen and (min-width: 1200px) {
+      font-size: 27px;
+      line-height: 1.74;
+      letter-spacing: 0.27px;
+    }
   }
 
   span {
@@ -25,12 +31,22 @@
     line-height: 1.94;
     text-align: center;
     color: #000;
-    margin: 0 65px;
+    margin: 0 25px;
+
+    @media only screen and (min-width: 1200px) {
+      font-size: 18px;
+    }
   }
 
   .form {
-    padding: 0 60px 60px 60px;
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
+
+    label {
+      font-size: 20px;
+
+      @media only screen and (min-width: 1200px) {
+        font-size: 25px;
+      }
+    }
   }
 }

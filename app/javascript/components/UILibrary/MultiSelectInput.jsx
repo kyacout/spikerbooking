@@ -22,7 +22,11 @@ export const MultiSelectInput = ({ formik, name, label, id, listItems, required 
   }
 
   return (
-    <FormControl sx={{ display: 'flex', flexDirection: 'row' }}>
+    <FormControl sx={{ display: 'flex', flexDirection: (theme) => ({
+      [theme.breakpoints.up('md')]: {
+        flexDirection: 'row'
+      }
+    }) }}>
       <InputLabel htmlFor={id} label={label} required={required} />
       <Select
         fullWidth

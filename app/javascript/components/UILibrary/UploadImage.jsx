@@ -19,10 +19,20 @@ export const UploadImage = ({
 }) => {
   return (
     <FormControl
-      sx={{ display: 'flex', flexDirection: 'row', textAlign: 'center', justifyContent: 'space-between', mb: '32px' }}
+      sx={{ display: 'flex', flexDirection: (theme) => ({
+        [theme.breakpoints.up('md')]: {
+          flexDirection: 'row'
+        }
+      }),
+      textAlign: 'center', justifyContent: 'space-between', mb: '32px' }}
     >
       <InputLabel htmlFor={id} label={label} mt="20px" required={required} />
-      <Box display="flex" flex="1">
+      <Box  sx={{ display: 'flex', flexDirection: (theme) => ({
+        [theme.breakpoints.down('md')]: {
+          flexDirection: 'column'
+        },
+        width: '100%'
+      })}}>
         <Button
           fullWidth
           color="secondary"
@@ -51,7 +61,7 @@ export const UploadImage = ({
             }}
           />
         </Button>
-        <Avatar size="md" src={photoPreview} sx={{ height: '80px', width: '80px' }}>
+        <Avatar size="md" src={photoPreview} sx={{ height: '80px', width: '80px', mt: '20px', alignSelf: 'center' }}>
           <InsertPhotoIcon />
         </Avatar>
       </Box>
