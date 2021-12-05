@@ -56,88 +56,12 @@
     }
   }
 
-  label[for='edit-artist-profile_picture'],
-  label[for='edit-artist-photo1'],
-  label[for='edit-artist-photo2'],
-  label[for='edit-artist-photo3'],
-  label[for='edit-artist-logo'] {
-    max-width: 100px;
-
-    + div {
-      flex-direction: column;
-      align-items: end;
-
-      label {
-        margin: 0 0 20px 0;
-        max-width: 78%;
-        padding: 6px;
-        font-size: 12px;
-
-        @media only screen and (min-width: 769px) {
-          font-size: 18px;
-          padding: 10px;
-        }
-      }
-
-      div {
-        display: flex;
-        align-self: center;
-      }
-
-      @media only screen and (min-width: 769px) {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-
-    @media only screen and (min-width: 769px) {
-      max-width: 225px;
-    }
-  }
-
-  label[for='edit-artist-press_sheet'] {
-    + div {
-      justify-content: end;
-
-      label {
-        margin: 0 0 20px 0;
-        max-width: 78%;
-        padding: 6px;
-        font-size: 12px;
-
-        @media only screen and (min-width: 769px) {
-          font-size: 18px;
-          padding: 10px;
-        }
-      }
-      div {
-        display: none;
-
-        @media only screen and (min-width: 769px) {
-          display: block;
-        }
-      }
-    }
-  }
-
-  input {
-    height: 0.5rem;
-
-    & [name='minimum_budget'] {
-      padding: 8px;
-    }
-
-    @media only screen and (min-width: 769px) {
-      height: 1.5rem;
-    }
-  }
-
   button {
     width: 80px;
-    padding: 0;
+    padding: 5px;
 
     @media only screen and (min-width: 769px) {
-      padding: 10px 22px;
+      padding: 15px 22px;
     }
   }
 }
