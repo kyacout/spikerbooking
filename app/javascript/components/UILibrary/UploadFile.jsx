@@ -9,12 +9,17 @@ import TextField from '@mui/material/TextField'
 export const UploadFile = ({ id, name, formik, label, buttonLabel, required = false }) => {
   return (
     <FormControl
-      sx={{ display: 'flex', flexDirection: (theme) => ({
-        [theme.breakpoints.up('md')]: {
-          flexDirection: 'row'
-        }
-      }),
-      textAlign: 'center', justifyContent: 'space-between', mb: '32px' }}
+      sx={{
+        display: 'flex',
+        flexDirection: theme => ({
+          [theme.breakpoints.up('md')]: {
+            flexDirection: 'row',
+          },
+        }),
+        textAlign: 'center',
+        justifyContent: 'space-between',
+        mb: '32px',
+      }}
     >
       <InputLabel htmlFor={id} label={label} mt="20px" required={required} />
       <Box display="flex" textAlign="center" mt="16px" mb="8px" flex="1">

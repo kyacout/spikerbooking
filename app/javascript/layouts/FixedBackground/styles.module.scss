@@ -20,9 +20,10 @@ img.bg {
   background-color: #7a071c;
   pointer-events: none;
 
-  @media screen and (max-width: 1024px) { /* Specific to this particular image */
+  @media screen and (max-width: 1024px) {
+    /* Specific to this particular image */
     left: 50%;
-    margin-left: -512px;   /* 50% */
+    margin-left: -512px; /* 50% */
   }
 }
 

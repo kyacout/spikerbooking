@@ -19,20 +19,30 @@ export const UploadImage = ({
 }) => {
   return (
     <FormControl
-      sx={{ display: 'flex', flexDirection: (theme) => ({
-        [theme.breakpoints.up('md')]: {
-          flexDirection: 'row'
-        }
-      }),
-      textAlign: 'center', justifyContent: 'space-between', mb: '32px' }}
+      sx={{
+        display: 'flex',
+        flexDirection: theme => ({
+          [theme.breakpoints.up('md')]: {
+            flexDirection: 'row',
+          },
+        }),
+        textAlign: 'center',
+        justifyContent: 'space-between',
+        mb: '32px',
+      }}
     >
       <InputLabel htmlFor={id} label={label} mt="20px" required={required} />
-      <Box  sx={{ display: 'flex', flexDirection: (theme) => ({
-        [theme.breakpoints.down('md')]: {
-          flexDirection: 'column'
-        },
-        width: '100%'
-      })}}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: theme => ({
+            [theme.breakpoints.down('md')]: {
+              flexDirection: 'column',
+            },
+            width: '100%',
+          }),
+        }}
+      >
         <Button
           fullWidth
           color="secondary"

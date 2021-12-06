@@ -15,12 +15,16 @@ export const TextField = ({
   ...props
 }) => {
   return (
-    <FormControl sx={{ display: 'flex', flexDirection: (theme) => ({
+    <FormControl
+      sx={{
+        display: 'flex',
+        flexDirection: theme => ({
           [theme.breakpoints.up('md')]: {
-            flexDirection: 'row'
-          }
-        })
-     }}>
+            flexDirection: 'row',
+          },
+        }),
+      }}
+    >
       <InputLabel htmlFor={id} label={label} required={required} />
       <MUITextField
         fullWidth
