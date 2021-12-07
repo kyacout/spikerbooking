@@ -22,6 +22,12 @@ module Api
         render json: venues
       end
 
+      # GET /api/v1/venue_profile/{id} or api/v1/venue_profile/{id}.json
+      def show
+        venue = VenueProfile.find(params[:id])
+        render json: venue
+      end
+
       private
 
       # Only allow a list of trusted parameters through.
