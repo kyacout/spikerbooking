@@ -71,13 +71,13 @@ export const CreateArtistProfile = () => {
           console.error(error)
         } else {
           postReq('/api/v1/artist_profiles', { ...values, profile_photo: blob.signed_id }, token)
-            .then(({ errors, _data }) => {
+            .then(({ errors, data }) => {
               setLoading(false)
               if (errors) {
                 const { title, detail: message } = errors[0]
                 setErrorAlert({ show: true, title, message })
               } else {
-                window.location.replace('/')
+                window.location.replace(`/artist/${data.id}`)
               }
             })
             .catch(e => console.error(e))
