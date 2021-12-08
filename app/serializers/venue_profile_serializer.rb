@@ -3,13 +3,14 @@
 class VenueProfileSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :name, :photo
+  attributes :id, :name, :photo, :location, :type, :website, :capacity, :sound_equipment, :host_music_frequency,
+             :description, :zip_code
 
   def photo
-    return unless object.profile_photo.attached?
+    return unless object.photo.attached?
 
     Cloudinary::Utils.cloudinary_url(
-      "#{Rails.application.credentials.dig(:cloudinary, :folder)}/#{object.profile_photo.key}"
+      "#{Rails.application.credentials.dig(:cloudinary, :folder)}/#{object.photo.key}"
     )
   end
 end

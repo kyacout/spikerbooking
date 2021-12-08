@@ -22,7 +22,7 @@ module Api
         render json: venues
       end
 
-      # GET /api/v1/venue_profile/{id} or api/v1/venue_profile/{id}.json
+      # GET /api/v1/venue_profiles/{id} or api/v1/venue_profiles/{id}.json
       def show
         venue = VenueProfile.find(params[:id])
         render json: venue
@@ -32,8 +32,8 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def venue_profile_params
-        params.permit(:name, :location, :type, :website, :capacity, :sound_equipment, :host_music_frequency,
-                      :description, :photo)
+        params.permit(:name, :location, :venue_type, :website, :capacity, :sound_equipment, :music_host_frequency,
+                      :description, :photo, :venue_profile)
       end
     end
   end
