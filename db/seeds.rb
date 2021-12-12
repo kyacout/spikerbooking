@@ -44,8 +44,8 @@ if ArtistProfile.where(user: user).first.blank?
   artist_profile = ArtistProfile.create(
     user: user, first_name: 'Lara', last_name: 'Bell', minimum_budget: '$200-$299', artist_name: 'Lara Bell',
     location: 'Chicago, IL', genres: %w[Acoustic Country Folk Rock Pop],
-    unique_statement: "Singer/songwriter and professional actress. Audiences often mention how expressive she is onstage,
-    and how her musical theatre training shines through when entertaining a crowd.",
+    unique_statement: "Singer/songwriter and professional actress. Audiences often mention how expressive she is
+    onstage, and how her musical theatre training shines through when entertaining a crowd.",
     biography: "Country artist Lara Bell is a singer/songwriter from the northern Illinois area. She was born and raised
     with southern inspired roots, and since she was 16 years old, has performed hundreds of live shows between
     Chicagoland and Southern WI at various well known venues. (The RocHaus, Uncommom Ground, The Raue Center for the

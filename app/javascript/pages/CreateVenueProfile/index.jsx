@@ -54,7 +54,7 @@ export const CreateVenueProfile = () => {
       website: '',
       capacity: '',
       sound_equipment: '',
-      music_host_frequency: '',
+      host_music_frequency: '',
       description: '',
       photo: '',
     },
@@ -67,13 +67,13 @@ export const CreateVenueProfile = () => {
           console.error(error)
         } else {
           postReq('/api/v1/venue_profiles', { ...values, photo: blob.signed_id }, token)
-            .then(({ errors, _data }) => {
+            .then(({ errors, data }) => {
               setLoading(false)
               if (errors) {
                 const { title, detail: message } = errors[0]
                 setErrorAlert({ show: true, title, message })
               } else {
-                window.location.replace('/')
+                window.location.replace(`/venues/${data.id}`)
               }
             })
             .catch(e => console.error(e))
@@ -96,7 +96,7 @@ export const CreateVenueProfile = () => {
           <Box display="flex">
             <Box display="flex" flexDirection="column" className={styles.formContainer}>
               <h1>Welcome to Spiker Booking Family!</h1>
-              <span>
+              <span className={styles.headerText}>
                 Right On! You're now a Spiker Booking Member! The painless way to book music. Take a Few Moments to fill
                 in your venue profile. It will help artist determine if you are a good match or come back later.
               </span>
@@ -107,8 +107,8 @@ export const CreateVenueProfile = () => {
                     {errorAlert.message}
                   </Alert>
                 </Collapse>
-                <TextField formik={formik} id="edit-venue-name" name="name" label="Venue Name" required />
-                <TextField formik={formik} id="edit-venue-location" name="location" label="Location" required />
+                <TextField formik={formik} id="edit-venue-name" name="name" label="Venue Name" placeholder="Venue Name" required />
+                <TextField formik={formik} id="edit-venue-location" name="location" label="Location" placeholder="State, City" required />
                 <SingleSelectInput
                   id="edit-venue-type"
                   formik={formik}
@@ -116,13 +116,14 @@ export const CreateVenueProfile = () => {
                   label="Venue Type"
                   listItems={venueTypes}
                 />
-                <TextField formik={formik} id="edit-venue-website" name="website" label="Website" />
+                <TextField formik={formik} id="edit-venue-website" name="website" placeholder="Website" label="Website" />
                 <SingleSelectInput
                   formik={formik}
                   id="edit-venue-capacity"
                   name="capacity"
                   label="Capacity"
                   listItems={capacities}
+                  placeholder="Venue type"
                 />
                 <TextField
                   formik={formik}
@@ -132,9 +133,10 @@ export const CreateVenueProfile = () => {
                 />
                 <TextField
                   formik={formik}
-                  id="edit-venue-music_host_frequency"
-                  name="music_host_frequency"
+                  id="edit-venue-host_music_frequency"
+                  name="host_music_frequency©√"
                   label="How often do you host music?"
+                  placeholder="Hosting frequency"
                 />
                 <UploadImage
                   formik={formik}
@@ -145,7 +147,7 @@ export const CreateVenueProfile = () => {
                   photoPreview={photoPreview}
                   setPhotoPreview={setPhotoPreview}
                 />
-                <TextField formik={formik} id="edit-venue-description" name="description" label="Brief description" />
+                <TextField formik={formik} id="edit-venue-description" name="description" placeholder="Tell us more about your venue" label="Brief description" />
                 <div style={{ margin: '32px 0 0 auto' }}>
                   <Button color="primary" variant="contained" size="large" type="submit">
                     Finish

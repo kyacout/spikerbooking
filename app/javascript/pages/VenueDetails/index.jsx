@@ -25,7 +25,7 @@ export const VenueDetails = () => {
   if (!venueInfo) {
     return <Loading loading />
   }
-  const { photo, name, description, zip_code, location, type , capacity, sound_equipment} = venueInfo
+  const { photo, name, description, zip_code, location, venue_type, capacity, sound_equipment, website } = venueInfo
 
   return (
     <FixedBackgroundHeaderFooter>
@@ -33,28 +33,39 @@ export const VenueDetails = () => {
         <Grid container className={styles.content}>
           <Box className={styles.profileImageBox}>
             <div style={{ width: '100%' }}>
-              <img
-                alt="profile picture"
-                src={imageURL(photo.split('image/upload/')[1])}
-              />
+              <img alt="profile picture" src={imageURL(photo.split('image/upload/')[1])} />
             </div>
-            <Button fullWidth variant="contained" style={{ marginTop: '16px' }}>
-              Show Webs Site
+            <Button
+              fullWidth
+              variant="contained"
+              style={{ marginTop: '16px' }}
+              disabled={!website}
+              onClick={() => window.open(website, '_blank')}
+            >
+              Show Website
             </Button>
           </Box>
           <Box className={styles.descriptionBox}>
             <p className={styles.title}>{`${name}`}</p>
-            <p className={styles.venueType}>{type}</p>
+            <p className={styles.venueType}>{venue_type}</p>
             <div className={styles.text}>{description}</div>
             <div className={styles.addressBox}>
-              <p>{location}<br></br>{zip_code}</p>
+              <p>
+                {location}
+                <br />
+                {zip_code}
+              </p>
             </div>
           </Box>
           <Box className={styles.infoBox}>
-            <p className={styles.title} style={{color:'black'}}>Venue Capacity</p>
-            <p style={{fontSize: '25px'}}>{capacity}</p>
-            <p className={styles.title} style={{color:'black'}}>Sound Equipment Provided</p>
-            <p style={{fontSize: '25px'}}>{sound_equipment}</p>
+            <p className={styles.title} style={{ color: 'black' }}>
+              Venue Capacity
+            </p>
+            <p style={{ fontSize: '25px' }}>{capacity}</p>
+            <p className={styles.title} style={{ color: 'black' }}>
+              Sound Equipment Provided
+            </p>
+            <p style={{ fontSize: '25px' }}>{sound_equipment}</p>
           </Box>
         </Grid>
       </Box>

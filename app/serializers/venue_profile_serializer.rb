@@ -3,7 +3,7 @@
 class VenueProfileSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :name, :photo, :location, :type, :website, :capacity, :sound_equipment, :host_music_frequency,
+  attributes :id, :name, :photo, :location, :venue_type, :website, :capacity, :sound_equipment, :host_music_frequency,
              :description, :zip_code
 
   def photo
