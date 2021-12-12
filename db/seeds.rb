@@ -140,3 +140,55 @@ if ArtistProfile.where(user: user).first.blank?
   )
 end
 puts 'Artist 4 created'
+
+# venue_profile = VenueProfile.create(
+#   user: user,
+#   name: 'D.C. Cobb\'s Woodstock',
+#   location: '226 Main St. Woodstock, IL',
+#   website: 'http://www.dccobbs.net/',
+#   capacity: '100',
+#   zip_code: '60098'
+# )
+# venue_profile.photo.attach(
+#   io: File.open('db/seeds/images/venue_photos/DCCobbsLogo.jpg'),
+#   filename: 'DCCobbsLogo.jpg'
+# )
+#
+# venue_profile = VenueProfile.create(
+#   user: user,
+#   name: 'The Cottage',
+#   location: '6 E. Crystal Lake Ave. Crystal Lake, IL',
+#   website: 'http://www.thecottagepub.net/',
+#   capacity: '100',
+#   zip_code: '60014'
+# )
+# venue_profile.photo.attach(
+#   io: File.open('db/seeds/images/venue_photos/TheCottage_logo.jpg'),
+#   filename: 'TheCottage_logo.jpg'
+# )
+#
+# venue_profile = VenueProfile.create(
+#   user: user,
+#   name: 'Cantina 52',
+#   location: '52 Brink St. Crystal Lake, IL',
+#   website: 'http://www.cantina52.com/',
+#   capacity: '100',
+#   zip_code: '60014'
+# )
+# venue_profile.photo.attach(
+#   io: File.open('db/seeds/images/venue_photos/Cantina52_logo.jpg'),
+#   filename: 'Cantina52_logo.jpg'
+# )
+#
+# venue_profile = VenueProfile.create(
+#   user: user,
+#   name: 'Hart\'s Saloon',
+#   location: '9932 Main St. Hebron, IL',
+#   website: 'http://www.hartssaloon.com/',
+#   capacity: '100',
+#   zip_code: '60034'
+# )
+# venue_profile.photo.attach(
+#   io: File.open('db/seeds/images/venue_photos/Hart\'sSaloon_logo.png'),
+#   filename: 'Hart\'sSaloon_logo.png'
+# )

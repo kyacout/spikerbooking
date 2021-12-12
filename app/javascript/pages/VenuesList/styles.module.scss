@@ -1,0 +1,63 @@
+.mainContainer {
+  width: 100%;
+  background-color: #f3f3f3;
+  padding: 20px;
+
+  @media only screen and (min-width: 769px) {
+    padding: 64px;
+  }
+
+  .venueContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #dadbe6;
+    background-color: #fff;
+
+    @media only screen and (min-width: 769px) {
+      width: 100%;
+      margin: 31px 18px 20px 0;
+      padding: 20px 26px 25.6px 20px;
+      flex-direction: row;
+      height: 350px;
+    }
+
+    .imageContainer {
+      min-width: 100%;
+      min-height: 200px;
+
+      @media only screen and (min-width: 769px) {
+        min-width: 300px;
+        min-height: 300px;
+        margin-right: 35px;
+      }
+    }
+
+    .detailsContainer {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: space-between;
+
+      @media only screen and (min-width: 769px) {
+        flex-direction: row;
+      }
+
+      .venueName {
+        color: #d32531;
+      }
+
+      .venueLocation {
+        max-width: 250px;
+      }
+    }
+  }
+}
+
+.capacityText {
+  font-size: 14px;
+  line-height: 2.5;
+  color: #666;
+}

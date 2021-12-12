@@ -6,15 +6,17 @@ import { Context } from './App'
 import { Search } from '../pages/Search'
 import { CreateVenueProfile } from '../pages/CreateVenueProfile'
 import { CreateArtistProfile } from '../pages/CreateArtistProfile'
+import { VenuesList } from '../pages/VenuesList'
 import { ArtistsList } from '../pages/ArtistsList'
 import { ArtistDetails } from '../pages/ArtistDetails'
-import { VenueDetails } from "../pages/VenueDetails";
+import { VenueDetails } from '../pages/VenueDetails'
 
 const AuthenticatedRoutes = (
   <Switch>
     <Route exact path="/" component={Search} />
     <Route exact path="/create-venue-profile" component={CreateVenueProfile} />
     <Route exact path="/create-artist-profile" component={CreateArtistProfile} />
+    <Route exact path="/venues" component={VenuesList} />
     <Route exact path="/artists" component={ArtistsList} />
     <Route exact path="/artists/:id" component={ArtistDetails} />
     <Route exact path="/venues/:id" component={VenueDetails} />
