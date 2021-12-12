@@ -36,7 +36,7 @@ export const ArtistContainer = ({ id, artist_name, location, profile_photo, zip_
           variant="contained"
           size="small"
           sx={{ borderRadius: '75px', textTransform: 'none', width: '130px', mt: '25px' }}
-          onClick={() => history.push(`artist/${id}`)}
+          onClick={() => history.push(`artists/${id}`)}
         >
           See more
         </Button>

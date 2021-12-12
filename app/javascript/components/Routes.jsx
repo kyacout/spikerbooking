@@ -16,7 +16,7 @@ const AuthenticatedRoutes = (
     <Route exact path="/create-venue-profile" component={CreateVenueProfile} />
     <Route exact path="/create-artist-profile" component={CreateArtistProfile} />
     <Route exact path="/artists" component={ArtistsList} />
-    <Route exact path="/artist/:id" component={ArtistDetails} />
+    <Route exact path="/artists/:id" component={ArtistDetails} />
     <Route exact path="/venues/:id" component={VenueDetails} />
   </Switch>
 )

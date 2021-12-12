@@ -77,7 +77,7 @@ export const CreateArtistProfile = () => {
                 const { title, detail: message } = errors[0]
                 setErrorAlert({ show: true, title, message })
               } else {
-                window.location.replace(`/artist/${data.id}`)
+                window.location.replace(`/artists/${data.id}`)
               }
             })
             .catch(e => console.error(e))
