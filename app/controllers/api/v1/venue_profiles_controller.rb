@@ -16,6 +16,13 @@ module Api
         end
       end
 
+      # PUT /api/v1/venue_profiles or api/v1/venue_profiles.json
+      def update
+        venue = VenueProfile.find_by(id: params[:id])
+        venue.update(venue_profile_params)
+        render json: venue
+      end
+
       # GET /api/v1/venue_profiles or api/v1/venue_profiles.json
       def index
         venues = VenueProfile.all
@@ -24,7 +31,7 @@ module Api
 
       # GET /api/v1/venue_profiles/{id} or api/v1/venue_profiles/{id}.json
       def show
-        venue = VenueProfile.find(params[:id])
+        venue = VenueProfile.find_by(id: params[:id])
         render json: venue
       end
 
@@ -32,8 +39,8 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def venue_profile_params
-        params.permit(:name, :location, :venue_type, :website, :capacity, :sound_equipment, :music_host_frequency,
-                      :description, :photo, :venue_profile)
+        params.permit(:name, :location, :venue_type, :website, :capacity, :sound_equipment, :host_music_frequency,
+                      :description, :photo)
       end
     end
   end

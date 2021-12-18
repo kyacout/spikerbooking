@@ -10,6 +10,7 @@ import { VenuesList } from '../pages/VenuesList'
 import { ArtistsList } from '../pages/ArtistsList'
 import { ArtistDetails } from '../pages/ArtistDetails'
 import { VenueDetails } from '../pages/VenueDetails'
+import { EditProfile } from '../pages/EditProfile'
 
 const AuthenticatedRoutes = (
   <Switch>
@@ -19,6 +20,7 @@ const AuthenticatedRoutes = (
     <Route exact path="/venues" component={VenuesList} />
     <Route exact path="/artists" component={ArtistsList} />
     <Route exact path="/artists/:id" component={ArtistDetails} />
+    <Route exact path="/edit-profile/" component={EditProfile} />
     <Route exact path="/venues/:id" component={VenueDetails} />
   </Switch>
 )

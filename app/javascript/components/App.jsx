@@ -4,12 +4,17 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import Routes from './Routes'
 
-export const Context = createContext({ currentUser: { id: null, email: null, current_type: null }, token: null })
+export const Context = createContext({
+  currentUser: { id: null, email: null, current_type: null },
+  artistProfileId: null,
+  venueProfileId: null,
+  token: null,
+})
 
-const App = ({ currentUser, token }) => {
+const App = ({ currentUser, artistProfileId, venueProfileId, token }) => {
   return (
     <Router>
-      <Context.Provider value={{ currentUser, token }}>
+      <Context.Provider value={{ currentUser, artistProfileId, venueProfileId, token }}>
         <Routes />
       </Context.Provider>
     </Router>

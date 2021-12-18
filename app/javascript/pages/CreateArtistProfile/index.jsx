@@ -6,16 +6,16 @@ import Collapse from '@mui/material/Collapse'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import Box from '@mui/material/Box'
+import { DirectUpload } from 'activestorage'
 
 import styles from './styles.module.scss'
 import { Context } from '../../components/App'
 import { Loading } from '../../components/Loading'
 import { FixedBackgroundHeaderFooter } from '../../layouts/FixedBackgroundHeaderFooter'
 import { imageURL } from '../../helpers/Cloudinary'
-import { postReq } from '../../helpers/HTTPRequest'
+import { postReq, putReq } from '../../helpers/HTTPRequest'
 import { FormPage1 } from './FormPage1'
 import { FormPage2 } from './FormPage2'
-import { DirectUpload } from 'activestorage'
 // import { FormPage3 } from './FormPage3'
 
 const validationSchema = yup.object({
@@ -30,65 +30,114 @@ const validationSchema = yup.object({
   website: yup.string().url('Enter a valid URL for your website.'),
 })
 
-export const CreateArtistProfile = () => {
+export const CreateArtistProfile = ({
+  first_name = '',
+  last_name = '',
+  phone = '',
+  profile_photo,
+  minimum_budget = '',
+  artist_name = '',
+  location = '',
+  zip_code = '',
+  genres = [],
+  unique_statement = '',
+  biography = '',
+  other_venue_plays = '',
+  // photo1,
+  // photo2,
+  // photo3,
+  // logo,
+  // press_sheet,
+  website_url = '',
+  facebook_url = '',
+  instagram_url = '',
+  spotify_url = '',
+  soundcloud_url = '',
+  tiktok_url = '',
+  youtube_url = '',
+}) => {
   const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
-  const { currentUser, token } = useContext(Context)
+  const { currentUser, token, artistProfileId } = useContext(Context)
   const [loading, setLoading] = useState(false)
   const [curPageNum, setCurPageNum] = useState(1)
+  const profilePhotoExists = !!profile_photo
+
+  const updateArtistRequest = values => {
+    const reqCallback = ({ errors, data }) => {
+      setLoading(false)
+      if (errors) {
+        const { title, detail: message } = errors[0]
+        setErrorAlert({ show: true, title, message })
+      } else {
+        window.location.replace(`/artists/${data.id}`)
+      }
+    }
+
+    if (artistProfileId) {
+      putReq(`/api/v1/artist_profiles/${artistProfileId}`, { ...values }, token)
+        .then(reqCallback)
+        .catch(e => console.error(e))
+    } else {
+      postReq('/api/v1/artist_profiles', { ...values }, token)
+        .then(reqCallback)
+        .catch(e => console.error(e))
+    }
+  }
 
   const formik = useFormik({
     initialValues: {
-      first_name: '',
-      last_name: '',
-      phone: '',
+      first_name,
+      last_name,
+      phone,
       profile_photo: '',
-      minimum_budget: '',
-      artist_name: '',
-      location: '',
-      zip_code: '',
-      genres: [],
-      unique_statement: '',
-      biography: '',
-      other_venue_plays: '',
+      minimum_budget,
+      artist_name,
+      location,
+      zip_code,
+      genres,
+      unique_statement,
+      biography,
+      other_venue_plays,
       photo1: '',
       photo2: '',
       photo3: '',
       logo: '',
       press_sheet: '',
-      website_url: '',
-      facebook_url: '',
-      instagram_url: '',
-      spotify_url: '',
-      soundcloud_url: '',
-      tiktok_url: '',
-      youtube_url: '',
+      website_url,
+      facebook_url,
+      instagram_url,
+      spotify_url,
+      soundcloud_url,
+      tiktok_url,
+      youtube_url,
     },
     validationSchema: validationSchema,
     onSubmit: values => {
       setLoading(true)
-      const upload = new DirectUpload(values.profile_photo, '/rails/active_storage/direct_uploads')
-      upload.create((error, blob) => {
-        if (error) {
-          console.error(error)
-        } else {
-          postReq('/api/v1/artist_profiles', { ...values, profile_photo: blob.signed_id }, token)
-            .then(({ errors, data }) => {
-              setLoading(false)
-              if (errors) {
-                const { title, detail: message } = errors[0]
-                setErrorAlert({ show: true, title, message })
-              } else {
-                window.location.replace(`/artists/${data.id}`)
-              }
-            })
-            .catch(e => console.error(e))
-        }
-      })
+
+      if (profilePhotoExists) {
+        updateArtistRequest({ ...values, profile_photo: undefined })
+      } else {
+        const upload = new DirectUpload(values.profile_photo, '/rails/active_storage/direct_uploads')
+        upload.create((error, blob) => {
+          if (error) {
+            console.error(error)
+          } else {
+            updateArtistRequest({ ...values, profile_photo: blob.signed_id })
+          }
+        })
+      }
     },
   })
 
   const FormPages = [
-    <FormPage1 formik={formik} key={1} email={currentUser.email} visible={curPageNum === 1} />,
+    <FormPage1
+      formik={formik}
+      key={1}
+      email={currentUser.email}
+      visible={curPageNum === 1}
+      profilePhotoExists={profilePhotoExists}
+    />,
     <FormPage2 formik={formik} key={2} visible={curPageNum === 2} />,
     // <FormPage3 formik={formik} key={3} visible={curPageNum === 3} />,
   ]
@@ -130,10 +179,11 @@ export const CreateArtistProfile = () => {
                     </Button>
                   ) : (
                     <Button
+                      type="button"
                       color="primary"
                       variant="contained"
                       size="large"
-                      onClick={() => setCurPageNum(curPageNum + 1)}
+                      onClick={() => setTimeout(() => setCurPageNum(curPageNum + 1), 300)}
                       sx={{ width: '120px' }}
                     >
                       Next

@@ -40,45 +40,73 @@ const venueTypes = [
 
 const capacities = ['<100', '101-250', '251-500', '501-1000', '1000+']
 
-export const CreateVenueProfile = () => {
+export const CreateVenueProfile = ({
+  name = '',
+  location = '',
+  venue_type = '',
+  website = '',
+  capacity = '',
+  sound_equipment = '',
+  host_music_frequency = '',
+  description = '',
+  photo,
+}) => {
   const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
-  const { token } = useContext(Context)
+  const { token, venueProfileId } = useContext(Context)
   const [loading, setLoading] = useState(false)
   const [photoPreview, setPhotoPreview] = useState()
+  const profilePhotoExists = !!photo
+
+  const updateVenueRequest = values => {
+    const reqCallback = ({ errors, data }) => {
+      setLoading(false)
+      if (errors) {
+        const { title, detail: message } = errors[0]
+        setErrorAlert({ show: true, title, message })
+      } else {
+        window.location.replace(`/venues/${data.id}`)
+      }
+    }
+
+    if (venueProfileId) {
+      putReq(`/api/v1/venue_profiles/${venueProfileId}`, { ...values }, token)
+        .then(reqCallback)
+        .catch(e => console.error(e))
+    } else {
+      postReq('/api/v1/venue_profiles', { ...values }, token)
+        .then(reqCallback)
+        .catch(e => console.error(e))
+    }
+  }
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      location: '',
-      venue_type: '',
-      website: '',
-      capacity: '',
-      sound_equipment: '',
-      host_music_frequency: '',
-      description: '',
+      name,
+      location,
+      venue_type,
+      website,
+      capacity,
+      sound_equipment,
+      host_music_frequency,
+      description,
       photo: '',
     },
     validationSchema: validationSchema,
     onSubmit: values => {
       setLoading(true)
-      const upload = new DirectUpload(values.photo, '/rails/active_storage/direct_uploads')
-      upload.create((error, blob) => {
-        if (error) {
-          console.error(error)
-        } else {
-          postReq('/api/v1/venue_profiles', { ...values, photo: blob.signed_id }, token)
-            .then(({ errors, data }) => {
-              setLoading(false)
-              if (errors) {
-                const { title, detail: message } = errors[0]
-                setErrorAlert({ show: true, title, message })
-              } else {
-                window.location.replace(`/venues/${data.id}`)
-              }
-            })
-            .catch(e => console.error(e))
-        }
-      })
+
+      if (profilePhotoExists) {
+        updateVenueRequest({ ...values, photo: undefined })
+      } else {
+        const upload = new DirectUpload(values.profile_photo, '/rails/active_storage/direct_uploads')
+        upload.create((error, blob) => {
+          if (error) {
+            console.error(error)
+          } else {
+            updateVenueRequest({ ...values, photo: blob.signed_id })
+          }
+        })
+      }
     },
   })
 
@@ -148,19 +176,21 @@ export const CreateVenueProfile = () => {
                 <TextField
                   formik={formik}
                   id="edit-venue-host_music_frequency"
-                  name="host_music_frequency©√"
+                  name="host_music_frequency"
                   label="How often do you host music?"
                   placeholder="Hosting frequency"
                 />
-                <UploadImage
-                  formik={formik}
-                  id="edit-venue-photo"
-                  name="photo"
-                  label="Upload photo"
-                  buttonLabel="Select image"
-                  photoPreview={photoPreview}
-                  setPhotoPreview={setPhotoPreview}
-                />
+                {!profilePhotoExists && (
+                  <UploadImage
+                    formik={formik}
+                    id="edit-venue-photo"
+                    name="photo"
+                    label="Upload photo"
+                    buttonLabel="Select image"
+                    photoPreview={photoPreview}
+                    setPhotoPreview={setPhotoPreview}
+                  />
+                )}
                 <TextField
                   formik={formik}
                   id="edit-venue-description"

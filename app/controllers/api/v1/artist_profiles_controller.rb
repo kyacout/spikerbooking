@@ -16,6 +16,13 @@ module Api
         end
       end
 
+      # PUT /api/v1/artist_profiles or api/v1/artist_profiles.json
+      def update
+        artist = ArtistProfile.find_by(id: params[:id])
+        artist.update(artist_profile_params)
+        render json: artist
+      end
+
       # GET /api/v1/artist_profiles or api/v1/artist_profiles.json
       def index
         artists = ArtistProfile.all
@@ -24,7 +31,7 @@ module Api
 
       # GET /api/v1/artist_profile/{id} or api/v1/artist_profile/{id}.json
       def show
-        artist = ArtistProfile.find(params[:id])
+        artist = ArtistProfile.find_by(id: params[:id])
         render json: artist
       end
 

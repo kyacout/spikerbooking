@@ -7,7 +7,7 @@ import styles from './styles.module.scss'
 
 const budgetRanges = ['$100 - $199', '$200 - $299', '$300 - $499', '$500 - $999', '$1,000+']
 
-export const FormPage1 = ({ formik, email, visible }) => {
+export const FormPage1 = ({ formik, email, visible, profilePhotoExists }) => {
   const [photoPreview, setPhotoPreview] = useState()
 
   if (!visible) {
@@ -47,15 +47,17 @@ export const FormPage1 = ({ formik, email, visible }) => {
         placeholder="Use format (555) 555-5555"
         required
       />
-      <UploadImage
-        formik={formik}
-        id="edit-artist-profile_photo"
-        name="profile_photo"
-        label="Upload profile picture"
-        buttonLabel="Select image"
-        photoPreview={photoPreview}
-        setPhotoPreview={setPhotoPreview}
-      />
+      {!profilePhotoExists && (
+        <UploadImage
+          formik={formik}
+          id="edit-artist-profile_photo"
+          name="profile_photo"
+          label="Upload profile picture"
+          buttonLabel="Select image"
+          photoPreview={photoPreview}
+          setPhotoPreview={setPhotoPreview}
+        />
+      )}
       <SingleSelectInput
         formik={formik}
         id="edit-artist-minimum_budget"

@@ -44,6 +44,22 @@ export const postReq = (url, body, token, contentType = 'application/json') => {
     })
 }
 
+export const putReq = (url, body, token, contentType = 'application/json') => {
+  return fetch(url, {
+    method: 'PUT',
+    headers: { 'Content-Type': contentType, 'X-CSRF-Token': token },
+    body: JSON.stringify(body),
+  })
+    .then(res => res.json())
+    .then(body => {
+      if (body.errors) {
+        return { errors: body.errors }
+      } else {
+        return { data: body }
+      }
+    })
+}
+
 export const deleteReq = (url, token) => {
   return fetch(url, {
     method: 'DELETE',
