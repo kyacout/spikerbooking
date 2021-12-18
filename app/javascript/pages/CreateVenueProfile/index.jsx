@@ -7,8 +7,6 @@ import Collapse from '@mui/material/Collapse'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import Box from '@mui/material/Box'
-import Backdrop from '@mui/material/Backdrop'
-import CircularProgress from '@mui/material/CircularProgress'
 
 import styles from './styles.module.scss'
 import { Context } from '../../components/App'
@@ -18,9 +16,11 @@ import { postReq } from '../../helpers/HTTPRequest'
 import { TextField } from '../../components/UILibrary/TextField'
 import { SingleSelectInput } from '../../components/UILibrary/SingleSelectInput'
 import { UploadImage } from '../../components/UILibrary/UploadImage'
+import { Loading } from '../../components/Loading'
 
 const validationSchema = yup.object({
   name: yup.string().required("The venue's name is required"),
+  photo: yup.string().required('Your profile photo is required'),
   location: yup.string().required('Location is required'),
   website: yup.string().url('Enter a valid URL for your website.'),
 })
@@ -84,21 +84,15 @@ export const CreateVenueProfile = () => {
 
   return (
     <FixedBackgroundHeaderFooter bgImg={imageURL('v1634987955/bg/venue_profile.jpg')}>
-      <Backdrop
-        sx={{ display: 'flex', flexDirection: 'column', color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
-        open={loading}
-      >
-        <CircularProgress color="primary" />
-        Creating Profile ...
-      </Backdrop>
+      <Loading message="Creating profile..." loading={loading} />
       <Box display="flex" width="100vw">
         <Box display="flex" flexDirection="column" m="58px auto auto">
           <Box display="flex">
             <Box display="flex" flexDirection="column" className={styles.formContainer}>
               <h1>Welcome to Spiker Booking Family!</h1>
               <span className={styles.headerText}>
-                Right On! You're now a Spiker Booking Member! The painless way to book music. Take a Few Moments to fill
-                in your venue profile. It will help artist determine if you are a good match or come back later.
+                Right On! You&apos;re now a Spiker Booking Member! The painless way to book music. Take a Few Moments to
+                fill in your venue profile. It will help artist determine if you are a good match or come back later.
               </span>
               <form onSubmit={formik.handleSubmit} className={styles.form}>
                 <Collapse in={errorAlert.show} sx={{ mt: '24px', mb: '24px' }}>
@@ -107,8 +101,22 @@ export const CreateVenueProfile = () => {
                     {errorAlert.message}
                   </Alert>
                 </Collapse>
-                <TextField formik={formik} id="edit-venue-name" name="name" label="Venue Name" placeholder="Venue Name" required />
-                <TextField formik={formik} id="edit-venue-location" name="location" label="Location" placeholder="State, City" required />
+                <TextField
+                  formik={formik}
+                  id="edit-venue-name"
+                  name="name"
+                  label="Venue Name"
+                  placeholder="Venue Name"
+                  required
+                />
+                <TextField
+                  formik={formik}
+                  id="edit-venue-location"
+                  name="location"
+                  label="Location"
+                  placeholder="State, City"
+                  required
+                />
                 <SingleSelectInput
                   id="edit-venue-type"
                   formik={formik}
@@ -116,7 +124,13 @@ export const CreateVenueProfile = () => {
                   label="Venue Type"
                   listItems={venueTypes}
                 />
-                <TextField formik={formik} id="edit-venue-website" name="website" placeholder="Website" label="Website" />
+                <TextField
+                  formik={formik}
+                  id="edit-venue-website"
+                  name="website"
+                  placeholder="Website"
+                  label="Website"
+                />
                 <SingleSelectInput
                   formik={formik}
                   id="edit-venue-capacity"
@@ -147,7 +161,13 @@ export const CreateVenueProfile = () => {
                   photoPreview={photoPreview}
                   setPhotoPreview={setPhotoPreview}
                 />
-                <TextField formik={formik} id="edit-venue-description" name="description" placeholder="Tell us more about your venue" label="Brief description" />
+                <TextField
+                  formik={formik}
+                  id="edit-venue-description"
+                  name="description"
+                  placeholder="Tell us more about your venue"
+                  label="Brief description"
+                />
                 <div style={{ margin: '32px 0 0 auto' }}>
                   <Button color="primary" variant="contained" size="large" type="submit">
                     Finish

@@ -21,6 +21,7 @@ import { DirectUpload } from 'activestorage'
 const validationSchema = yup.object({
   first_name: yup.string().required('Your first name is required'),
   last_name: yup.string().required('Your last name is required'),
+  profile_photo: yup.string().required('Your profile photo is required'),
   minimum_budget: yup.string().required('You have to enter your minimum budget'),
   artist_name: yup.string().required('Your artist / band name is required'),
   location: yup.string().required('Your Location is required'),
@@ -96,7 +97,7 @@ export const CreateArtistProfile = () => {
 
   return (
     <FixedBackgroundHeaderFooter bgImg={imageURL('v1635338046/bg/artists_profile.jpg')}>
-      <Loading loading={loading} />
+      <Loading message="Creating profile..." loading={loading} />
       <Box display="flex" width="100%">
         <Box display="flex" flexDirection="column" m="58px auto auto" width="100%">
           <Box display="flex">
