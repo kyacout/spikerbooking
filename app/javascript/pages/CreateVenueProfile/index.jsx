@@ -12,17 +12,17 @@ import styles from './styles.module.scss'
 import { Context } from '../../components/App'
 import { FixedBackgroundHeaderFooter } from '../../layouts/FixedBackgroundHeaderFooter'
 import { imageURL } from '../../helpers/Cloudinary'
-import { postReq } from '../../helpers/HTTPRequest'
+import { putReq, postReq } from '../../helpers/HTTPRequest'
 import { TextField } from '../../components/UILibrary/TextField'
 import { SingleSelectInput } from '../../components/UILibrary/SingleSelectInput'
 import { UploadImage } from '../../components/UILibrary/UploadImage'
 import { Loading } from '../../components/Loading'
 
 const validationSchema = yup.object({
-  name: yup.string().required("The venue's name is required"),
-  photo: yup.string().required('Your profile photo is required'),
-  location: yup.string().required('Location is required'),
-  website: yup.string().url('Enter a valid URL for your website.'),
+  // name: yup.string().required("The venue's name is required"),
+  // photo: yup.string().required('Your profile photo is required'),
+  // location: yup.string().required('Location is required'),
+  // website: yup.string().url('Enter a valid URL for your website.'),
 })
 
 const venueTypes = [
@@ -43,9 +43,9 @@ const capacities = ['<100', '101-250', '251-500', '501-1000', '1000+']
 export const CreateVenueProfile = ({
   name = '',
   location = '',
-  venue_type = '',
+  venue_type,
   website = '',
-  capacity = '',
+  capacity,
   sound_equipment = '',
   host_music_frequency = '',
   description = '',
@@ -83,9 +83,9 @@ export const CreateVenueProfile = ({
     initialValues: {
       name,
       location,
-      venue_type,
+      venue_type: venue_type || venueTypes[0],
       website,
-      capacity,
+      capacity: capacity || capacities[0],
       sound_equipment,
       host_music_frequency,
       description,
@@ -200,7 +200,7 @@ export const CreateVenueProfile = ({
                 />
                 <div style={{ margin: '32px 0 0 auto' }}>
                   <Button color="primary" variant="contained" size="large" type="submit">
-                    Finish
+                    Submit
                   </Button>
                 </div>
               </form>
