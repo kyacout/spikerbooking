@@ -2,6 +2,10 @@
   width: 100%;
   background-color: #f3f3f3;
   padding: 64px;
+
+  @media screen and (max-width: 1166px) {
+    padding: 10px;
+  }
 }
 
 .content {
@@ -19,13 +23,24 @@
   flex: 0 1 442px;
   display: flex;
   flex-direction: column;
-  padding: 45px;
+  margin: 0 auto;
 }
 
 .descriptionBox {
   flex: 1 0 50%;
   margin-left: 77px;
   height: 500px;
+
+  @media screen and (max-width: 1023px) {
+    flex: auto;
+    margin-left: unset;
+    max-height: min-content;
+    margin-bottom: 80px;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1166px) {
+    margin-left: 30px;
+  }
 
   .text {
     max-height: 50%;
@@ -54,5 +69,9 @@
     flex: 0 1 442px;
     padding: 0 32px 50px 20px;
     margin-top: 40px;
+
+    @media screen and (max-width: 1023px) {
+      flex: auto;
+    }
   }
 }

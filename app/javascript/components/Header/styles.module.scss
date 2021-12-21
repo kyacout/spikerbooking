@@ -6,6 +6,10 @@
   border: solid 1px #a0a0a0;
   background-color: #fff;
   padding: 0 120px 0 60px;
+
+  @media screen and (max-width: 1024px) {
+    padding: 0 10px;
+  }
 }
 
 .logo {

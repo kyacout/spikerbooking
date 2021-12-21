@@ -37,7 +37,7 @@ export const ArtistDetails = () => {
       <Box className={styles.mainContainer}>
         <Grid container className={styles.content}>
           <Box className={styles.profileImageBox}>
-            <div style={{ width: '350px' }}>
+            <div>
               <img
                 alt="profile picture"
                 src={imageURL(profile_photo.split('image/upload/')[1], {

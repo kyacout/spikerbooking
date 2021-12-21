@@ -1,10 +1,17 @@
 import React from 'react'
 import clsx from 'clsx'
+import map from 'lodash/map'
 
 import { imageURL } from '../../helpers/Cloudinary'
 import styles from './styles.module.scss'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import useTheme from '@mui/material/styles/useTheme'
+import { FooterColumnsData } from './FooterColumnsData'
+import { FooterColumns } from './FooterColumns'
 
 export const Footer = () => {
+  const theme = useTheme()
+  const widerThanMobile = useMediaQuery(theme.breakpoints.up('md'))
   return (
     <footer className={styles.footer}>
       <img src={imageURL('v1635331467/bg/footer.jpg')} className={styles.bg} alt="" />
@@ -14,28 +21,8 @@ export const Footer = () => {
             <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
           </a>
         </div>
-        <div className={styles.row}>
-          <div className={styles.column}>
-            <span className={clsx(styles.text, styles.title)}>Content</span>
-            <span className={styles.text}>New resources</span>
-            <span className={styles.text}>The most popular content</span>
-            <span className={styles.text}>Search trends</span>
-            <span className={styles.text}>Blog</span>
-          </div>
-          <div className={styles.column}>
-            <span className={clsx(styles.text, styles.title)}>Information</span>
-            <span className={styles.text}>Plans & pricing</span>
-            <span className={styles.text}>About us</span>
-            <span className={styles.text}>Jobs</span>
-            <span className={styles.text}>Sell your content</span>
-          </div>
-          <div className={styles.column}>
-            <span className={clsx(styles.text, styles.title)}>Legal</span>
-            <span className={styles.text}>Terms & conditions</span>
-            <span className={styles.text}>License Agreement</span>
-            <span className={styles.text}>Privacy policy</span>
-            <span className={styles.text}>Copyright information</span>
-          </div>
+        <div className={widerThanMobile ? styles.row : ''}>
+          {map(FooterColumnsData, FooterColumns)}
           <div className={styles.column}>
             <span className={clsx(styles.text, styles.title)}>Follow us</span>
           </div>

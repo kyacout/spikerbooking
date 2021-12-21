@@ -2,6 +2,10 @@
   width: 100%;
   background-color: #f3f3f3;
   padding: 64px;
+
+  @media screen and (max-width: 1166px) {
+    padding: 10px;
+  }
 }
 
 .content {
@@ -23,12 +27,24 @@
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   border: solid 1px #dadbe6;
   background-color: #fff;
+  margin: 0 auto;
 }
 
 .biographyBox {
   flex: 1 0 50%;
   margin-left: 77px;
   height: 500px;
+
+  @media screen and (max-width: 1023px) {
+    flex: auto;
+    margin-left: unset;
+    max-height: min-content;
+    margin-bottom: 80px;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1166px) {
+    margin-left: 30px;
+  }
 
   .text {
     height: 80%;
@@ -50,6 +66,10 @@
   border: solid 1px #dadbe6;
   background-color: #fff;
   margin-top: 40px;
+
+  @media screen and (max-width: 1023px) {
+    flex: auto;
+  }
 }
 
 .imagesBox {
@@ -58,4 +78,13 @@
   margin-left: 77px;
   max-height: 500px;
   overflow-x: scroll;
+
+  @media screen and (max-width: 1023px) {
+    flex: auto;
+    margin-left: unset;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1166px) {
+    margin-left: 30px;
+  }
 }
