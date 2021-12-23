@@ -1,29 +1,23 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import Button from '@mui/material/Button'
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 
-import { imageURL } from '../../helpers/Cloudinary'
-import styles from './styles.module.scss'
+import { imageURL } from "../../helpers/Cloudinary";
+import styles from "./styles.module.scss";
+import { HeaderProfileDropDown } from "./HeaderProfileDropdown/HeaderProfileDropDown";
+import { Context } from "../App";
+import { HeaderQuickLinks } from "./HeaderQuickLinks/HeaderQuickLinks";
 
 export const Header = () => {
-  const history = useHistory()
+  const { currentUser } = useContext(Context);
+  const history = useHistory();
 
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <img src={imageURL('v1635321933/logo_colored.jpg')} alt="logo" />
+        <img src={imageURL("v1635321933/logo_colored.jpg")} alt="logo" onClick={() => history.push("/")} />
       </div>
-      <div className={styles.buttonsContainer}>
-        <Button
-          color="secondary"
-          variant="contained"
-          size="large"
-          onClick={() => history.push('/')}
-          sx={{ borderRadius: '75px', textTransform: 'none' }}
-        >
-          Home
-        </Button>
-      </div>
+      <HeaderQuickLinks />
+      <HeaderProfileDropDown profilePhoto={currentUser.profile_photo} />
     </header>
-  )
-}
+  );
+};

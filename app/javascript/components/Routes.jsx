@@ -11,6 +11,7 @@ import { ArtistsList } from '../pages/ArtistsList'
 import { ArtistDetails } from '../pages/ArtistDetails'
 import { VenueDetails } from '../pages/VenueDetails'
 import { EditProfile } from '../pages/EditProfile'
+import { Logout } from "./devise/Logout";
 
 const AuthenticatedRoutes = (
   <Switch>
@@ -22,6 +23,7 @@ const AuthenticatedRoutes = (
     <Route exact path="/artists/:id" component={ArtistDetails} />
     <Route exact path="/edit-profile/" component={EditProfile} />
     <Route exact path="/venues/:id" component={VenueDetails} />
+    <Route exact path="/logout" component={Logout} />
   </Switch>
 )
 
