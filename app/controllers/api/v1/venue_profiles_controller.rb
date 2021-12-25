@@ -3,6 +3,8 @@
 module Api
   module V1
     class VenueProfilesController < BaseApiController
+      before_action :user_authenticated?, except: [:index]
+
       # POST /api/v1/venue_profiles or api/v1/venue_profiles.json
       def create
         if current_user.venue_profile.present?

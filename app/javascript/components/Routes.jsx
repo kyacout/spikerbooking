@@ -15,10 +15,12 @@ import { EditProfile } from '../pages/EditProfile'
 const AuthenticatedRoutes = (
   <Switch>
     <Route exact path="/" component={Search} />
+    <Route exact path="/artists" component={ArtistsList} />
+    <Route exact path="/venues" component={VenuesList} />
     <Route exact path="/create-venue-profile" component={CreateVenueProfile} />
     <Route exact path="/create-artist-profile" component={CreateArtistProfile} />
     <Route exact path="/venues" component={VenuesList} />
-    <Route exact path="/artists" component={ArtistsList} />
+    <Route exact path="/artists-search/:query" component={ArtistsList} />
     <Route exact path="/artists/:id" component={ArtistDetails} />
     <Route exact path="/edit-profile/" component={EditProfile} />
     <Route exact path="/venues/:id" component={VenueDetails} />
@@ -29,6 +31,7 @@ const NonAuthenticatedRoutes = (
   <Switch>
     <Route exact path="/" component={Search} />
     <Route exact path="/artists" component={ArtistsList} />
+    <Route exact path="/venues" component={VenuesList} />
   </Switch>
 )
 
