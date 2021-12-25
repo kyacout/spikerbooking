@@ -17,11 +17,21 @@
   margin: auto auto auto 0;
 }
 
-.buttonsContainer {
+.profilePhoto {
   margin: auto 0 auto auto;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
 }
 
 .quickLink {
   font-size: medium;
   padding: 0 2px;
+}
+
+.quickLink:hover,
+.profilePhoto:hover,
+.logo:hover {
+  font-weight: bold;
+  cursor: pointer;
 }

@@ -7,7 +7,7 @@ export const HeaderProfileDropDownData = [
   {
     icon: <AccountCircleOutlined fontSize="small" />,
     title: 'view profile',
-    route: '/edit-profile/view',
+    route: '/view-profile',
   },
   {
     icon: <SettingsOutlinedIcon fontSize="small" />,

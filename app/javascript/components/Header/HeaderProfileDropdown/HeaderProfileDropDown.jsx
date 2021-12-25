@@ -4,22 +4,23 @@ import map from 'lodash/map'
 import { HeaderProfileDropDownData } from './HeaderProfileDropDownData'
 import { useHistory } from 'react-router-dom'
 import styles from '../styles.module.scss'
-import { AccountCircleOutlined } from '@mui/icons-material'
+import Avatar from '@mui/material/Avatar'
 
 export const HeaderProfileDropDown = ({ profilePhoto }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const photo = profilePhoto ? profilePhoto : '@mui/icons-material/AccountCircleRounded'
 
   return (
     <Box
-      className={styles.buttonsContainer}
+      className={styles.profilePhoto}
       onClick={() => setDropdownOpen(!dropdownOpen)}
       onMouseLeave={() => setDropdownOpen(false)}
     >
-      {styles.profilePhoto ? (
-        <img src={profilePhoto} className={styles.profilePhoto} />
-      ) : (
-        <AccountCircleOutlined sx={{ fontSize: 70 }} />
-      )}
+      <Avatar
+        size="md"
+        src={photo}
+        sx={{ height: '50px', width: '50px', mt: '20px', alignSelf: 'center', marginTop: '0' }}
+      />
 
       {dropdownOpen ? (
         <Paper sx={{ width: 'auto', maxWidth: '100%', position: 'fixed', right: '50px' }}>
