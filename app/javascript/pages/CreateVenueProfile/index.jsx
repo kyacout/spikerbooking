@@ -98,7 +98,7 @@ export const CreateVenueProfile = ({
       if (profilePhotoExists) {
         updateVenueRequest({ ...values, photo: undefined })
       } else {
-        const upload = new DirectUpload(values.profile_photo, '/rails/active_storage/direct_uploads')
+        const upload = new DirectUpload(values.photo, '/rails/active_storage/direct_uploads')
         upload.create((error, blob) => {
           if (error) {
             console.error(error)

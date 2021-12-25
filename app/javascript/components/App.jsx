@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import Routes from './Routes'
 
 export const Context = createContext({
-  currentUser: { id: null, email: null, current_type: null },
+  currentUser: { id: null, email: null, current_type: null, profile_picture: null },
   artistProfileId: null,
   venueProfileId: null,
   token: null,
