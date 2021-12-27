@@ -15,5 +15,5 @@ export const Logout = () => {
     handleLogout()
   }, [])
 
-  return <div></div>
+  return <div />
 }

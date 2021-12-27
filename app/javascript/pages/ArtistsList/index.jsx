@@ -8,17 +8,21 @@ import { ArtistContainer } from './ArtistContainer'
 import { getReq } from '../../helpers/HTTPRequest'
 import styles from './styles.module.scss'
 import { Loading } from '../../components/Loading'
+import { useParams } from 'react-router-dom'
 
 export const ArtistsList = () => {
   const [artistProfiles, setArtistProfiles] = useState()
+  const { query } = useParams()
 
   useEffect(() => {
-    getReq('/api/v1/artist_profiles').then(({ errors, data }) => {
+    getReq('/api/v1/artists_search', { search_artists_query: query || '' }).then(({ errors, data }) => {
       if (!errors) {
         setArtistProfiles(data)
+      } else {
+        console.error(errors)
       }
     })
-  }, [])
+  }, [query])
 
   if (!artistProfiles) {
     return <Loading loading />

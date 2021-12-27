@@ -1,5 +1,5 @@
-export const getReq = url => {
-  return fetch(url, { method: 'GET' })
+export const getReq = (url, params = '') => {
+  return fetch(`${url}?${new URLSearchParams(params)}`, { method: 'GET' })
     .then(res => res.json())
     .then(body => {
       if (body.errors) {
