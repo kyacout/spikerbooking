@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import styles from './styles.module.scss'
+import styles from '../styles.module.scss'
 import clsx from 'clsx'
 import IconButton from '@mui/material/IconButton'
-import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material'
+import { KeyboardArrowDownOutlined, KeyboardArrowUpOutlined } from '@mui/icons-material'
 import useTheme from '@mui/material/styles/useTheme'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import map from 'lodash/map'
@@ -21,9 +21,9 @@ export const FooterColumns = ({ columnTitle, columnItems }) => {
         {!widerThanMobile && (
           <IconButton style={{ margin: 'auto 0 auto 0' }} onClick={() => setColumnOpen(!columnOpen)}>
             {columnOpen ? (
-              <ArrowDropUp style={{ fill: 'white', width: '40px', height: '40px' }} />
+              <KeyboardArrowUpOutlined style={{ fill: 'white', width: '40px', height: '40px' }} />
             ) : (
-              <ArrowDropDown style={{ fill: 'white', width: '40px', height: '40px' }} />
+              <KeyboardArrowDownOutlined style={{ fill: 'white', width: '40px', height: '40px' }} />
             )}
           </IconButton>
         )}

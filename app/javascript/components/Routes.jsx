@@ -12,15 +12,23 @@ import { ArtistDetails } from '../pages/ArtistDetails'
 import { VenueDetails } from '../pages/VenueDetails'
 import { EditProfile } from '../pages/EditProfile'
 import { Logout } from './devise/Logout'
+
 import { ViewProfile } from '../pages/ViewProfile'
 
-const AuthenticatedRoutes = (
-  <Switch>
+const CommonRoutes = (
+  <>
     <Route exact path="/" component={Search} />
+    <Route exact path="/artists" component={ArtistsList} />
+    <Route exact path="/venues" component={VenuesList} />
+    <Route exact path="/artists-search/:query" component={ArtistsList} />
+  </>
+)
+
+const AuthenticatedOnlyRoutes = (
+  <Switch>
+    {CommonRoutes}
     <Route exact path="/create-venue-profile" component={CreateVenueProfile} />
     <Route exact path="/create-artist-profile" component={CreateArtistProfile} />
-    <Route exact path="/venues" component={VenuesList} />
-    <Route exact path="/artists" component={ArtistsList} />
     <Route exact path="/artists/:id" component={ArtistDetails} />
     <Route exact path="/edit-profile/" component={EditProfile} />
     <Route exact path="/venues/:id" component={VenueDetails} />
@@ -29,15 +37,9 @@ const AuthenticatedRoutes = (
   </Switch>
 )
 
-const NonAuthenticatedRoutes = (
-  <Switch>
-    <Route exact path="/" component={Search} />
-    <Route exact path="/venues" component={VenuesList} />
-    <Route exact path="/artists" component={ArtistsList} />
-  </Switch>
-)
+const NonAuthenticatedOnlyRoutes = <Switch>{CommonRoutes}</Switch>
 
 export default function Routes() {
   const { currentUser } = useContext(Context)
-  return currentUser ? AuthenticatedRoutes : NonAuthenticatedRoutes
+  return currentUser ? AuthenticatedOnlyRoutes : NonAuthenticatedOnlyRoutes
 }

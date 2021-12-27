@@ -6,8 +6,8 @@ import { imageURL } from '../../helpers/Cloudinary'
 import styles from './styles.module.scss'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import useTheme from '@mui/material/styles/useTheme'
-import { FooterColumnsData } from './FooterColumnsData'
-import { FooterColumns } from './FooterColumns'
+import { FooterColumnsData } from './FooterColumns/FooterColumnsData'
+import { FooterColumns } from './FooterColumns/FooterColumns'
 
 export const Footer = () => {
   const theme = useTheme()

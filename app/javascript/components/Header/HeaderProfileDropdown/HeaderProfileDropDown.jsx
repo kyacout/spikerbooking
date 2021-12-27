@@ -8,7 +8,7 @@ import Avatar from '@mui/material/Avatar'
 
 export const HeaderProfileDropDown = ({ profilePhoto }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const photo = profilePhoto ? profilePhoto : '@mui/icons-material/AccountCircleRounded'
+  const photo = profilePhoto && '@mui/icons-material/AccountCircleRounded'
 
   return (
     <Box
@@ -22,12 +22,10 @@ export const HeaderProfileDropDown = ({ profilePhoto }) => {
         sx={{ height: '50px', width: '50px', mt: '20px', alignSelf: 'center', marginTop: '0' }}
       />
 
-      {dropdownOpen ? (
+      {dropdownOpen && (
         <Paper sx={{ width: 'auto', maxWidth: '100%', position: 'fixed', right: '50px' }}>
           <MenuList>{map(HeaderProfileDropDownData, HeaderProfileDropDownItem)}</MenuList>
         </Paper>
-      ) : (
-        ''
       )}
     </Box>
   )
