@@ -12,7 +12,6 @@ import { ArtistDetails } from '../pages/ArtistDetails'
 import { VenueDetails } from '../pages/VenueDetails'
 import { EditProfile } from '../pages/EditProfile'
 import { Logout } from './devise/Logout'
-
 import { ViewProfile } from '../pages/ViewProfile'
 
 const CommonRoutes = (
