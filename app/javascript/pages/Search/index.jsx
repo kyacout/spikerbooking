@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid'
 import styles from './styles.module.scss'
 import { FixedBackground } from '../../layouts/FixedBackground'
 import { imageURL } from '../../helpers/Cloudinary'
-import { Header } from './Header'
+import { Header } from './Header/Header'
 
 export const Search = () => {
   return (

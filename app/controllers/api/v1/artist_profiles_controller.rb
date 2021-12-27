@@ -3,6 +3,8 @@
 module Api
   module V1
     class ArtistProfilesController < BaseApiController
+      before_action :user_authenticated?, except: %i[index search]
+
       # POST /api/v1/artist_profiles or api/v1/artist_profiles.json
       def create
         if current_user.artist_profile.present?
@@ -33,6 +35,28 @@ module Api
       def show
         artist = ArtistProfile.find_by(id: params[:id])
         render json: artist
+      end
+
+      # GET /api/v1/artist_profiles/search or api/v1/artist_profiles/search.json
+      def search
+        query = params[:search_artists_query].presence || '*'
+        artists = ArtistProfile.search_profiles(query)
+        if artists
+          render json: artists
+        else
+          render json: []
+        end
+
+        # if query
+        #   artists = ArtistProfile.search_profiles(query)
+        #   if artists
+        #     render json: artists
+        #   else
+        #     render json: []
+        #   end
+        # else
+        #   render json: []
+        # end
       end
 
       private

@@ -7,11 +7,12 @@ import useTheme from '@mui/material/styles/useTheme'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import IconButton from '@mui/material/IconButton'
 
-import styles from './styles.module.scss'
-import { imageURL } from '../../helpers/Cloudinary'
+import styles from '../styles.module.scss'
+import { imageURL } from '../../../helpers/Cloudinary'
 import { HeaderButtons } from './HeaderButtons'
-import { Context } from '../../components/App'
+import { Context } from '../../../components/App'
 import { Menu } from './Menu'
+import { HeaderQuickLinks } from './HeaderData'
 
 export const Header = () => {
   const { currentUser, token } = useContext(Context)
@@ -20,43 +21,28 @@ export const Header = () => {
   const widerThanTablet = useMediaQuery(theme.breakpoints.up('lg'))
   const [menuOpen, setMenuOpen] = useState(false)
 
-  if (widerThanTablet) {
+  if (widerThanTablet || widerThanMobile) {
     return (
       <Box sx={{ flexGrow: 1, width: '100%' }}>
-        <Grid container>
-          <Grid m="auto" flex="1">
-            <img src={imageURL('v1634564817/white_full_logo.png')} alt="" style={{ maxWidth: '327px' }} />
-          </Grid>
+        <Grid container flexDirection={widerThanTablet ? "unset" :"column" } >
+          {widerThanTablet ? (
+            <Grid m="auto" flex="1">
+              <img src={imageURL('v1634564817/white_full_logo.png')} alt="" style={{ maxWidth: '327px' }} />
+            </Grid>
+          ) : (
+            <Box m="auto" width="327px">
+              <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
+            </Box>
+          )
+          }
           <Grid m="auto" display="flex" justifyContent="space-between" minWidth={currentUser ? '415px' : '665px'}>
-            <a href="/" className={styles.bold}>
-              About us
-            </a>
-            <a href="/" className={styles.bold}>
-              Contact us
-            </a>
+            {HeaderQuickLinks.map( ({route, title}, index ) =>(
+                <a key={index} href={route} className={styles.bold}>
+                  {title}
+              </a>
+              ))}
             <HeaderButtons currentUser={currentUser} token={token} />
           </Grid>
-        </Grid>
-      </Box>
-    )
-  }
-
-  if (widerThanMobile) {
-    return (
-      <Box sx={{ flexGrow: 1, width: '100%' }}>
-        <Grid container flexDirection="column">
-          <Box m="auto" width="327px">
-            <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
-          </Box>
-          <Box m="auto" display="flex" justifyContent="space-between" width={currentUser ? '415px' : '665px'}>
-            <a href="/" className={styles.bold}>
-              About us
-            </a>
-            <a href="/" className={styles.bold}>
-              Contact us
-            </a>
-            <HeaderButtons currentUser={currentUser} token={token} />
-          </Box>
         </Grid>
       </Box>
     )
@@ -68,7 +54,7 @@ export const Header = () => {
         <Grid item xs={6} m="auto">
           <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
         </Grid>
-        <Grid item xs={6} display="flex">
+        <Grid item xs={6} display="flex"  sx={{ justifyContent: "flex-end" }}  onBlur={() => setMenuOpen(false)}>
           <span className={styles.bold} style={{ fontSize: '12px', marginRight: '4px' }}>
             Menu
           </span>

@@ -3,6 +3,8 @@
 module Api
   module V1
     class UsersController < BaseApiController
+      before_action :user_authenticated?
+
       def profile?
         profile_exists =
           if current_user.artist?
