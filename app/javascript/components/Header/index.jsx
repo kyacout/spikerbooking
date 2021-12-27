@@ -17,7 +17,7 @@ export const Header = () => {
         <img src={imageURL('v1635321933/logo_colored.jpg')} alt="logo" onClick={() => history.push('/')} />
       </div>
       <HeaderQuickLinks />
-      <HeaderProfileDropDown profilePhoto={currentUser && currentUser.profile_photo} />
+      <HeaderProfileDropDown currentUser={currentUser} />
     </header>
   )
 }

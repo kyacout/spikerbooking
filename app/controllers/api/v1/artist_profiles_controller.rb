@@ -39,24 +39,9 @@ module Api
 
       # GET /api/v1/artist_profiles/search or api/v1/artist_profiles/search.json
       def search
-        query = params[:search_artists_query].presence || '*'
-        artists = ArtistProfile.search_profiles(query)
-        if artists
-          render json: artists
-        else
-          render json: []
-        end
-
-        # if query
-        #   artists = ArtistProfile.search_profiles(query)
-        #   if artists
-        #     render json: artists
-        #   else
-        #     render json: []
-        #   end
-        # else
-        #   render json: []
-        # end
+        query = params[:search_artists_query]
+        artists = query == '' ? ArtistProfile.all : ArtistProfile.search(query).records.to_a
+        render json: artists
       end
 
       private

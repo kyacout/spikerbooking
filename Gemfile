@@ -32,6 +32,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'cloudinary'
 gem 'devise'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 gem 'react-rails'
 
 group :development, :test do

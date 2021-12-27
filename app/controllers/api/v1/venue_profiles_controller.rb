@@ -3,7 +3,7 @@
 module Api
   module V1
     class VenueProfilesController < BaseApiController
-      before_action :user_authenticated?, except: [:index]
+      before_action :user_authenticated?, except: %i[index search]
 
       # POST /api/v1/venue_profiles or api/v1/venue_profiles.json
       def create
@@ -16,6 +16,13 @@ module Api
           venue_profile.save
           render json: venue_profile
         end
+      end
+
+      # GET /api/v1/venue_profiles/search or api/v1/venue_profiles/search.json
+      def search
+        query = params[:search_venues_query]
+        venues = query == '' ? VenueProfile.all : VenueProfile.search(query).records.to_a
+        render json: venues
       end
 
       # PUT /api/v1/venue_profiles or api/v1/venue_profiles.json

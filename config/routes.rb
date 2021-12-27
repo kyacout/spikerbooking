@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get 'user/has_profile', to: 'users#profile?'
       resources 'venue_profiles'
       resources 'artist_profiles'
+      get 'artists_search', to: 'artist_profiles#search'
+      get 'venues_search', to: 'venue_profiles#search'
     end
   end
   devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }

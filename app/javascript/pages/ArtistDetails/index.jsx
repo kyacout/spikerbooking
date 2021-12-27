@@ -27,7 +27,11 @@ export const ArtistDetails = () => {
   }, [])
 
   if (!artistInfo) {
-    return <Loading loading />
+    return (
+      <FixedBackgroundHeaderFooter>
+        <Loading loading />
+      </FixedBackgroundHeaderFooter>
+    )
   }
 
   const { profile_photo, artist_name, biography, genres, unique_statement, photos } = artistInfo
