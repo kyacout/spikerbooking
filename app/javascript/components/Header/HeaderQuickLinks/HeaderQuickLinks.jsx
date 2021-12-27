@@ -32,8 +32,8 @@ const HeaderQuickLinksMobile = () => {
       {DropdownOpen ? (
         <Paper sx={{ width: 'auto', maxWidth: '100%', position: 'fixed', right: '50px' }}>
           <MenuList>
-            {HeaderQuickLinksData.map(({ title, route }) => (
-              <MenuItem onClick={() => history.push(route)}>
+            {HeaderQuickLinksData.map(({ title, route }, index) => (
+              <MenuItem key={index} onClick={() => history.push(route)}>
                 <ListItemText>{title}</ListItemText>
               </MenuItem>
             ))}
@@ -51,12 +51,11 @@ const HeaderQuickLinksBigScreen = () => {
 
   return (
     <Grid container>
-      {HeaderQuickLinksData.map(({ title, route }) => (
-        <Grid m="auto" display="flex" justifyContent="space-between" columns={{ xs: 4, sm: 8, md: 12 }}>
+      {HeaderQuickLinksData.map(({ title, route }, index ) => (
+        <Grid key={index} m="auto" display="flex" justifyContent="space-between" columns={{ xs: 4, sm: 8, md: 12 }}>
           <div className={styles.quickLink} onClick={() => history.push(route)}>
             {title.toUpperCase()}
           </div>
-          {/*<Divider style={{ background: 'black' , alignContent: 'right'}} orientation="vertical" flexItem/>*/}
         </Grid>
       ))}
     </Grid>

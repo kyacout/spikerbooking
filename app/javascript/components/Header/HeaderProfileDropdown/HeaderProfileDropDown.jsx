@@ -31,11 +31,11 @@ export const HeaderProfileDropDown = ({ profilePhoto }) => {
   )
 }
 
-export const HeaderProfileDropDownItem = ({ icon, title, route }) => {
+export const HeaderProfileDropDownItem = ({ icon, title, route }, index ) => {
   const history = useHistory()
 
   return (
-    <MenuItem onClick={() => history.push(route)}>
+    <MenuItem key={index} onClick={() => history.push(route)}>
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText>{title}</ListItemText>
     </MenuItem>
