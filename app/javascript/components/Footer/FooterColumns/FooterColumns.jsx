@@ -5,15 +5,14 @@ import IconButton from '@mui/material/IconButton'
 import { KeyboardArrowDownOutlined, KeyboardArrowUpOutlined } from '@mui/icons-material'
 import useTheme from '@mui/material/styles/useTheme'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import map from 'lodash/map'
 
-export const FooterColumns = ({ columnTitle, columnItems }) => {
+export const FooterColumns = ({ columnTitle, columnItems }, index ) => {
   const theme = useTheme()
   const widerThanMobile = useMediaQuery(theme.breakpoints.up('md'))
   const [columnOpen, setColumnOpen] = useState(false)
 
   return (
-    <div className={styles.column}>
+    <div key={index} className={styles.column}>
       <span className={styles.row}>
         <span className={clsx(styles.text, styles.title)} onClick={() => setColumnOpen(!columnOpen)}>
           {columnTitle}
@@ -28,11 +27,10 @@ export const FooterColumns = ({ columnTitle, columnItems }) => {
           </IconButton>
         )}
       </span>
-      {columnOpen || widerThanMobile ? map(columnItems, ContentColumnItems) : ''}
+      {columnOpen || widerThanMobile ?
+        columnItems.map( ({ itemName, route }, index) => <span key={index} className={styles.text}>{itemName}</span> ) : ''}
     </div>
   )
 }
 
-export const ContentColumnItems = ({ itemName, route }) => {
-  return <span className={styles.text}>{itemName}</span>
-}
+
