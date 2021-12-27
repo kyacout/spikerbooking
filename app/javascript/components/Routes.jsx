@@ -32,6 +32,7 @@ const AuthenticatedRoutes = (
 const NonAuthenticatedRoutes = (
   <Switch>
     <Route exact path="/" component={Search} />
+    <Route exact path="/venues" component={VenuesList} />
     <Route exact path="/artists" component={ArtistsList} />
   </Switch>
 )
