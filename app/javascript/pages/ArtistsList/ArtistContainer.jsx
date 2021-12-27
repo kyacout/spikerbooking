@@ -16,7 +16,7 @@ export const ArtistContainer = ({ id, artist_name, location, profile_photo, zip_
       <Box className={styles.imageContainer}>
         <img
           alt="profile picture"
-          src={imageURL(profile_photo.split('image/upload/')[1], {
+          src={imageURL(profile_photo?.split('image/upload/')[1], {
             width: 300,
             height: 300,
             crop: 'fill',
@@ -36,7 +36,7 @@ export const ArtistContainer = ({ id, artist_name, location, profile_photo, zip_
           variant="contained"
           size="small"
           sx={{ borderRadius: '75px', textTransform: 'none', width: '130px', mt: '25px' }}
-          onClick={() => history.push(`artists/${id}`)}
+          onClick={() => history.push(`/artists/${id}`)}
         >
           See more
         </Button>
