@@ -6,6 +6,11 @@
   }
 }
 
+.headerLink:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .bold {
   font-weight: bold;
   line-height: 1.6;

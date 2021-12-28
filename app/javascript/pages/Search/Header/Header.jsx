@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import useTheme from '@mui/material/styles/useTheme'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import IconButton from '@mui/material/IconButton'
+import clsx from 'clsx'
 
 import styles from '../styles.module.scss'
 import { imageURL } from '../../../helpers/Cloudinary'
@@ -24,7 +25,7 @@ export const Header = () => {
   if (widerThanTablet || widerThanMobile) {
     return (
       <Box sx={{ flexGrow: 1, width: '100%' }}>
-        <Grid container flexDirection={widerThanTablet ? "unset" :"column" } >
+        <Grid container flexDirection={widerThanTablet ? 'unset' : 'column'}>
           {widerThanTablet ? (
             <Grid m="auto" flex="1">
               <img src={imageURL('v1634564817/white_full_logo.png')} alt="" style={{ maxWidth: '327px' }} />
@@ -33,14 +34,13 @@ export const Header = () => {
             <Box m="auto" width="327px">
               <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
             </Box>
-          )
-          }
+          )}
           <Grid m="auto" display="flex" justifyContent="space-between" minWidth={currentUser ? '415px' : '665px'}>
-            {HeaderQuickLinks.map( ({route, title}, index ) =>(
-                <a key={index} href={route} className={styles.bold}>
-                  {title}
+            {HeaderQuickLinks.map(({ route, title }, index) => (
+              <a key={index} href={route} className={clsx(styles.bold, styles.headerLink)}>
+                {title}
               </a>
-              ))}
+            ))}
             <HeaderButtons currentUser={currentUser} token={token} />
           </Grid>
         </Grid>
@@ -54,7 +54,7 @@ export const Header = () => {
         <Grid item xs={6} m="auto">
           <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
         </Grid>
-        <Grid item xs={6} display="flex"  sx={{ justifyContent: "flex-end" }}  onBlur={() => setMenuOpen(false)}>
+        <Grid item xs={6} display="flex" sx={{ justifyContent: 'flex-end' }} onBlur={() => setMenuOpen(false)}>
           <span className={styles.bold} style={{ fontSize: '12px', marginRight: '4px' }}>
             Menu
           </span>
