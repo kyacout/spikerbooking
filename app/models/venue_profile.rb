@@ -10,11 +10,11 @@ class VenueProfile < ApplicationRecord
 
   settings do
     mapping dynamic: false do
-      indexes :name, analyzer: 'keywords'
-      indexes :location, type: :text, analyzer: 'keyword'
-      indexes :venue_type, analyzer: 'keywords'
-      indexes :zip_code, analyzer: 'keywords'
-      indexes :description, analyzer: 'english'
+      indexes :name, type: :text
+      indexes :location, type: :text
+      indexes :venue_type, type: :keyword
+      indexes :zip_code, type: :keyword
+      indexes :description, type: :text, analyzer: 'english'
     end
   end
 
