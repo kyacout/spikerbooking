@@ -13,13 +13,13 @@ class ArtistProfile < ApplicationRecord
 
   settings do
     mapping dynamic: false do
-      indexes :location, type: :text, analyzer: 'keyword'
-      indexes :zip_code, analyzer: 'keywords'
-      indexes :name, analyzer: 'keywords'
-      indexes :artist_name, analyzer: 'keywords'
-      indexes :genres, analyzer: 'keywords'
-      indexes :biography, analyzer: 'english'
-      indexes :unique_statement, analyzer: 'english'
+      indexes :location, type: :text
+      indexes :zip_code, type: :keyword
+      indexes :name, type: :text
+      indexes :artist_name, type: :text
+      indexes :genres, type: :text
+      indexes :biography, type: :text, analyzer: 'english'
+      indexes :unique_statement, type: :text, analyzer: 'english'
     end
   end
 
