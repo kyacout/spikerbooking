@@ -54,7 +54,7 @@ export const Header = () => {
         <Grid item xs={6} m="auto">
           <img src={imageURL('v1634564817/white_full_logo.png')} alt="" />
         </Grid>
-        <Grid item xs={6} display="flex" sx={{ justifyContent: 'flex-end' }} onBlur={() => setMenuOpen(false)}>
+        <Grid item xs={6} display="flex" sx={{ justifyContent: 'flex-end' }}>
           <span className={styles.bold} style={{ fontSize: '12px', marginRight: '4px' }}>
             Menu
           </span>
