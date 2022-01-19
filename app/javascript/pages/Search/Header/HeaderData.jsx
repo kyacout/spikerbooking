@@ -4,15 +4,16 @@ import EmailIcon from '@mui/icons-material/Email'
 import LogoutIcon from '@mui/icons-material/Logout'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import LoginIcon from '@mui/icons-material/Login'
+import { LocationCity, PeopleAlt } from '@mui/icons-material'
 
 export const HeaderQuickLinks = [
   {
-    icon: '',
+    icon: <PeopleAlt fontSize="small"/>,
     title: 'Artists',
     route: '/artists',
   },
   {
-    icon: '',
+    icon: <LocationCity fontSize="medium"/>,
     title: 'Venues',
     route: '/venues',
   },

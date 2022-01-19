@@ -21,7 +21,7 @@ const HeaderQuickLinksMobile = () => {
   const history = useHistory()
 
   return (
-    <Box style={{ margin: 'auto 0 auto auto' }} onBlur={() => setDropdownOpen(false)}>
+    <Box style={{ margin: 'auto 0 auto auto' }}>
       <IconButton onClick={() => setDropdownOpen(!DropdownOpen)}>
         {DropdownOpen ? (
           <CloseIcon style={{ width: '40px', height: '40px' }} />

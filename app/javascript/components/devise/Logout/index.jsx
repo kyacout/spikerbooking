@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { deleteReq } from '../../../helpers/HTTPRequest'
 import { Context } from '../../App'
+import { Loading } from '../../Loading'
 
 export const Logout = () => {
   const { token } = useContext(Context)
@@ -15,5 +16,5 @@ export const Logout = () => {
     handleLogout()
   }, [])
 
-  return <div />
+  return <Loading message="Logging Out..." loading={true} />
 }
