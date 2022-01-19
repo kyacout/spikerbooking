@@ -16,6 +16,7 @@ import { imageURL } from '../../helpers/Cloudinary'
 import { postReq, putReq } from '../../helpers/HTTPRequest'
 import { FormPage1 } from './FormPage1'
 import { FormPage2 } from './FormPage2'
+import { string } from 'prop-types'
 // import { FormPage3 } from './FormPage3'
 
 const validationSchema = yup.object({
@@ -92,7 +93,7 @@ export const CreateArtistProfile = ({
       profile_photo: '',
       minimum_budget,
       artist_name,
-      location,
+      location : string,
       zip_code,
       genres,
       unique_statement,

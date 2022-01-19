@@ -17,6 +17,7 @@ import { TextField } from '../../components/UILibrary/TextField'
 import { SingleSelectInput } from '../../components/UILibrary/SingleSelectInput'
 import { UploadImage } from '../../components/UILibrary/UploadImage'
 import { Loading } from '../../components/Loading'
+import { string } from 'prop-types'
 
 const validationSchema = yup.object({
   // name: yup.string().required("The venue's name is required"),
@@ -82,7 +83,7 @@ export const CreateVenueProfile = ({
   const formik = useFormik({
     initialValues: {
       name,
-      location,
+      location: string,
       venue_type: venue_type || venueTypes[0],
       website,
       capacity: capacity || capacities[0],
@@ -109,6 +110,7 @@ export const CreateVenueProfile = ({
       }
     },
   })
+  console.log(formik.initialValues.location)
 
   return (
     <FixedBackgroundHeaderFooter bgImg={imageURL('v1634987955/bg/venue_profile.jpg')}>
