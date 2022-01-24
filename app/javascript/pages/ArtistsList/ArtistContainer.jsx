@@ -8,7 +8,7 @@ import styles from './styles.module.scss'
 import { imageURL } from '../../helpers/Cloudinary'
 import Button from '@mui/material/Button'
 
-export const ArtistContainer = ({ id, artist_name, location, profile_photo, zip_code }) => {
+export const ArtistContainer = ({ id, artist_name, location, profile_photo, zip_code, unique_statement }) => {
   const history = useHistory()
 
   return (
@@ -29,7 +29,7 @@ export const ArtistContainer = ({ id, artist_name, location, profile_photo, zip_
         </div>
         <div style={{ display: 'flex' }}>
           <MusicNoteRoundedIcon height={12} />
-          <span className={styles.text}>A musician is a person who plays one or many musical instrument.</span>
+          <span className={styles.text}>{unique_statement}</span>
         </div>
         <Button
           color="primary"
