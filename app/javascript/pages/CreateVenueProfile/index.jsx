@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState , useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { DirectUpload } from 'activestorage'
@@ -18,6 +18,7 @@ import { SingleSelectInput } from '../../components/UILibrary/SingleSelectInput'
 import { UploadImage } from '../../components/UILibrary/UploadImage'
 import { Loading } from '../../components/Loading'
 import { string } from 'prop-types'
+import { Photo } from '@mui/icons-material'
 
 const validationSchema = yup.object({
   // name: yup.string().required("The venue's name is required"),
@@ -57,6 +58,14 @@ export const CreateVenueProfile = ({
   const [loading, setLoading] = useState(false)
   const [photoPreview, setPhotoPreview] = useState()
   const profilePhotoExists = !!photo
+  const count = 1;
+  useEffect(()=>{
+    if(profilePhotoExists){
+      setPhotoPreview(photo)
+    }  
+  },[count])
+  
+
 
   const updateVenueRequest = values => {
     const reqCallback = ({ errors, data }) => {
@@ -83,21 +92,33 @@ export const CreateVenueProfile = ({
   const formik = useFormik({
     initialValues: {
       name,
-      location: string,
+      location:string,
       venue_type: venue_type || venueTypes[0],
       website,
       capacity: capacity || capacities[0],
       sound_equipment,
       host_music_frequency,
       description,
-      photo: '',
+      photo,
     },
     validationSchema: validationSchema,
     onSubmit: values => {
       setLoading(true)
 
       if (profilePhotoExists) {
-        updateVenueRequest({ ...values, photo: undefined })
+        if(values.photo==photo){
+          updateVenueRequest({ ...values, photo: undefined })
+        }else{
+          const upload = new DirectUpload(values.photo, '/rails/active_storage/direct_uploads')
+          upload.create((error, blob) => {
+          if (error) {
+            console.error(error)
+          } else {
+            updateVenueRequest({ ...values, photo: blob.signed_id })
+          }
+        })
+        }
+        
       } else {
         const upload = new DirectUpload(values.photo, '/rails/active_storage/direct_uploads')
         upload.create((error, blob) => {
@@ -148,8 +169,8 @@ export const CreateVenueProfile = ({
                   required
                 />
                 <SingleSelectInput
-                  id="edit-venue-type"
                   formik={formik}
+                  id="edit-venue-type"
                   name="venue_type"
                   label="Venue Type"
                   listItems={venueTypes}
@@ -183,6 +204,17 @@ export const CreateVenueProfile = ({
                   placeholder="Hosting frequency"
                 />
                 {!profilePhotoExists && (
+                  <UploadImage
+                    formik={formik}
+                    id="edit-venue-photo"
+                    name="photo"
+                    label="Upload photo"
+                    buttonLabel="Select image"
+                    photoPreview={photoPreview}
+                    setPhotoPreview={setPhotoPreview}
+                  />
+                )}
+                {profilePhotoExists && (
                   <UploadImage
                     formik={formik}
                     id="edit-venue-photo"
