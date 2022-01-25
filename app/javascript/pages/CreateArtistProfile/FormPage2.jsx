@@ -1,6 +1,7 @@
 import React from 'react'
 import { TextField } from '../../components/UILibrary/TextField'
 import { MultiSelectInput } from '../../components/UILibrary/MultiSelectInput'
+import { SingleSelectInput } from '../../components/UILibrary/SingleSelectInput'
 
 import styles from './styles.module.scss'
 
@@ -37,6 +38,8 @@ const genresList = [
   'Tribute Band',
   'Open to ideas',
 ]
+const profileVisibility = ['show','hide']
+
 
 export const FormPage2 = ({ formik, visible }) => {
   if (!visible) {
@@ -109,6 +112,14 @@ export const FormPage2 = ({ formik, visible }) => {
         placeholder="Enter venues separated by a comma"
         multiline
         rows={2}
+      />
+      <SingleSelectInput
+        formik={formik}
+        id="edit-artist-profile_visibility"
+        name="profile_visibility"
+        label="Profile Visibility"
+        listItems={profileVisibility}
+        required
       />
     </>
   )
