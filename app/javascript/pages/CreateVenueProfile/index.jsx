@@ -38,6 +38,7 @@ const venueTypes = [
   'Banquet Hall',
   'Other',
 ]
+const profileVisibility = ['show','hide']
 
 const capacities = ['<100', '101-250', '251-500', '501-1000', '1000+']
 
@@ -51,6 +52,7 @@ export const CreateVenueProfile = ({
   host_music_frequency = '',
   description = '',
   photo,
+  profile_visibility = '',
 }) => {
   const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
   const { token, venueProfileId } = useContext(Context)
@@ -91,6 +93,7 @@ export const CreateVenueProfile = ({
       host_music_frequency,
       description,
       photo: '',
+      profile_visibility: 'hide'
     },
     validationSchema: validationSchema,
     onSubmit: values => {
@@ -199,6 +202,14 @@ export const CreateVenueProfile = ({
                   name="description"
                   placeholder="Tell us more about your venue"
                   label="Brief description"
+                />
+                <SingleSelectInput
+                  formik={formik}
+                  id="edit-venue-profile_visibility"
+                  name="profile_visibility"
+                  label="Profile Visibility"
+                  listItems={profileVisibility}
+                  required
                 />
                 <div style={{ margin: '32px 0 0 auto' }}>
                   <Button color="primary" variant="contained" size="large" type="submit">
