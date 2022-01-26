@@ -51,7 +51,10 @@ export const ArtistDetails = () => {
                 })}
               />
             </div>
-            <Button fullWidth variant="contained" style={{ marginTop: '16px' }}
+            <Button
+              fullWidth
+              variant="contained"
+              style={{ marginTop: '16px' }}
               onClick={() => (window.location = 'https://www.spikerbooking.com/book-now')}
             >
               Book Now
