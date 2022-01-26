@@ -38,7 +38,7 @@ const venueTypes = [
   'Banquet Hall',
   'Other',
 ]
-const profileVisibility = ['show','hide']
+const profileVisibility = ['show', 'hide']
 
 const capacities = ['<100', '101-250', '251-500', '501-1000', '1000+']
 
@@ -93,7 +93,7 @@ export const CreateVenueProfile = ({
       host_music_frequency,
       description,
       photo: '',
-      profile_visibility: 'hide'
+      profile_visibility: 'hide',
     },
     validationSchema: validationSchema,
     onSubmit: values => {
