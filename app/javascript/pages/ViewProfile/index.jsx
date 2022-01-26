@@ -10,9 +10,9 @@ export const ViewProfile = () => {
   const getProfile = () => {
     if (artistProfileId) {
       history.push(`/artists/${artistProfileId}`)
-    } else if (venueProfileId){
+    } else if (venueProfileId) {
       history.push(`/venues/${venueProfileId}`)
-    } else{
+    } else {
       window.location = '/edit-profile'
     }
   }

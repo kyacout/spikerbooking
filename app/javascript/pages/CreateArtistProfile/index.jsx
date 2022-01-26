@@ -94,7 +94,7 @@ export const CreateArtistProfile = ({
       profile_photo,
       minimum_budget,
       artist_name,
-      location : string,
+      location: string,
       zip_code,
       genres,
       unique_statement,
