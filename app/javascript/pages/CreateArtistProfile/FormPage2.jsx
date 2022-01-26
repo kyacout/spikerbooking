@@ -38,8 +38,7 @@ const genresList = [
   'Tribute Band',
   'Open to ideas',
 ]
-const profileVisibility = ['show','hide']
-
+const profileVisibility = ['show', 'hide']
 
 export const FormPage2 = ({ formik, visible }) => {
   if (!visible) {
