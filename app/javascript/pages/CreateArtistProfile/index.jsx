@@ -63,7 +63,7 @@ export const CreateArtistProfile = ({
   const [curPageNum, setCurPageNum] = useState(1)
   const profilePhotoExists = !!profile_photo
   const existedPhoto = profile_photo
-  
+
   const updateArtistRequest = values => {
     const reqCallback = ({ errors, data }) => {
       setLoading(false)
@@ -118,9 +118,9 @@ export const CreateArtistProfile = ({
       setLoading(true)
 
       if (profilePhotoExists) {
-        if(profile_photo == values.profile_photo){
+        if (profile_photo == values.profile_photo) {
           updateArtistRequest({ ...values, profile_photo: undefined })
-        }else{
+        } else {
           const upload = new DirectUpload(values.profile_photo, '/rails/active_storage/direct_uploads')
           upload.create((error, blob) => {
             if (error) {
@@ -131,7 +131,6 @@ export const CreateArtistProfile = ({
           })
         }
         // updateArtistRequest({ ...values, profile_photo: undefined })
-        
       } else {
         const upload = new DirectUpload(values.profile_photo, '/rails/active_storage/direct_uploads')
         upload.create((error, blob) => {
@@ -152,7 +151,7 @@ export const CreateArtistProfile = ({
       email={currentUser.email}
       visible={curPageNum === 1}
       profilePhotoExists={profilePhotoExists}
-      profile_photo = {profile_photo}
+      profile_photo={profile_photo}
     />,
     <FormPage2 formik={formik} key={2} visible={curPageNum === 2} />,
     // <FormPage3 formik={formik} key={3} visible={curPageNum === 3} />,
