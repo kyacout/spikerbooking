@@ -6,7 +6,7 @@ import { KeyboardArrowDownOutlined, KeyboardArrowUpOutlined } from '@mui/icons-m
 import useTheme from '@mui/material/styles/useTheme'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
-export const FooterColumns = ({ columnTitle, columnItems }, index ) => {
+export const FooterColumns = ({ columnTitle, columnItems }, index) => {
   const theme = useTheme()
   const widerThanMobile = useMediaQuery(theme.breakpoints.up('md'))
   const [columnOpen, setColumnOpen] = useState(false)
@@ -27,10 +27,13 @@ export const FooterColumns = ({ columnTitle, columnItems }, index ) => {
           </IconButton>
         )}
       </span>
-      {columnOpen || widerThanMobile ?
-        columnItems.map( ({ itemName, route }, index) => <span key={index} className={styles.text}>{itemName}</span> ) : ''}
+      {columnOpen || widerThanMobile
+        ? columnItems.map(({ itemName, route }, index) => (
+            <span key={index} className={styles.text}>
+              {itemName}
+            </span>
+          ))
+        : ''}
     </div>
   )
 }
-
-

@@ -9,11 +9,10 @@ import { HeaderButtonsData, HeaderQuickLinks } from './HeaderData'
 import map from 'lodash/map'
 
 export const Menu = ({ currentUser }) => {
-
-  const userState = currentUser ? HeaderButtonsData.toLogOut: HeaderButtonsData.toLogIn;
+  const userState = currentUser ? HeaderButtonsData.toLogOut : HeaderButtonsData.toLogIn
 
   return (
-    <Paper sx={{ width: 320, maxWidth: '100%', position: 'fixed', right: '0'}} style={{ zIndex: '999' }}>
+    <Paper sx={{ width: 320, maxWidth: '100%', position: 'fixed', right: '0' }} style={{ zIndex: '999' }}>
       <MenuList>
         {/* to login or log out*/}
         {map(userState, ItemMenu)}
@@ -25,8 +24,8 @@ export const Menu = ({ currentUser }) => {
   )
 }
 
-export const ItemMenu =({ icon, title, route }, index) => (
-  <MenuItem key={index} onClick={() => ( window.location =  route )}>
+export const ItemMenu = ({ icon, title, route }, index) => (
+  <MenuItem key={index} onClick={() => (window.location = route)}>
     <ListItemIcon>{icon}</ListItemIcon>
     <ListItemText>{title}</ListItemText>
   </MenuItem>
