@@ -51,7 +51,7 @@ const HeaderQuickLinksBigScreen = () => {
 
   return (
     <Grid container>
-      {HeaderQuickLinksData.map(({ title, route }, index ) => (
+      {HeaderQuickLinksData.map(({ title, route }, index) => (
         <Grid key={index} m="auto" display="flex" justifyContent="space-between" columns={{ xs: 4, sm: 8, md: 12 }}>
           <div className={styles.quickLink} onClick={() => history.push(route)}>
             {title.toUpperCase()}
