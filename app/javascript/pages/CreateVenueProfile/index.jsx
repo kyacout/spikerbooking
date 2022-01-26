@@ -1,4 +1,4 @@
-import React, { useContext, useState , useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { DirectUpload } from 'activestorage'
@@ -18,7 +18,6 @@ import { SingleSelectInput } from '../../components/UILibrary/SingleSelectInput'
 import { UploadImage } from '../../components/UILibrary/UploadImage'
 import { Loading } from '../../components/Loading'
 import { string } from 'prop-types'
-
 
 const validationSchema = yup.object({
   // name: yup.string().required("The venue's name is required"),
@@ -58,14 +57,12 @@ export const CreateVenueProfile = ({
   const [loading, setLoading] = useState(false)
   const [photoPreview, setPhotoPreview] = useState()
   const profilePhotoExists = !!photo
-  const count = 1;
-  useEffect(()=>{
-    if(profilePhotoExists){
+  const count = 1
+  useEffect(() => {
+    if (profilePhotoExists) {
       setPhotoPreview(photo)
-    }  
-  },[count])
-  
-
+    }
+  }, [count])
 
   const updateVenueRequest = values => {
     const reqCallback = ({ errors, data }) => {
@@ -104,21 +101,19 @@ export const CreateVenueProfile = ({
     validationSchema: validationSchema,
     onSubmit: values => {
       setLoading(true)
-
       if (profilePhotoExists) {
-        if(values.photo==photo){
+        if (values.photo == photo) {
           updateVenueRequest({ ...values, photo: undefined })
-        }else{
+        } else {
           const upload = new DirectUpload(values.photo, '/rails/active_storage/direct_uploads')
           upload.create((error, blob) => {
-          if (error) {
-            console.error(error)
-          } else {
-            updateVenueRequest({ ...values, photo: blob.signed_id })
-          }
-        })
+            if (error) {
+              console.error(error)
+            } else {
+              updateVenueRequest({ ...values, photo: blob.signed_id })
+            }
+          })
         }
-        
       } else {
         const upload = new DirectUpload(values.photo, '/rails/active_storage/direct_uploads')
         upload.create((error, blob) => {
