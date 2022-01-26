@@ -2,25 +2,29 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+orbs:
+  node: circleci/node@5.0.0
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+  build-and-test:
     docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+      - image: cimg/node:16.13.2-browsers
+    resource_class: small
+    # Then run your tests!
+    # CircleCI will report the results back to your VCS provider.
     steps:
+      # Checkout the code as the first step.
       - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+      # Next, the node orb's install-packages step will install the dependencies from a package.json.
+      - node/install-packages:
+          pkg-manager: yarn
+      - run: yarn lint
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  build-and-test-workflow:
     jobs:
-      - say-hello
+      - build-and-test
