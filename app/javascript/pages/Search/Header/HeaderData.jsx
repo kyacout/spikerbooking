@@ -8,12 +8,12 @@ import { LocationCity, PeopleAlt } from '@mui/icons-material'
 
 export const HeaderQuickLinks = [
   {
-    icon: <PeopleAlt fontSize="small"/>,
+    icon: <PeopleAlt fontSize="small" />,
     title: 'Artists',
     route: '/artists',
   },
   {
-    icon: <LocationCity fontSize="medium"/>,
+    icon: <LocationCity fontSize="medium" />,
     title: 'Venues',
     route: '/venues',
   },
