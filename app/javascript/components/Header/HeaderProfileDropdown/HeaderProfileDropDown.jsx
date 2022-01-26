@@ -8,13 +8,11 @@ import Avatar from '@mui/material/Avatar'
 
 export const HeaderProfileDropDown = ({ currentUser }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const photo = currentUser? currentUser?.profile_photo :  '@mui/icons-material/AccountCircleRounded'
+  const photo = currentUser ? currentUser?.profile_photo : '@mui/icons-material/AccountCircleRounded'
   const menuItems = currentUser ? HeaderProfileDropDownData : HeaderProfileSignedOutData
 
   return (
-    <Box
-      className={styles.profilePhoto}
-      onClick={() => setDropdownOpen(!dropdownOpen)}>
+    <Box className={styles.profilePhoto} onClick={() => setDropdownOpen(!dropdownOpen)}>
       <Avatar
         size="md"
         src={photo}
