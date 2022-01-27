@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { TextField } from '../../components/UILibrary/TextField'
 import { SingleSelectInput } from '../../components/UILibrary/SingleSelectInput'
 import { UploadImage } from '../../components/UILibrary/UploadImage'
@@ -7,12 +7,19 @@ import styles from './styles.module.scss'
 
 const budgetRanges = ['$100 - $199', '$200 - $299', '$300 - $499', '$500 - $999', '$1,000+']
 
-export const FormPage1 = ({ formik, email, visible, profilePhotoExists }) => {
+export const FormPage1 = ({ formik, email, visible, profilePhotoExists, profile_photo }) => {
   const [photoPreview, setPhotoPreview] = useState()
+  const count = 1
+
+  useEffect(() => {
+    if (profilePhotoExists) {
+      setPhotoPreview(profile_photo)
+    }
+  }, [count])
 
   if (!visible) {
     return null
-  }
+  } //const profilePhotoExists = !!profile_photo
 
   return (
     <>
@@ -48,6 +55,17 @@ export const FormPage1 = ({ formik, email, visible, profilePhotoExists }) => {
         required
       />
       {!profilePhotoExists && (
+        <UploadImage
+          formik={formik}
+          id="edit-artist-profile_photo"
+          name="profile_photo"
+          label="Upload profile picture"
+          buttonLabel="Select image"
+          photoPreview={photoPreview}
+          setPhotoPreview={setPhotoPreview}
+        />
+      )}
+      {profilePhotoExists && (
         <UploadImage
           formik={formik}
           id="edit-artist-profile_photo"
