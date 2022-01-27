@@ -38,7 +38,10 @@ const genresList = [
   'Tribute Band',
   'Open to ideas',
 ]
-const profileVisibility = ['show', 'hide']
+const hidden = [
+  { name: 'No', value: false },
+  { name: 'Yes', value: true },
+]
 
 export const FormPage2 = ({ formik, visible }) => {
   if (!visible) {
@@ -114,10 +117,10 @@ export const FormPage2 = ({ formik, visible }) => {
       />
       <SingleSelectInput
         formik={formik}
-        id="edit-artist-profile_visibility"
-        name="profile_visibility"
-        label="Profile Visibility"
-        listItems={profileVisibility}
+        id="edit-artist-hidden"
+        name="hidden"
+        label="Hide profile"
+        listItems={hidden}
         required
       />
     </>

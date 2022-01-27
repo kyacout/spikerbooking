@@ -37,8 +37,11 @@ export const SingleSelectInput = ({ id, name, formik, label, placeholder = '', r
         required={required}
       >
         {listItems.map(option => (
-          <MenuItem key={option} value={option}>
-            {option}
+          <MenuItem
+            key={option.value === undefined ? option : option.value}
+            value={option.value === undefined ? option : option.value}
+          >
+            {option.name || option}
           </MenuItem>
         ))}
       </TextField>

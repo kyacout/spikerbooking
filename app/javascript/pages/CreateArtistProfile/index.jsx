@@ -16,7 +16,6 @@ import { imageURL } from '../../helpers/Cloudinary'
 import { postReq, putReq } from '../../helpers/HTTPRequest'
 import { FormPage1 } from './FormPage1'
 import { FormPage2 } from './FormPage2'
-import { string } from 'prop-types'
 // import { FormPage3 } from './FormPage3'
 
 const validationSchema = yup.object({
@@ -44,7 +43,7 @@ export const CreateArtistProfile = ({
   unique_statement = '',
   biography = '',
   other_venue_plays = '',
-  profile_visibility = '',
+  hidden = false,
   // photo1,
   // photo2,
   // photo3,
@@ -63,7 +62,6 @@ export const CreateArtistProfile = ({
   const [loading, setLoading] = useState(false)
   const [curPageNum, setCurPageNum] = useState(1)
   const profilePhotoExists = !!profile_photo
-  const existedPhoto = profile_photo
 
   const updateArtistRequest = values => {
     const reqCallback = ({ errors, data }) => {
@@ -95,13 +93,13 @@ export const CreateArtistProfile = ({
       profile_photo,
       minimum_budget,
       artist_name,
-      location: string,
+      location,
       zip_code,
       genres,
       unique_statement,
       biography,
       other_venue_plays,
-      profile_visibility: 'hide',
+      hidden,
       // photo1: '',
       // photo2: '',
       // photo3: '',
@@ -120,7 +118,7 @@ export const CreateArtistProfile = ({
       setLoading(true)
 
       if (profilePhotoExists) {
-        if (profile_photo == values.profile_photo) {
+        if (profile_photo === values.profile_photo) {
           updateArtistRequest({ ...values, profile_photo: undefined })
         } else {
           const upload = new DirectUpload(values.profile_photo, '/rails/active_storage/direct_uploads')

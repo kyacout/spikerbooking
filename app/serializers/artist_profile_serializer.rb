@@ -5,7 +5,7 @@ class ArtistProfileSerializer < ActiveModel::Serializer
 
   attributes :id, :first_name, :last_name, :phone, :minimum_budget, :artist_name, :location, :zip_code,
              :genres, :unique_statement, :biography, :other_venue_plays, :website_url, :facebook_url, :instagram_url,
-             :spotify_url, :soundcloud_url, :tiktok_url, :youtube_url, :profile_photo, :photos
+             :spotify_url, :soundcloud_url, :tiktok_url, :youtube_url, :profile_photo, :photos, :hidden
 
   def profile_photo
     return unless object.profile_photo.attached?
