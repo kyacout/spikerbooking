@@ -62,6 +62,7 @@ export const CreateArtistProfile = ({
   const [loading, setLoading] = useState(false)
   const [curPageNum, setCurPageNum] = useState(1)
   const profilePhotoExists = !!profile_photo
+  const existedPhoto = profile_photo
 
   const updateArtistRequest = values => {
     const reqCallback = ({ errors, data }) => {
@@ -90,7 +91,7 @@ export const CreateArtistProfile = ({
       first_name,
       last_name,
       phone,
-      profile_photo: '',
+      profile_photo,
       minimum_budget,
       artist_name,
       location: string,
@@ -117,7 +118,19 @@ export const CreateArtistProfile = ({
       setLoading(true)
 
       if (profilePhotoExists) {
-        updateArtistRequest({ ...values, profile_photo: undefined })
+        if (profile_photo == values.profile_photo) {
+          updateArtistRequest({ ...values, profile_photo: undefined })
+        } else {
+          const upload = new DirectUpload(values.profile_photo, '/rails/active_storage/direct_uploads')
+          upload.create((error, blob) => {
+            if (error) {
+              console.error(error)
+            } else {
+              updateArtistRequest({ ...values, profile_photo: blob.signed_id })
+            }
+          })
+        }
+        // updateArtistRequest({ ...values, profile_photo: undefined })
       } else {
         const upload = new DirectUpload(values.profile_photo, '/rails/active_storage/direct_uploads')
         upload.create((error, blob) => {
@@ -138,6 +151,7 @@ export const CreateArtistProfile = ({
       email={currentUser.email}
       visible={curPageNum === 1}
       profilePhotoExists={profilePhotoExists}
+      profile_photo={profile_photo}
     />,
     <FormPage2 formik={formik} key={2} visible={curPageNum === 2} />,
     // <FormPage3 formik={formik} key={3} visible={curPageNum === 3} />,
