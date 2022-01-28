@@ -38,7 +38,10 @@ const venueTypes = [
   'Banquet Hall',
   'Other',
 ]
-const profileVisibility = ['show', 'hide']
+const hidden_options = [
+  { name: 'No', value: false },
+  { name: 'Yes', value: true },
+]
 
 const capacities = ['<100', '101-250', '251-500', '501-1000', '1000+']
 
@@ -52,7 +55,7 @@ export const CreateVenueProfile = ({
   host_music_frequency = '',
   description = '',
   photo,
-  profile_visibility = '',
+  hidden,
 }) => {
   const [errorAlert, setErrorAlert] = useState({ show: false, message: '' })
   const { token, venueProfileId } = useContext(Context)
@@ -99,13 +102,13 @@ export const CreateVenueProfile = ({
       host_music_frequency,
       description,
       photo,
-      profile_visibility: 'hide',
+      hidden: hidden || hidden_options[0].value,
     },
     validationSchema: validationSchema,
     onSubmit: values => {
       setLoading(true)
       if (profilePhotoExists) {
-        if (values.photo == photo) {
+        if (values.photo === photo) {
           updateVenueRequest({ ...values, photo: undefined })
         } else {
           const upload = new DirectUpload(values.photo, '/rails/active_storage/direct_uploads')
@@ -232,10 +235,10 @@ export const CreateVenueProfile = ({
                 />
                 <SingleSelectInput
                   formik={formik}
-                  id="edit-venue-profile_visibility"
-                  name="profile_visibility"
-                  label="Profile Visibility"
-                  listItems={profileVisibility}
+                  id="edit-venue-hidden"
+                  name="hidden"
+                  label="Hide profile"
+                  listItems={hidden_options}
                   required
                 />
                 <div style={{ margin: '32px 0 0 auto' }}>

@@ -85,6 +85,9 @@ GEM
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crass (1.0.6)
+    data_migrate (7.0.2)
+      activerecord (>= 5.0)
+      railties (>= 5.0)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -162,8 +165,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.21.0)
@@ -296,6 +297,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   cloudinary
+  data_migrate
   devise
   elasticsearch-model
   elasticsearch-rails

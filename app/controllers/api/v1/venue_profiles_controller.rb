@@ -22,6 +22,12 @@ module Api
       def search
         query = params[:search_venues_query]
         venues = query == '' ? VenueProfile.all : VenueProfile.search(query).records.to_a
+        if query == ''
+          venues = VenueProfile.where(hidden: false)
+        else
+          venues = VenueProfile.search(query).records.to_a
+          venues = venues.reject(&:hidden)
+        end
         render json: venues
       end
 
@@ -34,7 +40,7 @@ module Api
 
       # GET /api/v1/venue_profiles or api/v1/venue_profiles.json
       def index
-        venues = VenueProfile.all
+        venues = VenueProfile.where(hidden: false)
         render json: venues
       end
 
@@ -49,7 +55,7 @@ module Api
       # Only allow a list of trusted parameters through.
       def venue_profile_params
         params.permit(:name, :location, :venue_type, :website, :capacity, :sound_equipment, :host_music_frequency,
-                      :description, :photo)
+                      :description, :photo,:hidden)
       end
     end
   end
