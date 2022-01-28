@@ -31,6 +31,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'cloudinary'
+gem 'data_migrate'
 gem 'devise'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
