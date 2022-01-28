@@ -55,7 +55,7 @@ module Api
       # Only allow a list of trusted parameters through.
       def venue_profile_params
         params.permit(:name, :location, :venue_type, :website, :capacity, :sound_equipment, :host_music_frequency,
-                      :description, :photo,:hidden)
+                      :description, :photo, :hidden)
       end
     end
   end
