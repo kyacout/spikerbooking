@@ -23,6 +23,7 @@ class ArtistProfile < ApplicationRecord
     end
   end
 
+  # TODO: filter hidden artists from elasticsearch results
   def self.search(query)
     __elasticsearch__.search(
       {

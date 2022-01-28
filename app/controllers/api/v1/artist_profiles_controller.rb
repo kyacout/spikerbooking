@@ -27,7 +27,7 @@ module Api
 
       # GET /api/v1/artist_profiles or api/v1/artist_profiles.json
       def index
-        artists = ArtistProfile.all
+        artists = ArtistProfile.where(hidden: false)
         render json: artists
       end
 
@@ -40,7 +40,12 @@ module Api
       # GET /api/v1/artist_profiles/search or api/v1/artist_profiles/search.json
       def search
         query = params[:search_artists_query]
-        artists = query == '' ? ArtistProfile.all : ArtistProfile.search(query).records.to_a
+        if query == ''
+          artists = ArtistProfile.where(hidden: false)
+        else
+          artists = ArtistProfile.search(query).records.to_a
+          artists = artists.reject(&:hidden)
+        end
         render json: artists
       end
 
@@ -50,7 +55,7 @@ module Api
       def artist_profile_params
         params.permit(:first_name, :last_name, :phone, :minimum_budget, :artist_name, :location, :zip_code,
                       :unique_statement, :biography, :other_venue_plays, :website_url, :facebook_url, :instagram_url,
-                      :spotify_url, :soundcloud_url, :tiktok_url, :youtube_url, :profile_photo, genres: [])
+                      :spotify_url, :soundcloud_url, :tiktok_url, :youtube_url, :profile_photo, :hidden, genres: [])
       end
     end
   end
