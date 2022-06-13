@@ -1,0 +1,2 @@
+<% csrf_token = form_authenticity_token %>
+<%= react_component("devise/Login/index", { token: csrf_token }) %>

@@ -1,0 +1,73 @@
+.pageContainer {
+  padding: 70px 15px 30px 15px;
+
+  @media screen and (min-width: 600px) {
+    padding: 70px 40px 30px 40px;
+  }
+}
+
+.headerLink:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: bold;
+  line-height: 1.6;
+  color: #fff;
+  text-decoration: none;
+  margin: auto 7px;
+  font-size: 1.2rem;
+}
+
+.text {
+  line-height: 1.6;
+  color: #fff;
+  text-decoration: none;
+  margin-right: 50px;
+  font-size: 1.2rem;
+}
+
+.banner {
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 60px auto auto auto;
+
+  @media only screen and (min-width: 768px) {
+    margin-top: 80px;
+  }
+
+  .h1 {
+    display: block;
+    font-size: 9vw;
+    margin: 0;
+    font-weight: bold;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 62px;
+    }
+  }
+
+  .h2 {
+    display: block;
+    font-size: 5vw;
+    margin: 0;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 45px;
+    }
+  }
+}
+
+.searchBarContainer {
+  margin: 80px auto auto auto;
+  width: 100%;
+
+  @media only screen and (min-width: 1200px) {
+    margin: auto;
+    width: 1080px;
+  }
+}

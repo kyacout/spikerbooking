@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <% csrf_token = form_authenticity_token %>
+  <%= react_component("App", { currentUser: @user,
+                               artistProfileId: current_user.artist_profile&.id,
+                               venueProfileId: current_user.venue_profile&.id,
+                               token: csrf_token }) %>
+<% else %>
+  <%= react_component("App") %>
+<% end %>

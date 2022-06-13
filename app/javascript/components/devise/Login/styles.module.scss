@@ -1,0 +1,96 @@
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+  padding: 70px 15px 30px 15px;
+
+  @media screen and (min-width: 600px) {
+    padding: 70px 40px 30px 40px;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 58px auto auto;
+  max-width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.logoContainer {
+  width: 255px;
+  margin: auto;
+}
+
+.loginFormContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 37px 0 0;
+  box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #616161;
+  background-color: #fff;
+  margin: 33px auto auto auto;
+  max-width: 706px;
+
+  @media only screen and (min-width: 768px) {
+    width: 706px;
+  }
+
+  span {
+    // display: block;
+    font-size: 27px;
+    line-height: 1.74;
+    letter-spacing: 0.27px;
+    color: #000;
+    margin: 0 auto;
+    font-weight: bold;
+
+    &.red {
+      color: #d32531;
+    }
+
+    @media screen and (max-width: 600px) {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  .form {
+    padding: 0 30px 34px 30px;
+  }
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+  margin-top: 85px;
+  height: min-content;
+}
+
+.headerItem {
+  display: flex;
+  flex: 1 1 33%;
+  margin: auto;
+  justify-content: center;
+}
+
+.forgetPassword {
+  all: unset;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 0.15px;
+  text-align: left;
+  color: #d32531;
+  cursor: pointer;
+}

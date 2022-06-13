@@ -1,0 +1,84 @@
+.mainContainer {
+  width: 100%;
+  background-color: #f3f3f3;
+  padding: 64px;
+
+  @media screen and (max-width: 1166px) {
+    padding: 10px;
+  }
+}
+
+.content {
+  width: 100%;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 1.33;
+  color: #de0017;
+}
+
+.profileImageBox {
+  flex: 0 1 442px;
+  display: flex;
+  height: 450px;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.descriptionBox {
+  flex: 1 0 50%;
+  margin-left: 77px;
+  height: 500px;
+  height: 450px;
+
+  @media screen and (max-width: 1023px) {
+    flex: auto;
+    margin-left: unset;
+    max-height: min-content;
+    margin-bottom: 80px;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1166px) {
+    margin-left: 30px;
+  }
+
+  .text {
+    max-height: 50%;
+    font-size: 25px;
+    line-height: 2;
+    color: #000;
+    overflow-y: scroll;
+  }
+
+  .title {
+    margin-top: 0%;
+    font-size: 35px;
+    margin-bottom: unset;
+  }
+
+  .venueType {
+    font-size: 23px;
+    color: #dd0016;
+  }
+
+  .addressBox {
+    font-size: 30px;
+  }
+
+  .infoBox {
+    flex: 0 1 442px;
+    padding: 0 32px 50px 20px;
+    margin-top: 40px;
+
+    @media screen and (max-width: 1023px) {
+      flex: auto;
+    }
+  }
+}
+
+.profileImage {
+  width: 442px;
+  height: 310px;
+}
