@@ -101,47 +101,47 @@ export const ArtistDetails = () => {
             </div>
             <div className={styles.socialMedia}>
               {facebook_url && (
-                <a href={facebook_url} target="_blank" rel={'noreferrer'}>
+                <a href={facebook_url} target="_blank" rel="noreferrer">
                   <img src={imageURL(socialMediaIconsPath + 'facebook.svg')} alt="facebook" />
                 </a>
               )}
               {instagram_url && (
-                <a href={instagram_url} target="_blank" rel={'noreferrer'}>
+                <a href={instagram_url} target="_blank" rel="noreferrer">
                   <img src={imageURL(socialMediaIconsPath + 'instagram.svg')} alt="instagram" />
                 </a>
               )}
               {spotify_url && (
-                <a href={spotify_url} target="_blank" rel={'noreferrer'}>
+                <a href={spotify_url} target="_blank" rel="noreferrer">
                   <img src={imageURL(socialMediaIconsPath + 'spotify.svg')} alt="spotify" />
                 </a>
               )}
               {tiktok_url && (
-                <a href={tiktok_url} target="_blank" rel={'noreferrer'}>
+                <a href={tiktok_url} target="_blank" rel="noreferrer">
                   <img src={imageURL(socialMediaIconsPath + 'tiktok.svg')} alt="tiktok" />
                 </a>
               )}
               {youtube_url && (
-                <a href={youtube_url} target="_blank" rel={'noreferrer'}>
+                <a href={youtube_url} target="_blank" rel="noreferrer">
                   <img src={imageURL(socialMediaIconsPath + 'youtube.svg')} alt="youtube" />
                 </a>
               )}
               {tidal_url && (
-                <a href={tidal_url} target="_blank" rel={'noreferrer'}>
+                <a href={tidal_url} target="_blank" rel="noreferrer">
                   <img src={imageURL(socialMediaIconsPath + 'tidal.svg')} alt="tidal" />
                 </a>
               )}
               {apple_music_url && (
-                <a href={apple_music_url} target="_blank" rel={'noreferrer'}>
+                <a href={apple_music_url} target="_blank" rel="noreferrer">
                   <img src={imageURL(socialMediaIconsPath + 'apple-music.svg')} alt="apple-music" />
                 </a>
               )}
               {website_url && (
-                <a href={website_url} target="_blank" rel={'noreferrer'}>
+                <a href={website_url} target="_blank" rel="noreferrer">
                   <img src={imageURL(socialMediaIconsPath + 'website.svg')} alt="artist-website" />
                 </a>
               )}
               {twitter_url && (
-                <a href={twitter_url} target="_blank" rel={'noreferrer'}>
+                <a href={twitter_url} target="_blank" rel="noreferrer">
                   <img src={imageURL(socialMediaIconsPath + 'twitter.svg')} alt="twitter" />
                 </a>
               )}

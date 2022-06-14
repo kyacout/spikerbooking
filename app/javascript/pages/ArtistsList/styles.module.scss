@@ -23,6 +23,9 @@
   font-size: 15px;
   font-weight: bold;
   color: #d32531;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .text {
