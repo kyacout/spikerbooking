@@ -21,7 +21,7 @@ export const ArtistDetails = () => {
   const socialMediaIconsPath = 'v1635321933/social_media_icons/'
 
   const height = 300
-  const width = 525
+  const width = 300
 
   useEffect(() => {
     getReq(`/api/v1/artist_profiles/${id}`).then(({ errors, data }) => {
@@ -64,24 +64,20 @@ export const ArtistDetails = () => {
       <Box className={styles.mainContainer}>
         <Grid container className={styles.content}>
           <Box className={styles.profileImageBox}>
-            <div>
+            <div style={{ width, height }}>
               <img
                 alt="profile picture"
                 src={imageURL(profile_photo.split('image/upload/')[1], {
                   crop: 'fill',
-                  fetchFormat: 'auto',
-                  quality: 'auto',
-                  width: width,
-                  height: height,
-                  gravity: 'face',
+                  width,
+                  height,
                 })}
                 className={styles.profileImage}
               />
             </div>
             <Button
-              fullWidth
               variant="contained"
-              style={{ marginTop: '16px' }}
+              style={{ marginTop: '16px', width: 300 }}
               onClick={() => (window.location = 'https://www.spikerbooking.com/contact-us')}
             >
               Book Now
@@ -99,8 +95,10 @@ export const ArtistDetails = () => {
               ))}
             </div>
             <p className={styles.title}>Unique Statement</p>
-            <MusicNoteRoundedIcon sx={{ height: '0.6em', width: '1em' }} />
-            {unique_statement}
+            <div style={{ display: 'flex', height: '90px' }}>
+              <MusicNoteRoundedIcon height={12} />
+              <span>{unique_statement}</span>
+            </div>
             <div className={styles.socialMedia}>
               {facebook_url && (
                 <a href={facebook_url} target="_blank" rel={'noreferrer'}>
@@ -168,7 +166,7 @@ export const ArtistDetails = () => {
                 <ImageList variant="quilted" cols={3} gap={10}>
                   {photos.map(item => (
                     <ImageListItem key={item}>
-                      <img src={imageURL(item.split('image/upload/')[1])} alt="img" loading="lazy" />
+                      <img src={imageURL(item.split('image/upload/')[1], { height: 250 })} alt="img" loading="lazy" />
                     </ImageListItem>
                   ))}
                 </ImageList>

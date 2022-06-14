@@ -27,9 +27,9 @@ export const ArtistContainer = ({ id, artist_name, location, profile_photo, zip_
           <LocationOnIcon height={12} />
           <span className={styles.text}>{`Musician | ${location}${zip_code && `, ${zip_code}`}`}</span>
         </div>
-        <div style={{ display: 'flex', height: '90px' }}>
+        <div style={{ display: 'flex', height: '135px' }}>
           <MusicNoteRoundedIcon height={12} />
-          <span className={styles.text}>{unique_statement}</span>
+          <span>{unique_statement}</span>
         </div>
         <Button
           color="primary"

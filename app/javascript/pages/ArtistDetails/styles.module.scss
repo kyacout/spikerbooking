@@ -20,9 +20,9 @@
 }
 
 .profileImageBox {
-  flex: 0 1 525px;
+  flex: 0 1 425px;
   display: flex;
-  height: 450px;
+  height: 425px;
   flex-direction: column;
   padding: 45px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -59,18 +59,21 @@
   }
 
   .title {
-    margin-top: 0%;
+    margin-top: 0;
     font-size: 35px;
   }
 }
 
 .infoBox {
-  flex: 0 1 525px;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 425px;
   padding: 0 32px 50px 20px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   border: solid 1px #dadbe6;
   background-color: #fff;
   margin-top: 40px;
+  height: 550px;
 
   @media screen and (max-width: 1023px) {
     flex: auto;
@@ -120,9 +123,8 @@
 }
 
 .socialMedia {
-  margin-top: 20px;
+  margin: auto auto 20px auto;
   display: flex;
-  margin-left: auto;
   flex-direction: row;
   width: 50%;
   flex-wrap: wrap;
@@ -135,6 +137,6 @@
 }
 
 .profileImage {
-  width: 525px;
+  width: 300px;
   height: 300px;
 }
